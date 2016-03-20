@@ -1,0 +1,17 @@
+.bgimage{
+   background-image: url('../images/Bennevis.jpg');
+   background-position: center center;
+   background-size: cover;
+   height: 200px;
+ }
+ 
+ .profielPicAnne {
+    width:60%; /* you can use % */
+    height: auto;
+}
+
+.defaultProfiel {
+ width:70%
+ height: auto;
+ }
+
