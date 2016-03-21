@@ -6,12 +6,16 @@
  }
  
  .profielPicAnne {
-    width:60%; /* you can use % */
+    width:100px; /* you can use % */
     height: auto;
 }
 
 .defaultProfiel {
- width:70%
+ width:100px;
  height: auto;
  }
+ 
+ .services section {
+ text-align:center;
+  }
 
