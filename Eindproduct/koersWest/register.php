@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+
+if ( isset($_SESSION['user_id'])){
+  header('location:index.php');
+}
+
 require 'databaseConnectionOpening.php';
 
 if (!empty($_POST['email']) && !empty($_POST['wachtwoord'])) {

@@ -1,8 +1,16 @@
 <?php
+session_start();
+
+//Als je al ingelogt ben wordt je terug gezet naar index.php.
+if ( isset($_SESSION['user_id'])){
+  header('location:index.php');
+}
+
 require 'databaseConnectionOpening.php';
 
 if (!empty($_POST['email']) && !empty($_POST['wachtwoord'])) {
   
+  $message = '';
 
   $email = strip_tags($_POST['email']);
   $wachtwoord = strip_tags($_POST['wachtwoord']);
@@ -20,10 +28,12 @@ if (!empty($_POST['email']) && !empty($_POST['wachtwoord'])) {
   }
 
   if ($email == $dbemail && $wachtwoord == $dbwachtwoord) {
-    echo 'login succes';
+    $_SESSION['user_id'] = $gebruikerID; 
+    header('location:index.php');
+    
   }
   else {
-    echo 'login failed';
+    $message .= 'Wachtwoord en/of email adres is incorrect';
   }
 
 }
@@ -44,6 +54,10 @@ if (!empty($_POST['email']) && !empty($_POST['wachtwoord'])) {
 <h1>login</h1>
 
 <a href="register.php">Register</a>
+
+<?php if(!empty($message)): ?>
+  <p><?= $message ?></p>
+<?php endif; ?>
 
 	<form action="login.php" method="POST">
 		<input type="text" placeholder="e-mail" name="email" />
