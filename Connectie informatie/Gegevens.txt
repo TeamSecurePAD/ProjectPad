@@ -1,3 +1,14 @@
+filezilla < Inloggen met je inlog gegevens van oege
+
+filezilla inlog gegevens
+
+Host: oege.ie.hva.nl/~langevr004
+gebruikersnaam: langevr004
+Wachtwoord: ARnNzRhZ1BmDHs
+
+
+Connectie script
+
 <?php
 $dbhost = "oege.ie.hva.nl";
 $dbuser = "langevr004";
