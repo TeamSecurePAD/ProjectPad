@@ -42,6 +42,7 @@ if (isset($_SESSION['user_id'])){
   <p><?php echo($dbstraat); ?></p>
   <p><?php echo($dbtelnummer) ?></p>
   
+  <a href="aanbiedMenu.php"> Klik hier om een dienst toe te voegen </a>
  
 
   <a href="logout.php">Uitloggen</a>
