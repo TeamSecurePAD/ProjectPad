@@ -44,7 +44,8 @@
     <p><?php echo($dbtelnummer) ?></p>
 
     <p><b><a href="askForService.php">Dienst aanvragen</a></b></p>
-    
+    <p><b><a href="aanbiedMenu.php">Dienst aanbieden</a></b></p>
+
     <a href="logout.php">Uitloggen</a>
 
     <?php else: ?>
