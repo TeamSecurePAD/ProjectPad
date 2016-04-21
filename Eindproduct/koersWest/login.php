@@ -2,7 +2,7 @@
   session_start();
 
   // Return to index page if already logged in
-  if ( isset($_SESSION['user_id']))
+  if (isset($_SESSION['user_id']))
   {
     header('location:index.php');
   }
@@ -16,10 +16,11 @@
     $email = strip_tags($_POST['email']);
     $wachtwoord = strip_tags($_POST['wachtwoord']);
 
-    $query = "SELECT id, email, wachtwoord FROM gebruiker WHERE email =
-    '$email' ";
+    $query = "SELECT id, email, wachtwoord
+              FROM gebruiker
+              WHERE email = '$email'";
 
-    $result= mysqli_query($connection, $query);
+    $result = mysqli_query($connection, $query);
 
     if ($result)
     {
@@ -50,11 +51,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title>login</title>
+    <title>Login</title>
   </head>
 
   <body>
-    <h1>login</h1>
+    <h1>Login</h1>
 
     <a href="register.php">Register</a>
 
@@ -68,8 +69,11 @@
   		<input type"password" placeholder="wachtwoord" name="wachtwoord">
 
   		<input type="submit" name="submit">
-  	</form>
-      
+  	</form><br>
+
+    <!-- Return to the index page -->
+    <a href="index.php">Terug</a>
+
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 
     <script src="js/script.js"></script>

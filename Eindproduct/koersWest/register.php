@@ -1,9 +1,10 @@
 <?php
 	session_start();
 
-	if ( isset($_SESSION['user_id']))
+	// Return to index page if already logged in
+	if (isset($_SESSION['user_id']))
 	{
-	  header('location:index.php');
+		header('location:index.php');
 	}
 
 	require 'databaseConnectionOpening.php';
@@ -11,14 +12,14 @@
 	if (!empty($_POST['email']) && !empty($_POST['wachtwoord']))
 	{
 		// Save form data in temporary variables
-		$email = $_POST['email'];
-		$wachtwoord = $_POST['wachtwoord'];
-		$telnummer = $_POST['telnummer'];
-		$straat = $_POST['straat'];
-		$postcode = $_POST['postcode'];
-		$woonplaats = $_POST['woonplaats'];
+		$email = strip_tags($_POST['email']);
+		$wachtwoord = strip_tags($_POST['wachtwoord']);
+		$telnummer = strip_tags($_POST['telnummer']);
+		$straat = strip_tags($_POST['straat']);
+		$postcode = strip_tags($_POST['postcode']);
+		$woonplaats = strip_tags($_POST['woonplaats']);
 
-		// Insert our form data into the database
+		// Insert form data into the database
 		$query = "INSERT INTO gebruiker (email, wachtwoord, telefoonnummer, straat, postcode, woonplaats)
 			  	  VALUES ('$email', '$wachtwoord', '$telnummer', '$straat', '$postcode', '$woonplaats')";
 
@@ -48,6 +49,8 @@
 	</head>
 
 	<body>
+	<h1>Register</h1>
+
 		<!-- Registration form -->
 		<form action="register.php" method="POST">
 
@@ -65,6 +68,7 @@
 
 		</form>
 
+		<!-- Return to the index page -->
 		<a href="index.php">Terug</a>
 
 		<script src="js/jquery-2.1.4.min.js"></script>
