@@ -44,7 +44,41 @@
     <p><?php echo($dbtelnummer) ?></p>
 
     <p><b><a href="askForService.php">Dienst aanvragen</a></b></p>
-    
+    <p><b><a href="aanbiedMenu.php">Dienst aanbieden</a></b></p>
+
+    <?php 
+      
+          $sql_get_diensten = "SELECT D.dienst
+                               FROM gebruiker_bied_dienst_aan GBDA
+                               INNER JOIN dienst D
+                               ON GBDA.Dienst_dienst = D.dienst
+                               WHERE GBDA.Gebruiker_Id = '$id'"; 
+
+
+
+          $result_diensten = mysqli_query($connection, $sql_get_diensten);
+
+          $row_count = mysqli_num_rows($result_diensten);
+
+         
+
+          if ($row_count > 0)
+          {
+            echo "<h3>U bied momenteel de volgende diensten aan</h3>";
+            while($row = $result_diensten->fetch_assoc())
+            {
+              echo($row["dienst"]);
+              echo "</br>";
+            }
+          } 
+          else 
+          {
+            echo "<h3>U bied momenteel geen diensten aan</h3>";
+            echo "<p><a href=\"aanbiedMenu.php\">Klik hier</a> om een dienst toe te voegen<p>";
+          }
+
+    ?>
+
     <a href="logout.php">Uitloggen</a>
 
     <?php else: ?>
