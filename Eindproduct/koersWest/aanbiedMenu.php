@@ -34,7 +34,6 @@ if (!empty($_POST['dienst_name']))
      
      <?php while($row = $result->fetch_assoc())
      { ?>
-
       <div><?php echo ($row["dienst"]);?></div>
       <div><?php echo ($row["omschijving"]);?></div>
       <form action="aanbiedMenu.php" method="POST">
