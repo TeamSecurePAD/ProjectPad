@@ -62,7 +62,7 @@ if (!empty($_POST['email']) && !empty($_POST['wachtwoord'])) {
 	<form action="login.php" method="POST">
 		<input type="text" placeholder="e-mail" name="email" />
 
-		<input type"password" placeholder="wachtwoord" name="wachtwoord">
+		<input type="password" placeholder="wachtwoord" name="wachtwoord">
 
 		<input type="submit" name="submit">
 
