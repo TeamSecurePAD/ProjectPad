@@ -1,0 +1,18 @@
+Hier een paar SQL statements voor hoe je nieuwe categorie.
+Om dit te kunnen doen moet je het op deze volgorde doen: categorie -> dienst -> gebruiker biedt dienst aan
+Er moet ook al minstens 1 gebruiker bestaan.
+Voeg een algemene categorie toe aan de database.
+Vul daarna in de dienst tabel gegevens in voor een specifieke dienst met beschrijving en plaats deze onder een toepasselijke categorie.
+Vul tenslotte een gebruiker en dienst in om in de "gebruiker_bied_dienst_aan tabel" in te voegen.
+
+INSERT INTO categorie (categorie)
+
+VALUES ('HANDWERK')
+
+INSERT INTO dienst (dienst, omschijving, Afbeelding, Categorie_Categorie)
+
+VALUES ('KAST BOUWEN', 'Een kast in elkaar leren zetten.', NULL, 'HANDWERK')
+
+INSERT INTO gebruiker_bied_dienst_aan (Gebruiker_Id, Dienst_dienst)
+
+VALUES (1, 'KAST BOUWEN')
