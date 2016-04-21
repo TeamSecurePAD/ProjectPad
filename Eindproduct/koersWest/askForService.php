@@ -7,24 +7,14 @@
   {
     $id = $_SESSION['user_id'];
 
-    $users_services = "SELECT G.email, G.telefoonnummer, G.straat, G.postcode, G.woonplaats, GBDA.Dienst_dienst
-                       FROM gebruiker G
-                       INNER JOIN gebruiker_bied_dienst_aan GBDA
-                       ON GBDA.Gebruiker_ID
-                       WHERE GBDA.Gebruiker_ID = G.id";
+    $users_services = "SELECT G.email, G.telefoonnummer, G.straat, G.postcode, G.woonplaats, D.dienst
+                       FROM gebruiker_bied_dienst_aan GBDA
+                       INNER JOIN gebruiker G
+                       ON GBDA.Gebruiker_ID = G.id
+                       INNER JOIN dienst D
+                       ON GBDA.Dienst_dienst = D.dienst";
 
     $result = mysqli_query($connection, $users_services);
-
-    if ($result)
-    {
-        $row = mysqli_fetch_row($result);
-        $email = $row[0];
-        $telnummer = $row[1];
-        $straat = $row[2];
-        $postcode = $row[3];
-        $woonplaats = $row[4];
-        $dienst = $row[5];
-    }
   }
 ?>
 
@@ -48,20 +38,18 @@
         <?php 
           while($row = $result->fetch_assoc())
           {
-            echo "<li><div>".$dienst."</div></li>";
-            echo "<li><div>".$email."</div></li>";
-            echo "<li><div>".$telnummer."</div></li>";
-            echo "<li><div>".$straat."</div></li>";
-            echo "<li><div>".$postcode."</div></li>";
-            echo "<li><div>".$woonplaats."</div></li>";
-            //echo "<div>".$row["Dienst_dienst"]."</div></li>";
-            echo "<input type=\"submit\" name=\"submit\">";
+            echo "<div><b>Dienst: </b>".$row['dienst']."</div>";
+            echo "<div><b>E-mail adres: </b>".$row['email']."</div>";
+            echo "<div><b>Telefoon nummer: </b>".$row['telefoonnummer']."</div>";
+            echo "<div><b>Straat: </b>".$row['straat']."</div>";
+            echo "<div><b>Postcode: </b>".$row['postcode']."</div>";
+            echo "<div><b>Woonplaats: </b>".$row['woonplaats']."</div><br>";
           }
         ?>
       </ul>
     </div>
 
-    <a href="index.php">Return</a>
+    <a href="index.php">Terug naar profiel</a>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 
