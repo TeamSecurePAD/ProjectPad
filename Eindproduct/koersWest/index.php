@@ -34,17 +34,18 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>Welcome</title>
   </head>
-
   <body>
     <?php if (isset($_SESSION['user_id'])): ?>
 
+    <?php 
+    include("Navigation.php");
+    ?>
+
+    <div class="content container">
     <h1>Uw gegevens</h1>
     <p><?php echo($dbemail) ?></p>
     <p><?php echo($dbstraat); ?></p>
     <p><?php echo($dbtelnummer) ?></p>
-
-    <p><b><a href="askForService.php">Dienst aanvragen</a></b></p>
-    <p><b><a href="aanbiedMenu.php">Dienst aanbieden</a></b></p>
 
     <?php 
       
@@ -80,7 +81,7 @@
     ?>
 
     <a href="logout.php">Uitloggen</a>
-
+    </div>
     <?php else: ?>
       <h1>Welcome</h1>
       <a href="login.php">Login</a>
