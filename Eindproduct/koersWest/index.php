@@ -64,7 +64,7 @@
 
           if ($row_count > 0)
           {
-            echo "<h3>U bied momenteel de volgende diensten aan</h3>";
+            echo "<h3>U biedt momenteel de volgende diensten aan</h3>";
             while($row = $result_diensten->fetch_assoc())
             {
               echo($row["dienst"]);
@@ -73,7 +73,7 @@
           } 
           else 
           {
-            echo "<h3>U bied momenteel geen diensten aan</h3>";
+            echo "<h3>U biedt momenteel geen diensten aan</h3>";
             echo "<p><a href=\"aanbiedMenu.php\">Klik hier</a> om een dienst toe te voegen<p>";
           }
 

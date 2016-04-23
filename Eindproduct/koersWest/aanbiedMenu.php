@@ -29,22 +29,26 @@ if (!empty($_POST['dienst_name']))
   <title>login</title>
 </head>
 <body>
+  <div class="container">
   <h3>Welke van de onderstaande diensten wilt u aanbieden?</h3>
-  <div>
-     
+
+
      <?php while($row = $result->fetch_assoc())
      { ?>
-      <div><?php echo ($row["dienst"]);?></div>
-      <div><?php echo ($row["omschijving"]);?></div>
+     <section class="col-xs-offset-2 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
+      <h3><?php echo ($row["dienst"]);?></h3>
+      <p><b>Omschijving:</b><?php echo ($row["omschijving"]);?></p>
       <form action="aanbiedMenu.php" method="POST">
-      <input type="submit" value="bied aan" />
-      <input type="hidden" value=<?php echo($row["dienst"])?> name="dienst_name"/>
+      <input type="submit" value="Dienst aanbieden" />
+      <input type="hidden" value="<?php echo($row["dienst"]); ?>" name="dienst_name"/>
       </form>
-
+      <br>
+      </section> 
     <?php
     }//end while
     ?>
      <a href="index.php">Return</a>
+
   </div>
 
 <script src="js/jquery-2.1.4.min.js"></script>
