@@ -30,7 +30,11 @@
   </head>
 
   <body>
+    <?php 
+    include("Navigation.php");
+    ?>
     <!-- code code code -->
+
     <h1>Diensten</h1>
 
     <div>

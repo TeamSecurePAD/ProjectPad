@@ -29,6 +29,10 @@ if (!empty($_POST['dienst_name']))
   <title>login</title>
 </head>
 <body>
+    <?php 
+    include("Navigation.php");
+    ?>
+
   <h3>Welke van de onderstaande diensten wilt u aanbieden?</h3>
   <div>
      
