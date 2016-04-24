@@ -32,8 +32,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Welcome</title>
+    <title>Home</title>
   </head>
+
   <body>
     <?php if (isset($_SESSION['user_id'])): ?>
 
@@ -42,46 +43,41 @@
     ?>
 
     <div class="content container">
-    <h1>Uw gegevens</h1>
-    <p><?php echo($dbemail) ?></p>
-    <p><?php echo($dbstraat); ?></p>
-    <p><?php echo($dbtelnummer) ?></p>
+      <h1>Uw gegevens</h1>
+      <p><?php echo($dbemail) ?></p>
+      <p><?php echo($dbstraat); ?></p>
+      <p><?php echo($dbtelnummer) ?></p>
 
-    <?php 
-      
-          $sql_get_diensten = "SELECT D.dienst
-                               FROM gebruiker_bied_dienst_aan GBDA
-                               INNER JOIN dienst D
-                               ON GBDA.Dienst_dienst = D.dienst
-                               WHERE GBDA.Gebruiker_Id = '$id'"; 
+      <?php
+        $sql_get_diensten = "SELECT D.dienst
+                             FROM gebruiker_bied_dienst_aan GBDA
+                             INNER JOIN dienst D
+                             ON GBDA.Dienst_dienst = D.dienst
+                             WHERE GBDA.Gebruiker_Id = '$id'";
 
+        $result_diensten = mysqli_query($connection, $sql_get_diensten);
 
+        $row_count = mysqli_num_rows($result_diensten);
 
-          $result_diensten = mysqli_query($connection, $sql_get_diensten);
-
-          $row_count = mysqli_num_rows($result_diensten);
-
-         
-
-          if ($row_count > 0)
+        if ($row_count > 0)
+        {
+          echo "<h3>U biedt momenteel de volgende diensten aan</h3>";
+          while($row = $result_diensten->fetch_assoc())
           {
-            echo "<h3>U biedt momenteel de volgende diensten aan</h3>";
-            while($row = $result_diensten->fetch_assoc())
-            {
-              echo($row["dienst"]);
-              echo "</br>";
-            }
-          } 
-          else 
-          {
-            echo "<h3>U biedt momenteel geen diensten aan</h3>";
-            echo "<p><a href=\"aanbiedMenu.php\">Klik hier</a> om een dienst toe te voegen<p>";
+            echo($row["dienst"]);
+            echo "</br>";
           }
+        } 
+        else 
+        {
+          echo "<h3>U biedt momenteel geen diensten aan</h3>";
+          echo "<p><a href=\"aanbiedMenu.php\">Klik hier</a> om een dienst toe te voegen<p>";
+        }
+      ?>
 
-    ?>
-
-    <a href="logout.php">Uitloggen</a>
+      <a href="logout.php">Uitloggen</a>
     </div>
+    
     <?php else: ?>
       <h1>Welcome</h1>
       <a href="login.php">Login</a>

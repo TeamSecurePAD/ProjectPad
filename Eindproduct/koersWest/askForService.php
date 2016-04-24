@@ -33,24 +33,21 @@
     <?php 
     include("Navigation.php");
     ?>
-    <!-- code code code -->
 
     <h1>Diensten</h1>
 
     <div>
-      <ul>
-        <?php 
-          while($row = $result->fetch_assoc())
-          {
-            echo "<div><b>Dienst: </b>".$row['dienst']."</div>";
-            echo "<div><b>E-mail adres: </b>".$row['email']."</div>";
-            echo "<div><b>Telefoon nummer: </b>".$row['telefoonnummer']."</div>";
-            echo "<div><b>Straat: </b>".$row['straat']."</div>";
-            echo "<div><b>Postcode: </b>".$row['postcode']."</div>";
-            echo "<div><b>Woonplaats: </b>".$row['woonplaats']."</div><br>";
-          }
-        ?>
-      </ul>
+      <?php 
+        while($row = $result->fetch_assoc())
+        {
+          echo "<div><b>Dienst: </b>".$row['dienst']."</div>";
+          echo "<div><b>E-mail adres: </b>".$row['email']."</div>";
+          echo "<div><b>Telefoon nummer: </b>".$row['telefoonnummer']."</div>";
+          echo "<div><b>Straat: </b>".$row['straat']."</div>";
+          echo "<div><b>Postcode: </b>".$row['postcode']."</div>";
+          echo "<div><b>Woonplaats: </b>".$row['woonplaats']."</div><br>";
+        }
+      ?>
     </div>
 
     <a href="index.php">Terug naar profiel</a>
