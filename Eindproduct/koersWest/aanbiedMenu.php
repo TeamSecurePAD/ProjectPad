@@ -40,14 +40,16 @@
 
       <?php while($row = $result->fetch_assoc())
       {?>
-        <section class="col-xs-offset-2 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
-          <h3><?php echo ($row["dienst"]);?></h3>
-          <p><b>Omschrijving: </b><?php echo ($row["omschijving"]);?></p>
-
-          <form action="aanbiedMenu.php" method="POST">
-            <input type="submit" value="Dienst aanbieden"/>
-            <input type="hidden" value="<?php echo($row["dienst"]); ?>" name="dienst_name"/>
-          </form>
+          <div class="media col-xs-offset-0 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
+            <div class="media-body">
+              <h4 class="media-heading"><?php echo ($row["dienst"]);?></h4>
+              <p><b>Omschrijving: </b><?php echo ($row["omschijving"]);?></p>
+              <form action="aanbiedMenu.php" method="POST">
+              <button type="submit" class="btn btn-primary" value="Dienst aanbieden">dienst aanbieden</button>
+              <input type="hidden" value="<?php echo($row["dienst"]); ?>" name="dienst_name"/>
+              </form>
+            </div>
+          </div>  
           <br>
         </section>
       <?php
