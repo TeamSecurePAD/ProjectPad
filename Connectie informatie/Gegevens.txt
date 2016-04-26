@@ -4,7 +4,7 @@ filezilla inlog gegevens
 
 Host: oege.ie.hva.nl/~langevr004
 gebruikersnaam: langevr004
-Wachtwoord: ARnNzRhZ1BmDHs
+Wachtwoord: +.rPVPdVOPhfRs
 
 
 Connectie script
@@ -12,7 +12,7 @@ Connectie script
 <?php
 $dbhost = "oege.ie.hva.nl";
 $dbuser = "langevr004";
-$dbpass = "ARnNzRhZ1BmDHs";
+$dbpass = +.rPVPdVOPhfRs
 $database = "zlangevr004";
 
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $database);
