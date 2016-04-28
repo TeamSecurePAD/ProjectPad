@@ -37,7 +37,7 @@
     }
     else
     {
-      $message .= 'Uw wachtwoord en/of e-mail adres is incorrect ingevoerd.';
+      $message .= '<b class="red">Uw wachtwoord en/of e-mail adres is incorrect ingevoerd.</b>';
     }
   }
 ?>

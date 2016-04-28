@@ -62,7 +62,7 @@
       while($users_row = $users->fetch_assoc())
       {
         ?>
-        <div class="media col-xs-offset-0 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
+        <div class="media col-xs-offset-0 col-md-offset-0 col-xs-12 col-sm-6 col-md-4 col-lg-4">
           <div class="media-body">
             <div class="list_cheat">
               <h3 class="media-heading"><b class="green">
