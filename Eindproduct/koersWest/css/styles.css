@@ -78,13 +78,13 @@ input
 /** Input windows for forms **/
 input.form-control
 {
-	width: 350px;
+	max-width: 350px;
 	margin: 3px;
 }
 
 /** Select element for forms **/
 select.form-control
 {
-	width: 350px;
+	max-width: 350px;
 	margin: 3px;
 }
