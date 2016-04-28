@@ -42,8 +42,26 @@ div.list_cheat
     border: 3px solid rgb(255, 255, 255);
     padding: 10px;
     display: inline-block;
-    height: 300px;
+    min-height: 300px;
 }
+
+/** set the heigt op the blocks of service's**/
+div.service-content
+{
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+    min-height: 200px;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+div.service-button
+{   
+    position: absolute;
+    bottom: 0px;
+    margin: 20px;
+}
+
 
 /** URL elements - LIGHT BLUE **/
 a

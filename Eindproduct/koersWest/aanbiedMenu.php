@@ -70,10 +70,12 @@
         if ($already_own_service == false)
         {
           ?>
-          <div class="media col-xs-offset-0 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
+          <div class="service-content col-xs-offset-0 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
             <div class="media-body">
               <h3 class="media-heading"><?php echo ($current_service["dienst"]);?></h3>
               <p><b>Omschrijving: </b><?php echo ($current_service["omschijving"]);?></p>
+            </div>
+            <div class="service-button container">
               <form action="aanbiedMenu.php" method="POST">
                 <button type="submit" class="btn btn-primary" value="Dienst aanbieden">dienst aanbieden</button>
                 <input type="hidden" value="<?php echo($current_service["dienst"]); ?>" name="dienst_name"/>
