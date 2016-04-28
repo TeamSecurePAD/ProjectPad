@@ -16,10 +16,10 @@
     $users_services_query = "SELECT G.email, D.dienst
                              FROM gebruiker_bied_dienst_aan GBDA
                              INNER JOIN gebruiker G
-                             ON GBDA.Gebruiker_ID = G.id
+                             ON GBDA.gebruiker_id = G.id
                              INNER JOIN dienst D
-                             ON GBDA.Dienst_dienst = D.dienst
-                             WHERE GBDA.Gebruiker_ID != $id
+                             ON GBDA.dienst_dienst = D.dienst
+                             WHERE GBDA.gebruiker_ID != $id
                              ORDER BY G.email";
 
     ///////////////////////////////////////////////
@@ -55,34 +55,51 @@
     include("Navigation.php");
     ?>
 
-    <h1>Diensten</h1>
+    <div class="container">
+      <h1>Gebruikers</h1>
 
-    <div>
       <?php
-        while($users_row = $users->fetch_assoc())
-        {
-          echo "<b>E-mail adres: </b>".$users_row['email']."<br>";
-          echo "<b>Telefoon nummer: </b>".$users_row['telefoonnummer']."<br>";
-          echo "<b>Straat: </b>".$users_row['straat']."<br>";
-          echo "<b>Postcode: </b>".$users_row['postcode']."<br>";
-          echo "<b>Woonplaats: </b>".$users_row['woonplaats']."<br>";
+      while($users_row = $users->fetch_assoc())
+      {
+        ?>
+        <div class="media col-xs-offset-0 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
+          <div class="media-body">
+            <div class="list_cheat">
+              <h3 class="media-heading"><b class="green">
+                <?php
+                  echo $users_row['email'];
+                ?>
+              </b></h3>
 
-          echo "<div><b>Diensten: </b><br>";
-          while($users_services_row = $users_services->fetch_assoc())
-          {
-            if($users_services_row['email'] == $users_row['email'])
-            {
-              echo $users_services_row['dienst']."<br>";
-            }
-          }
-          echo "</div><br>";
+              <?php
+                echo "<b class=\"green\">Gegevens</b><br>";
+                echo "<b>Telefoonnummer: </b>".$users_row['telefoonnummer']."<br>";
+                echo "<b>Straat: </b>".$users_row['straat']."<br>";
+                echo "<b>Postcode: </b>".$users_row['postcode']."<br>";
+                echo "<b>Woonplaats: </b>".$users_row['woonplaats']."<br><br>";
+                echo "<b class=\"green\">Aangeboden diensten</b><br>";
 
-          $users_services->data_seek(0);
-        }
+                while($users_services_row = $users_services->fetch_assoc())
+                {
+                  if($users_services_row['email'] == $users_row['email'])
+                  {
+                    echo $users_services_row['dienst']."<br>";
+                  }
+                }
+              ?>
+            </div>
+          </div>
+        </div>
+
+        <?php
+        $users_services->data_seek(0);
+      } //end while
       ?>
+    </div><br>
+    
+    <div class="container">
+      <b><a href="index.php">Terug naar profiel</a></b>
     </div>
-
-    <b><a href="index.php">Terug naar profiel</a></b>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 

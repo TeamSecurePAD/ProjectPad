@@ -1,21 +1,36 @@
 <?php
   session_start();
+
+  // Make sure we're connected to the database
   require 'databaseConnectionOpening.php';
-  $id = $_SESSION['user_id'];
 
-  $query = "SELECT *
-            FROM dienst";
-
-  $result = mysqli_query($connection, $query);
-
-  if (!empty($_POST['dienst_name']))
+  // If a user is logged in, display a list of services for them to choose from
+  if (isset($_SESSION['user_id']))
   {
-    $dienst_name = $_POST['dienst_name'];
-    $query = "INSERT INTO gebruiker_bied_dienst_aan
-              VALUES ('$id', '$dienst_name')";
-    mysqli_query($connection, $query);
+    // User's session id, used to reference currently logged in user in database queries
+    $id = $_SESSION['user_id'];
 
-    // "U biedt nu de volgende dienst aan: ".$dienst_name;
+    $my_services_query = "SELECT Dienst_dienst
+                          FROM gebruiker_bied_dienst_aan
+                          WHERE gebruiker_id = $id";
+
+    $services_query = "SELECT *
+                       FROM dienst";
+
+    $my_services = mysqli_query($connection, $my_services_query);
+    $services = mysqli_query($connection, $services_query);
+
+    if (!empty($_POST['dienst_name']))
+    {
+      $dienst_name = $_POST['dienst_name'];
+      $insert_new_service = "INSERT INTO gebruiker_bied_dienst_aan
+                             VALUES ('$id', '$dienst_name')";
+      mysqli_query($connection, $insert_new_service);
+    }
+  }
+  else // Return to the welcome page
+  {
+    header('location:index.php');
   }
 ?>
 
@@ -36,26 +51,45 @@
     ?>
 
     <div class="container">
-      <h3>Welke van de onderstaande diensten wilt u aanbieden?</h3>
+      <h1>Dienst aanbieden</h1>
+      <h2>Welke van de onderstaande diensten wilt u aanbieden?</h2>
 
-      <?php while($row = $result->fetch_assoc())
-      {?>
+      <?php
+      while($current_service = $services->fetch_assoc())
+      {
+        $already_own_service = false;
+
+        while($my_current_service = $my_services->fetch_assoc())
+        {
+          if($current_service['dienst'] == $my_current_service['Dienst_dienst'])
+          {
+            $already_own_service = true;
+          }
+        }
+
+        if ($already_own_service == false)
+        {
+          ?>
           <div class="media col-xs-offset-0 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
             <div class="media-body">
-              <h4 class="media-heading"><?php echo ($row["dienst"]);?></h4>
-              <p><b>Omschrijving: </b><?php echo ($row["omschijving"]);?></p>
+              <h3 class="media-heading"><?php echo ($current_service["dienst"]);?></h3>
+              <p><b>Omschrijving: </b><?php echo ($current_service["omschijving"]);?></p>
               <form action="aanbiedMenu.php" method="POST">
-              <button type="submit" class="btn btn-primary" value="Dienst aanbieden">dienst aanbieden</button>
-              <input type="hidden" value="<?php echo($row["dienst"]); ?>" name="dienst_name"/>
+                <button type="submit" class="btn btn-primary" value="Dienst aanbieden">dienst aanbieden</button>
+                <input type="hidden" value="<?php echo($current_service["dienst"]); ?>" name="dienst_name"/>
               </form>
             </div>
-          </div>  
-          <br>
-        </section>
-      <?php
+          </div>
+          <?php
+        }
+        ?>
+
+        <?php
+        $my_services->data_seek(0);
       }//end while
       ?>
     </div>
+    <br>
 
     <div class="container">
       <?php
@@ -63,11 +97,10 @@
         {
           $dienst_name = $_POST['dienst_name'];
 
-          echo "<section><p>U biedt nu de volgende dienst aan: <b>".$dienst_name.".</b></p></section>";
+          echo "U biedt nu de volgende dienst aan: <b class=\"green\">".$dienst_name.".</b><br>";
         }
       ?>
-      <br>
-      <a href="index.php">Terug naar profiel</a>
+      <b><a href="index.php">Terug naar profiel</a></b>
     </div>
 
     <script src="js/jquery-2.1.4.min.js"></script>

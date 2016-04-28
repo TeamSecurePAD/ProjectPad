@@ -37,7 +37,7 @@
     }
     else
     {
-      $message .= 'Wachtwoord en/of email adres is incorrect';
+      $message .= 'Uw wachtwoord en/of e-mail adres is incorrect ingevoerd.';
     }
   }
 ?>
@@ -50,26 +50,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Login</title>
+    <title>Inloggen</title>
   </head>
 
   <body>
-    <h1>Login</h1>
+    <?php 
+    include("Navigation.php");
+    ?>
 
-    <a href="register.php">Register</a>
+    <div class="container">
+      <h1>Inloggen</h1>
+      Vul hier uw gegevens in om in te loggen.<br><br>
 
-    <?php if(!empty($message)): ?>
-      <p><?= $message ?></p>
-    <?php endif; ?>
+      <!--<b><a href="register.php">Register</a></b>-->
 
-  	<form action="login.php" method="POST">
-  		<input type="text" placeholder="e-mail" name="email" />
+    	<form action="login.php" method="POST">
+    		<input type="text" placeholder="e-mail" name="email" />
 
-  		<input type"password" placeholder="wachtwoord" name="wachtwoord">
+    		<input type"password" placeholder="wachtwoord" name="wachtwoord">
 
-  		<input type="submit" name="submit">
-  	</form><br>
-    
+    		<input type="submit" name="submit" value="Inloggen">
+    	</form><br>
+
+      <?php
+      if(!empty($message)):
+        echo $message."<br><br>";
+      endif;
+      ?>
+
+      <b class="red">Nog geen account?</b><br>
+      Klik <b><a href="register.php">hier</a></b> om je te registreren voor KoersWest.<br>
+    </div>
+      
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 
     <script src="js/script.js"></script>

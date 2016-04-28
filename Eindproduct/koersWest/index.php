@@ -7,7 +7,7 @@
   {
     $id = $_SESSION['user_id'];
 
-    $query = "SELECT id, email, straat, telefoonnummer
+    $query = "SELECT id, email, straat, telefoonnummer, postcode, woonplaats
               FROM gebruiker
               WHERE id = $id";
 
@@ -20,6 +20,8 @@
       $dbemail = $row[1];
       $dbstraat = $row[2];
       $dbtelnummer = $row[3];
+      $dbpostcode = $row[4];
+      $dbwoonplaats = $row[5];
     }
 
 
@@ -53,17 +55,20 @@
   </head>
 
   <body>
-    <?php if (isset($_SESSION['user_id'])): ?>
-
     <?php 
     include("Navigation.php");
     ?>
 
+    <?php if (isset($_SESSION['user_id'])): ?>
+
     <div class="content container">
-      <h1>Uw gegevens</h1>
-      <p><?php echo($dbemail) ?></p>
-      <p><?php echo($dbstraat); ?></p>
-      <p><?php echo($dbtelnummer) ?></p>
+      <h1>Profiel</h1>
+      <h3><b class="green">Uw gegevens</b></h3>
+      <b>E-mail: </b><?php echo($dbemail) ?><br>
+      <b>Telefoonnummer: </b><?php echo($dbtelnummer) ?><br>
+      <b>Adres: </b><?php echo($dbstraat); ?>, <?php echo($dbpostcode); ?>, <?php echo($dbwoonplaats); ?>
+      <br>
+      <br>
 
       <?php
       $row_count_is_goed_in = mysqli_num_rows($result_is_goed_in_categorie);
@@ -74,20 +79,20 @@
       {
         while ($row_goed = $result_is_goed_in_categorie->fetch_assoc()) 
         {
-              // sla de catogorie op waar de gebruiker goed in is.
+          // Save category that the user excells at
           $is_goed_in_categorie = $row_goed["Categorie_Categorie"];
           echo "U heeft talent in de volgende categorie: ";
-          echo "<b>";
+          echo "<b class=\"green\">";
           echo ($is_goed_in_categorie);
           echo "</b>";
         }
         echo("<br>");
         while ($row_slecht = $result_is_slecht_in_categorie->fetch_assoc()) 
         {
-              // sla de catogorie op waar de gebruiker slecht in is.
+          // Save category that the user needs help with
           $is_slecht_in_categorie = $row_slecht["Categorie_Categorie"];
           echo "U heeft moeite in de volgende categorie: ";
-          echo "<b>";
+          echo "<b class=\"red\">";
           echo ($is_slecht_in_categorie);
           echo "</b>";
         }
@@ -104,20 +109,19 @@
 
         if ($row_count > 0)
         {
-          echo "<h3>U biedt momenteel de volgende diensten aan</h3>";
+          echo "<h3><b class=\"green\">U biedt momenteel de volgende diensten aan:</b></h3>";
           while($row = $result_diensten->fetch_assoc())
           {
             echo($row["dienst"]);
-            echo "</br>";
+            echo "<br>";
           }
         } 
         else 
         {
-          echo "<h3>U biedt momenteel geen diensten aan</h3>";
-          echo "<p><a href=\"aanbiedMenu.php\">Klik hier</a> om een dienst toe te voegen<p>";
+          echo "<h3><b class=\"red\">U biedt momenteel geen diensten aan.</b></h3>";
+          echo "<b><a href=\"aanbiedMenu.php\">Klik hier</a></b> om een dienst toe te voegen.<br>";
         }
-
-        echo("<br>");
+        echo "<br>";
 
         $gevonden_match = false;
 
@@ -152,25 +156,24 @@
             if ($match_id_slecht_in_goed == $match_id_goed_in_slecht && $gevonden_match == false) 
             {
              $gevonden_match = true;
-             echo "<br>";
-             echo "<br>";
-             echo "<h2>Er is een Match!</h2>";
-             echo "<p>Op basis van de door u ingevulde gegevens hebben wij een match gevonden!</p>";
-             echo "<br>";
+             echo "<h3><b class=\"green\">Er is een match!</b></h3>";
+             echo "Er is een match gevonden met een andere gebruiker.<br>";
+             echo "De contactgegevens van deze gebruiker ziet u hieronder.";
+             echo "<br><br>";
 
-             $query_match_gebruiker = "SELECT id, email, straat, telefoonnummer
+             $query_match_gebruiker = "SELECT email, telefoonnummer, straat, postcode, woonplaats
                                        FROM gebruiker
                                        WHERE id = $match_id_slecht_in_goed";
 
              $result_match_gebruiker = mysqli_query($connection, $query_match_gebruiker);
 
-             $match_gebruiker=mysqli_fetch_assoc($result_match_gebruiker);
+             $match_gebruiker = mysqli_fetch_assoc($result_match_gebruiker);
 
-             echo ($match_gebruiker['email']);
+             echo "<div class=\"list\"><b class=\"green\" style=\"font-size: 20px\">".($match_gebruiker['email'])."</b>";
              echo "<br>";
-             echo ($match_gebruiker['straat']);
+             echo "<b>Telefoonnummer: </b>".($match_gebruiker['telefoonnummer']);
              echo "<br>";
-             echo ($match_gebruiker['telefoonnummer']);
+             echo "<b>Adres: </b>".($match_gebruiker['straat']).", ".($match_gebruiker['postcode']).", ".($match_gebruiker['woonplaats'])."</div>";
            }
          }
        }
@@ -178,22 +181,28 @@
 
        if ($gevonden_match == false)
        {
-        echo "<h2>Geen match </h2>";
-        echo "<p> Helaas is er op dit moment voor u geen match gevonden. <br>
+        echo "<h3><b class=\"red\">Geen match</b></h3>";
+        echo "Helaas is er op dit moment voor u geen match gevonden. <br>
         Kijkt u later nog eens om te kijken of er een match is. <br>
-        Nu kunt onder het kopje <a href=\"askForService.php\">dienst vragen</a> mensen vinden die u zouden kunnen helpen</p>";
+        Nu kunt u onder het kopje <a href=\"askForService.php\"><b>Gebruikers</b></a> mensen vinden die u zouden kunnen helpen.";
       }
     }
     ?>
     <br>
     <br>
-    <a href="logout.php">Uitloggen</a>
+    <!--<b><a href="logout.php">Uitloggen</a></b>-->
   </div>
 
 <?php else: ?>
-  <h1>Welcome</h1>
-  <a href="login.php">Login</a>
-  <a href="register.php">Register</a>
+  <div class="container">
+    <h1>KoersWest</h1>
+
+    Welkom bij <b class="green">KoersWest</b>, de app die je helpt je netwerk op te bouwen en mensen te vinden die je kunnen helpen.<br>
+    <b><a href="login.php">Login</a></b><br><br>
+
+    Als je nog niet geregistreerd bent, dan kan dat hier:<br>
+    <b><a href="register.php">Register</a></b>
+  </div>
 <?php endif; ?>
 
 <script src="js/jquery-2.1.4.min.js"></script>
