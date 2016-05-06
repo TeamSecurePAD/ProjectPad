@@ -7,7 +7,7 @@
   {
     $id = $_SESSION['user_id'];
 
-    $query = "SELECT id, email, straat, telefoonnummer, postcode, woonplaats
+    $query = "SELECT id, email, omschrijving, naam, tussenvoegsel, achternaam, telefoonnummer, straat, postcode, woonplaats
               FROM gebruiker
               WHERE id = $id";
 
@@ -15,13 +15,17 @@
 
     if ($result)
     {
-      $row = mysqli_fetch_row($result);
-      $gebruikerID = $row[0];
-      $dbemail = $row[1];
-      $dbstraat = $row[2];
-      $dbtelnummer = $row[3];
-      $dbpostcode = $row[4];
-      $dbwoonplaats = $row[5];
+      $row = mysqli_fetch_assoc($result);
+      $gebruikerID = $row['id'];
+      $dbemail = $row['email'];
+      $dbstraat = $row['straat'];
+      $dbtelnummer = $row['telefoonnummer'];
+      $dbpostcode = $row['postcode'];
+      $dbwoonplaats = $row['woonplaats'];
+      $dbomschrijving = $row['omschrijving'];
+      $dbnaam = $row['naam'];
+      $dbtussenvoegsel = $row['tussenvoegsel'];
+      $dbachternaam = $row['achternaam'];
     }
 
 
@@ -59,12 +63,17 @@
     include("Navigation.php");
     ?>
 
-    <?php if (isset($_SESSION['user_id'])): ?>
+    <?php if (isset($_SESSION['user_id']))
+    { 
+      ?>
 
     <div class="content container">
       <h1>Profiel</h1>
       <h3><b class="green">Uw gegevens</b></h3>
-      <b>E-mail: </b><?php echo($dbemail) ?><br>
+      <b>Naam: </b><?php echo($dbnaam." "); echo($dbtussenvoegsel." "); echo($dbachternaam); ?><br>
+      <b>Omschijving van jezelf:</b> <?php echo ($dbomschrijving);?> <br> <br>
+      <b>Email: </b><?php echo($dbemail); ?><br>
+      <b>Adres: </b><?php echo($dbstraat." ".$dbpostcode." ".$dbwoonplaats); ?><br>
       <b>Telefoonnummer: </b><?php echo($dbtelnummer) ?><br>
       <b>Adres: </b><?php echo($dbstraat); ?>, <?php echo($dbpostcode); ?>, <?php echo($dbwoonplaats); ?>
       <br>
@@ -193,7 +202,11 @@
     <!--<b><a href="logout.php">Uitloggen</a></b>-->
   </div>
 
-<?php else: ?>
+<?php 
+  } 
+  else 
+  { 
+  ?>
   <div class="container">
     <h1>KoersWest</h1>
 
@@ -203,7 +216,9 @@
     Als je nog niet geregistreerd bent, dan kan dat hier:<br>
     <b><a href="register.php">Register</a></b>
   </div>
-<?php endif; ?>
+<?php 
+  }; 
+  ?>
 
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script> 

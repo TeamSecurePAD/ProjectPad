@@ -39,8 +39,9 @@ div.list
 /** Cheat list with set height of 300px **/
 div.list_cheat
 {
-    border: 3px solid rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
     padding: 10px;
+    margin: 10px;
     display: inline-block;
     min-height: 300px;
 }

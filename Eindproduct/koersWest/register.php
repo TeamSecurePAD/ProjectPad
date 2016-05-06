@@ -11,7 +11,7 @@
 
 	$list_categories = array();
 
-	$query_all_categories = "SELECT Categorie FROM Categorie";
+	$query_all_categories = "SELECT Categorie FROM categorie";
 	$result_all_categories = mysqli_query($connection, $query_all_categories);
 
 	while ($row_categories = $result_all_categories->fetch_assoc())
@@ -23,7 +23,9 @@
 
 	if (!empty($_POST) && !empty($_POST['email']) && !empty($_POST['wachtwoord']) &&
 		!empty($_POST['telnummer']) && !empty($_POST['straat']) &&
-		!empty($_POST['postcode']) && !empty($_POST['woonplaats']))
+		!empty($_POST['postcode']) && !empty($_POST['woonplaats']) &&
+		!empty($_POST['naam']) && !empty($_POST['achternaam']) &&
+		!empty($_POST['omschrijving']))
 	{
 		// Save form data in temporary variables
 		$isGoedIn = ($_POST['isGoedIn']);
@@ -39,10 +41,22 @@
 			$straat = strip_tags($_POST['straat']);
 			$postcode = strip_tags($_POST['postcode']);
 			$woonplaats = strip_tags($_POST['woonplaats']);
+			$naam = strip_tags($_POST['naam']);
+			$achternaam = strip_tags($_POST['achternaam']);
+			$omschrijving = strip_tags($_POST['omschrijving']);
+
+			if (empty($_POST['tussenvoegsel'])) 
+			{
+			$tussenvoegsel = strip_tags($_POST['tussenvoegsel']);
+			}
+			else 
+			{
+			$tussenvoegsel = "";
+			}
 
 			// Insert user data into the database
-			$query = "INSERT INTO gebruiker (email, wachtwoord, telefoonnummer, straat, postcode, woonplaats)
-				  	  VALUES ('$email', '$wachtwoord', '$telnummer', '$straat', '$postcode', '$woonplaats')";
+			$query = "INSERT INTO gebruiker (email, wachtwoord, omschrijving, naam, tussenvoegsel, achternaam, telefoonnummer, straat, postcode, woonplaats)
+				  	  VALUES ('$email', '$wachtwoord', '$omschrijving', '$naam', '$tussenvoegsel', '$achternaam' ,'$telnummer', '$straat', '$postcode', '$woonplaats')";
 
 			$result = mysqli_query($connection, $query);
 
@@ -111,13 +125,19 @@
 
 					<input class="form-control" type="text" placeholder="email" name="email">
 
-					<input class="form-control" type"password" placeholder="wachtwoord" name="wachtwoord">
-					<input class="form-control" type"password" placeholder="wachtwoord" name="herhaal_wachtwoord">
+					<input class="form-control" type="password" placeholder="wachtwoord" name="wachtwoord">
+					<input class="form-control" type="password" placeholder="wachtwoord" name="herhaal_wachtwoord">
+
+					<input class="form-control" type="text" placeholder="Naam" name="naam">
+					<input class="form-control" type="text" placeholder="Tussenvoegsel" name="tussenvoegsel">
+					<input class="form-control" type="text" placeholder="Achternaam" name="achternaam">
 
 					<input class="form-control" type="text" placeholder="tel. nummer" name="telnummer">
 					<input class="form-control" type="text" placeholder="straat" name="straat">
 					<input class="form-control" type="text" placeholder="postcode" name="postcode">
 					<input class="form-control" type="text" placeholder="woonplaats" name="woonplaats"><br>
+
+					<input class="form-control" type="text" placeholder="Geef een korte beschijving van jezelf" name="omschrijving">
 
 					<label for="selectCategorieGoedIn"><b style="font-size: 20px;" class="green">Ik ben goed in</b></label>
 					<select class="form-control" id="selectCategorieGoedIn" name="isGoedIn">

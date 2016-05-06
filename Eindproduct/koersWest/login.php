@@ -67,12 +67,13 @@
     	<form action="login.php" method="POST">
     		<input type="text" placeholder="e-mail" name="email" />
 
-    		<input type"password" placeholder="wachtwoord" name="wachtwoord">
+    		<input type="password" placeholder="wachtwoord" name="wachtwoord" />
 
-    		<input type="submit" name="submit" value="Inloggen">
+    		<input type="submit" name="submit" value="Inloggen" />
     	</form><br>
 
       <?php
+      //This will output error message's << Waar we het over hebben gehad.
       if(!empty($message)):
         echo $message."<br><br>";
       endif;

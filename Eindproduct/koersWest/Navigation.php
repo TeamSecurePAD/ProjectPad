@@ -31,7 +31,7 @@
 					<ul class= "nav navbar-nav">
 						<?php
 						// If a user is logged in, display the normal menu bar
-						if (isset($_SESSION['user_id']))
+						if (isset($_SESSION['user_id'])) 
 						{
 							?>
 							<li><a href="index.php">Profiel</a></li>
