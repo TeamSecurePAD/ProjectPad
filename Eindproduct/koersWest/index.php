@@ -73,9 +73,8 @@
       <b>Naam: </b><?php echo($dbnaam." "); echo($dbtussenvoegsel." "); echo($dbachternaam); ?><br>
       <b>Omschijving van jezelf:</b> <?php echo ($dbomschrijving);?> <br> <br>
       <b>Email: </b><?php echo($dbemail); ?><br>
-      <b>Adres: </b><?php echo($dbstraat." ".$dbpostcode." ".$dbwoonplaats); ?><br>
+      <b>Adres: </b><?php echo($dbstraat.", ".$dbpostcode.", ".$dbwoonplaats); ?><br>
       <b>Telefoonnummer: </b><?php echo($dbtelnummer) ?><br>
-      <b>Adres: </b><?php echo($dbstraat); ?>, <?php echo($dbpostcode); ?>, <?php echo($dbwoonplaats); ?>
       <br>
       <br>
 
