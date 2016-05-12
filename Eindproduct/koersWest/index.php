@@ -89,7 +89,7 @@
         {
           // Save category that the user excells at
           $is_goed_in_categorie = $row_goed["Categorie_Categorie"];
-          echo "U heeft talent in de volgende categorie: ";
+          echo "Talent: ";
           echo "<b class=\"green\">";
           echo ($is_goed_in_categorie);
           echo "</b>";
@@ -99,7 +99,7 @@
         {
           // Save category that the user needs help with
           $is_slecht_in_categorie = $row_slecht["Categorie_Categorie"];
-          echo "U heeft moeite in de volgende categorie: ";
+          echo "Hulpvraag: ";
           echo "<b class=\"red\">";
           echo ($is_slecht_in_categorie);
           echo "</b>";
