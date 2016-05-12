@@ -105,6 +105,9 @@
           echo "</b>";
         }
 
+        echo "<br><br><a href=\"userData.php\"><b>Gegevens aanpassen</b></a>";
+
+
         $sql_get_diensten = "SELECT D.dienst
                              FROM gebruiker_bied_dienst_aan GBDA
                              INNER JOIN dienst D
