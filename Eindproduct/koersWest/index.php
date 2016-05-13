@@ -1,6 +1,5 @@
   <?php
   session_start();
-
   require 'databaseConnectionOpening.php';
 
   if (isset($_SESSION['user_id']))
@@ -105,9 +104,6 @@
           echo "</b>";
         }
 
-        echo "<br><br><a href=\"userData.php\"><b>Gegevens aanpassen</b></a>";
-
-
         $sql_get_diensten = "SELECT D.dienst
                              FROM gebruiker_bied_dienst_aan GBDA
                              INNER JOIN dienst D
@@ -132,73 +128,13 @@
           echo "<h3><b class=\"red\">U biedt momenteel geen diensten aan.</b></h3>";
           echo "<b><a href=\"aanbiedMenu.php\">Klik hier</a></b> om een dienst toe te voegen.<br>";
         }
-        echo "<br>";
-
-        $gevonden_match = false;
-
-            //In deze sql query worden mensen uit de database gehaald die hebben aangegeven
-            //dat ze goed zijn in de categorie waar de huidige ingelogde slecht in is.
-        $query_is_goed_in_slecht = "SELECT Gebruiker_Id
-                                    FROM gebruiker_is_goed_in_categorie
-                                    WHERE Categorie_Categorie = '$is_slecht_in_categorie' 
-                                    AND Gebruiker_Id != $id";
-
-        $result_is_goed_in_slecht = mysqli_query($connection, $query_is_goed_in_slecht);         
-
-        while ($row_goed_in_slecht = $result_is_goed_in_slecht->fetch_assoc()) 
-        {
-
-          $match_id_goed_in_slecht = $row_goed_in_slecht["Gebruiker_Id"];
-
-              //In deze sql query worden mensen uit de database gehaald die hebben aangegeven
-              //dat ze slecht zijn in de categorie waar de huidige ingelogde goed in is.
-          $query_is_slecht_in_goed = "SELECT Gebruiker_Id
-                                      FROM gebruiker_is_slecht_in_categorie
-                                      WHERE Categorie_Categorie = '$is_goed_in_categorie' AND Gebruiker_Id != $id
-                                      And Gebruiker_Id = $match_id_goed_in_slecht";
-
-          $result_is_slecht_in_goed = mysqli_query($connection, $query_is_slecht_in_goed);
-
-          while ($row_slecht_in_goed = $result_is_slecht_in_goed->fetch_assoc()) 
-          {
-
-            $match_id_slecht_in_goed = $row_slecht_in_goed["Gebruiker_Id"];
-
-            if ($match_id_slecht_in_goed == $match_id_goed_in_slecht && $gevonden_match == false) 
-            {
-             $gevonden_match = true;
-             echo "<h3><b class=\"green\">Er is een match!</b></h3>";
-             echo "Er is een match gevonden met een andere gebruiker.<br>";
-             echo "De contactgegevens van deze gebruiker ziet u hieronder.";
-             echo "<br><br>";
-
-             $query_match_gebruiker = "SELECT email, telefoonnummer, straat, postcode, woonplaats
-                                       FROM gebruiker
-                                       WHERE id = $match_id_slecht_in_goed";
-
-             $result_match_gebruiker = mysqli_query($connection, $query_match_gebruiker);
-
-             $match_gebruiker = mysqli_fetch_assoc($result_match_gebruiker);
-
-             echo "<div class=\"list\"><b class=\"green\" style=\"font-size: 20px\">".($match_gebruiker['email'])."</b>";
-             echo "<br>";
-             echo "<b>Telefoonnummer: </b>".($match_gebruiker['telefoonnummer']);
-             echo "<br>";
-             echo "<b>Adres: </b>".($match_gebruiker['straat']).", ".($match_gebruiker['postcode']).", ".($match_gebruiker['woonplaats'])."</div>";
-           }
-         }
-       }
-
-
-       if ($gevonden_match == false)
-       {
-        echo "<h3><b class=\"red\">Geen match</b></h3>";
-        echo "Helaas is er op dit moment voor u geen match gevonden. <br>
-        Kijkt u later nog eens om te kijken of er een match is. <br>
-        Nu kunt u onder het kopje <a href=\"askForService.php\"><b>Gebruikers</b></a> mensen vinden die u zouden kunnen helpen.";
-      }
+        echo "<br>";  
     }
+
+    include ('matchCategorie.php');
+
     ?>
+    <h1><b><a href="matchingMenu.php">Match Menu</a></b><br></h1>;
     <br>
     <br>
     <!--<b><a href="logout.php">Uitloggen</a></b>-->
