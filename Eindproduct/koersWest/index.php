@@ -133,7 +133,9 @@
           }
           echo "<br>";
 
+          //Include's the code that adds the matches to the database.
           include ('matchCategorie.php');
+          include ('matchDienst.php');
 
           echo "<h3><b class=\"green\"><a href=\"matchingMenu.php\">Match Menu</a></b><br></h3>";
         }
