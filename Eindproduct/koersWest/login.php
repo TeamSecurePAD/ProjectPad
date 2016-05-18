@@ -85,12 +85,13 @@
       include("Navigation.php");
       ?>
       <div id="section">
-          <form class="form-horizontal col-md-4 col-md-offset-4">
+
+          <form class="form-horizontal col-md-4 col-md-offset-4" action="login.php" method="POST">
               Voer uw e-mail en wachtwoord in:
 
               <input type="text" placeholder="Email" name="email" class="form-control">
-              <input type="password" placeholder="Wachtwoord" name ="wachwoord" class="form-control">
-              <button type="submit" class="btn btn-success">Login</button>
+              <input type="password" placeholder="Wachtwoord" name ="wachtwoord" class="form-control">
+              <button type="submit" class="btn btn-success" type="submit" name="submit">Login</button>
 
           </form>
 
