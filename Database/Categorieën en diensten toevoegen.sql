@@ -1,4 +1,7 @@
 /** Categorieën **/
+INSERT INTO afbeelding
+VALUES (''),
+
 INSERT INTO categorie (categorie)
 VALUES ('Communicatie'),
 	   ('Creatief'),
