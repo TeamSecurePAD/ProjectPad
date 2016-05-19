@@ -152,7 +152,7 @@
 	        		?>	
 					</select><br>
 
-					<label for="selectCategorieSlechtIn"><b style="font-size: 20px;" class="red">Ik ben slecht in</b></label>
+					<label for="selectCategorieSlechtIn"><b style="font-size: 20px;" class="red">Ik heb hulp nodig bij</b></label>
 					<select class="form-control" id="selectCategorieSlechtIn" name="isSlechtIn">
 					<?php
 						foreach ($list_categories as $row) 

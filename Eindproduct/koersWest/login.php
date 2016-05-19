@@ -69,7 +69,7 @@
                 text-align: center;
                 margin: auto;
                 width: 90%;
-                border: 5px solid #419641;
+                border: 5px solid grey;
                 padding: 10px;
                 margin-top: 50px;
                 margin-left: auto;
