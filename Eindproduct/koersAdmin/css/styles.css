@@ -1,0 +1,110 @@
+.navbar-default
+{
+	border: none;
+}
+
+body
+{
+    background-color: rgb(235, 235, 235);
+    color: rgb(50, 50, 50);
+    font-size: 14px;
+}
+
+h1
+{
+    color: rgb(0, 125, 0);
+    font-size: 40px;
+}
+
+h2
+{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}
+
+h3
+{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+/** DIV element describing a list that needs a border around it - adjusts to text width in block **/
+div.list
+{
+    border: 3px solid rgb(100, 100, 100);
+    padding: 10px;
+    display: inline-block;
+}
+
+/** Cheat list with set height of 300px **/
+div.list_cheat
+{
+    border: 2px solid rgb(100, 100, 100);
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    min-height: 300px;
+}
+
+/** set the heigt op the blocks of service's**/
+div.service-content
+{
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+    min-height: 200px;
+    border: 2px solid rgb(100, 100, 100);
+}
+
+div.service-button
+{   
+    position: absolute;
+    bottom: 0px;
+    margin: 20px;
+}
+
+
+/** URL elements - LIGHT BLUE **/
+a
+{
+	color: rgb(75, 125, 225);
+}
+
+/** Bold text indicating something positive - DARK GREEN **/
+b.green
+{
+	color: rgb(0, 125, 0);
+}
+
+/** Bold text indicating something negative - MEDIUM RED **/
+b.red
+{
+	color: rgb(200, 0, 0);
+}
+
+/** Bold text indicating something neutral - DARK GREY **/
+/* Change naming scheme from "color" to "concept" (yellow -> neutral) */
+b.yellow
+{
+	color: rgb(100, 100, 100);
+}
+
+/** Input windows and buttons - BLACK **/
+input
+{
+	color: rgb(0, 0, 0);
+}
+
+/** Input windows for forms **/
+input.form-control
+{
+	max-width: 350px;
+	margin: 3px;
+}
+
+/** Select element for forms **/
+select.form-control
+{
+	max-width: 350px;
+	margin: 3px;
+}
