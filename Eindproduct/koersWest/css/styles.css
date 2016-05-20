@@ -3,6 +3,8 @@
 	border: none;
 }
 
+/*** HEADINGS ***/
+
 body
 {
     background-color: rgb(235, 235, 235);
@@ -12,26 +14,41 @@ body
 
 h1
 {
-    color: rgb(0, 125, 0);
     font-size: 40px;
+
+    margin-top: 15px;
 }
 
 h2
 {
-    color: rgb(0, 0, 0);
     font-size: 30px;
+
+    margin-top: 15px;
 }
 
 h3
 {
-    color: rgb(0, 0, 0);
     font-size: 20px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
+
+h1, h2, h3
+{
+	color: rgb(0, 0, 0);
+}
+
+/*** DIVS ***/
 
 /** DIV element describing a list that needs a border around it - adjusts to text width in block **/
 div.list
 {
     border: 3px solid rgb(100, 100, 100);
+    border-radius: 15px;
+
+    background-color: rgb(150, 200, 150);
+
     padding: 10px;
     display: inline-block;
 }
@@ -40,29 +57,189 @@ div.list
 div.list_cheat
 {
     border: 2px solid rgb(100, 100, 100);
+    border-radius: 15px;
+
+    background-color: rgb(150, 200, 150);
+
     padding: 10px;
     margin: 10px;
     display: inline-block;
     min-height: 300px;
 }
 
-/** set the heigt op the blocks of service's**/
-div.service-content
+/** div for titles and other headers **/
+div.title
 {
-    margin: 10px;
-    padding: 10px;
+	border-radius: 5px;
+
+	background-color: rgb(255, 255, 255);
+
+	text-align: center;
+	padding: 5px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/** div for showing red colored tiles in subsections **/
+div.tile_red
+{
+	border-radius: 5px;
+
+	background-color: rgb(230, 0, 0);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing green colored tiles in subsections **/
+div.tile_green
+{
+	border-radius: 5px;
+
+	background-color: rgb(0, 153, 51);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing blue colored tiles in subsections **/
+div.tile_blue
+{
+	border-radius: 5px;
+
+	background-color: rgb(75, 150, 255);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for page sections **/
+div.body
+{
+	border-radius: 10px;
+
+	background-color: rgb(245, 245, 245);
+	text-align: center;
+
+	padding: 10px;
+	display: inline-block;
+}
+
+/** div for page subsections **/
+div.subbody
+{
+	border-radius: 10px;
+
+	background-color: rgb(255, 255, 255);
+
+	padding: 10px;
+	display: inline-block;
+}
+
+/** General block DIV used in navigating the website - red **/
+div.block_danger
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 102, 102);
+
+    color: rgb(255, 255, 255);
+
+    padding: 15px;
+    margin: 5px;
     display: inline-block;
-    min-height: 200px;
-    border: 2px solid rgb(100, 100, 100);
+    min-height: 275px;
 }
 
-div.service-button
-{   
-    position: absolute;
-    bottom: 0px;
-    margin: 20px;
+/** General block DIV used in navigating the website - orange **/
+div.block_warning
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 204, 153);
+
+    color: rgb(255, 255, 255);
+
+    padding: 15px;
+    margin: 5px;
+    display: inline-block;
+    min-height: 275px;
 }
 
+/** General block DIV used in navigating the website - yellow **/
+div.block_yellow
+{
+	/*border: 2px solid rgb(150, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 255, 153);
+
+    color: rgb(255, 255, 255);
+
+    padding: 15px;
+    margin: 5px;
+    display: inline-block;
+    min-height: 275px;
+}
+
+/** General block DIV used in navigating the website - green **/
+div.block_success
+{
+	/*border: 2px solid rgb(0, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 51);
+
+	text-align: center;
+
+    color: rgb(255, 255, 255);
+
+    padding: 15px;
+    margin: 5px;
+    display: inline-block;
+    min-height: 275px;
+}
+
+/** General block DIV used in navigating the website - blue **/
+div.block_primary
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(51, 102, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 15px;
+    margin: 5px;
+    display: inline-block;
+    min-height: 275px;
+}
+
+div.service_button
+{
+	position: absolute;
+    bottom: 20px;
+    left: 25%;
+    right: 25%;
+}
+
+/*** SINGLE LETTER TAGS ***/
 
 /** URL elements - LIGHT BLUE **/
 a
@@ -73,7 +250,7 @@ a
 /** Bold text indicating something positive - DARK GREEN **/
 b.green
 {
-	color: rgb(0, 125, 0);
+	color: rgb(0, 153, 51);
 }
 
 /** Bold text indicating something negative - MEDIUM RED **/
@@ -83,13 +260,43 @@ b.red
 }
 
 /** Bold text indicating something neutral - DARK GREY **/
-/* Change naming scheme from "color" to "concept" (yellow -> neutral) */
-b.yellow
+b.grey
 {
 	color: rgb(100, 100, 100);
 }
 
-/** Input windows and buttons - BLACK **/
+/** Bold text indicating something neutral - WHITE **/
+b.white
+{
+	color: rgb(255, 255, 255);
+}
+
+/** COLORS
+ ** Special tags that only influence text color **/
+
+c.white
+{
+	color: rgb(255, 255, 255);
+}
+
+c.red
+{
+	color: rgb(230, 0, 0);
+}
+
+c.green
+{
+	color: rgb(0, 153, 51);
+}
+
+c.blue
+{
+	color: rgb(75, 150, 255);
+}
+
+/*** INPUT ***/
+
+/** Input windows and buttons - BLACK TEXT **/
 input
 {
 	color: rgb(0, 0, 0);

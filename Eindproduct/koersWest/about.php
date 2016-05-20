@@ -32,11 +32,11 @@
       <h1>About</h1>
 
       <h3><b class="red">Ontwikkeld door:</b></h3>
-      <b class="yellow">Noah Jagtman</b><br>
-      <b class="yellow">Joël Kabeya Kalunga</b><br>
-      <b class="yellow">Rik Langeveld</b><br>
-      <b class="yellow">Gijs Sickenga</b><br>
-      <b class="yellow">Hussein Swadi</b><br><br>
+      <b class="grey">Noah Jagtman</b><br>
+      <b class="grey">Joël Kabeya Kalunga</b><br>
+      <b class="grey">Rik Langeveld</b><br>
+      <b class="grey">Gijs Sickenga</b><br>
+      <b class="grey">Hussein Swadi</b><br><br>
 
       <b class="red">Project Agile Development - HVA - 2015-2016</b><br><br>
 
