@@ -6,6 +6,23 @@
 
    $result = mysqli_query($connection, $query);
 
+   $query_aangeboden_count = "SELECT COUNT(*) 
+                              AS totalAangebodenCount 
+                              FROM gebruiker_bied_dienst_aan";
+
+   $result_aangeboden_count = mysqli_query($connection, $query_aangeboden_count);
+   $row_aangeboden_count = mysqli_fetch_assoc($result_aangeboden_count);
+
+   $totaalDiensten = $row_aangeboden_count['totalAangebodenCount'];
+
+   $query_gevraagd_count = "SELECT COUNT(*) 
+                            AS totalGevraagdCount 
+                            FROM gebruiker_vraagt_dienst";
+
+   $result_gevraagd_count = mysqli_query($connection, $query_gevraagd_count);
+   $row_gevraagd_count = mysqli_fetch_assoc($result_gevraagd_count);
+
+   $totaalDiensten += $row_gevraagd_count['totalGevraagdCount'];
 
   ?>
 
@@ -47,14 +64,9 @@
                                  WHERE Dienst_dienst = '$dienstNaam'";
 
             $result_aangeboden = mysqli_query($connection, $query_aangeboden);
+            $row_aangeboden = mysqli_fetch_assoc($result_aangeboden);
 
-            if ($result_aangeboden){
-              $row_aangeboden = mysqli_fetch_assoc($result_aangeboden);
-            }
-            else {
-              echo "error";
-            }
-            
+            $totaalVraagAanbod = $row_aangeboden['totalAangeboden'];
 
             $query_gevraagd = "SELECT COUNT(*) 
                                AS totalGevraagd 
@@ -64,6 +76,10 @@
             $result_gevraagd = mysqli_query($connection, $query_gevraagd);
             $row_gevraagd = mysqli_fetch_assoc($result_gevraagd);
 
+            $totaalVraagAanbod += $row_gevraagd['totalGevraagd'];
+
+            $PercentageGeheel = (($totaalVraagAanbod/$totaalDiensten) * 100);
+            $PercentageGeheel =  number_format($PercentageGeheel);
 
             ?>
 
@@ -71,6 +87,7 @@
               <td><?php echo ($dienstNaam); ?></td>
               <td><?php echo $row_aangeboden['totalAangeboden'];?></td>
               <td><?php echo $row_gevraagd['totalGevraagd'];?></td>
+              <td><?php echo $PercentageGeheel; ?>% </td>
             </tr>
             <?php
           }
