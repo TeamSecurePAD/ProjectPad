@@ -137,7 +137,7 @@
           include ('matchCategorie.php');
           include ('matchDienst.php');
 
-          echo "<h3><b class=\"green\"><a href=\"matchingMenu.php\">Match Menu</a></b><br></h3>";
+          echo "<h3><b class=\"green\"><a href=\"matchNavigationMenu.php\">Match Menu</a></b><br></h3>";
         }
         else
         {
