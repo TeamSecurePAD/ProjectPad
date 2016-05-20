@@ -21,26 +21,38 @@ VALUES
        ('Gebruiken van e-mail','Hulp bij het gebruik maken van email.','Computer gerelateerde vragen'),
        ('Installeren van internet','Hulp bij het leren installeren van internet op de computer of telefoon.','Computer gerelateerde vragen'),
        ('Gebruiken van social media','Hulp bij het leren grbuiken van social media.','Computer gerelateerde vragen'),
-       ('Hulp bij uitkiezen nieuwe computer','Hulp bij het uitkiezen van een nieuwe computer.','Computer gerelateerde vragen'),
+       ('Hulp bij uitkiezen nieuwe computer','Hulp bij het uitkiezen van een nieuwe computer.','Computer gerelateerde vragen');
+       
+/** Diensten **/
+INSERT INTO dienst (dienst, omschijving, Categorie_Categorie)
+VALUES 
        ('Virus gerelateerd','Het laten verwijderen van een virus op de computer.','Computer gerelateerde vragen'),
        ('Basics mobiele telefoon','De basics van de mobiele telfoon zoals een sms versturen of applicaties installeren uitgelegd krijgen.','Computer gerelateerde vragen'),
        ('Hulp bij lezen van post','Leren hoe U de post moet lezen en waar U op moet letten.','Administratie'),
        ('Afhandelen van post','Hulp bij het afhandelen van post van bijv. instanties.','Administratie'),
        ('Bellen van instanties','Leer hoe je een gesprek kan voeren met instanties.','Administratie'),
        ('Formulieren invullen','Formulieren laten invullen voor aanvragen.','Administratie'),
-       ('CV-opstellen','Leer hoe U een mooie cv kunt opstellen.','Vragen rondom sollicitatie'),
+       ('CV-opstellen','Leer hoe U een mooie cv kunt opstellen.','Vragen rondom sollicitatie');
+
+/** Diensten **/
+INSERT INTO dienst (dienst, omschijving, Categorie_Categorie)
+VALUES 
        ('Reageren op (online) sollicitaties','Leer hoe U kunt reageren op online sollicitaties.','Vragen rondom sollicitatie'),
        ('Inschrijven bij uitzendbureaus','Laat U inschrijven bij uitendbureaus om zo aan een baan te komen.','Vragen rondom sollicitatie'),
        ('Doorgeven van verlof','Leer hoe U verlof kan vragen bij U werkgever.','Vragen rondom sollicitatie'),
        ('Oefenen/Leren sollicitatiegesprek','Leren hoe U een sollicitatiegesprek moet voeren.','Vragen rondom sollicitatie'),
        ('Aanvragen en activeren DigiD code','Hulp bij aanvragen DigdiD.','Vragen rondom overheid'),
-       ('Gebruik maken van (overheid) websites met behulp van Digid','Hulp bij gebruik maken van websites waar DigiD vereist is.','Vragen rondom overheid'),
+       ('Gebruik websites met behulp van Digid','Hulp bij gebruik maken van websites waar DigiD vereist is.','Vragen rondom overheid'),
        ('Belastingdienst/toeslagen','Hulp bij alles rondom de belastingdienst of toeslagen.','Vragen rondom overheid'),
        ('SVB','Hulp bij alles rondom SVB.','Vragen rondom overheid'),
        ('Zorgverzekering','Hulp bij inloggen bij de zorgverzekering dmv DigiD.','Vragen rondom overheid'),
        ('Mijn Overheid','Hulp bij het gebruken maken van MijnOverheid.','Vragen rondom overheid'),
        ('Timmeren','Leer hoe U veilig en efficient kunt timmeren.','Handwerk'),
-       ('Monteren','Leer hoe U bepaalde objecten kunt monteren.','Handwerk'),
+       ('Monteren','Leer hoe U bepaalde objecten kunt monteren.','Handwerk');
+
+/** Diensten **/
+INSERT INTO dienst (dienst, omschijving, Categorie_Categorie)
+VALUES 
        ('Verven','Hulp in het verven zodat U kunt verven zonder spetters op de grond.','Handwerk'),
        ('Verhuizen','Hulp nodig bij het verhuizen.','Handwerk'),
        ('Tuinieren','Leer hoe U kunt tuinieren zodat uw tuin er verzorgd uit ziet.','Handwerk'),
@@ -49,7 +61,7 @@ VALUES
        ('Schuur opknappen','U schuur opruimen en aanpassingen maken aan de inrichting.','Handwerk'),
        ('Ramen lappen','Hulp bij het lappen van ramen.','Handwerk'),
        ('Knippen','Krijg hulp bij het knippen van uw haar.','Handwerk'),
-       ('Electriciteit gerelateerd','Hulp bij bedradingen e.d. in uw huis.','Handwerk'),
+       ('Elektriciteit gerelateerd','Hulp bij bedradingen e.d. in uw huis.','Handwerk'),
        ('Afwassen','Hulp bij het afwassen van uw serviesgoed.','Sanitair'),
        ('Schoonmaken van badkamer en WC','Hulp bij het schoonmaken van uw badkamer en uw WC.','Sanitair'),
        ('Verwijderen van bacterien dmv hoge druk spuit','Laat uw keuken badkamer of toilet weer stralen.','Sanitair'),
@@ -85,23 +97,35 @@ INSERT INTO gebruiker_bied_dienst_aan (gebruiker_id, dienst_dienst)
 VALUES ('1', 'Formulieren invullen'),
 	   ('1', 'Installeren van internet'),
        ('1', 'Hulp bij zoeken woningnet'),
-       ('1', 'Knippen'),
+       ('1', 'Knippen');
        
+/** Diensten aanbieden **/
+INSERT INTO gebruiker_bied_dienst_aan (gebruiker_id, dienst_dienst)
+VALUES
        ('2', 'BBQ'),
 	   ('2', 'Meal-preppen'),
        ('2', 'Vissen'),
-       ('2', 'Activiteiten'),
+       ('2', 'Activiteiten');
        
+/** Diensten aanbieden **/
+INSERT INTO gebruiker_bied_dienst_aan (gebruiker_id, dienst_dienst)
+VALUES
        ('3', 'Schoonmaken van badkamer en WC'),
 	   ('3', 'Sporten'),
-	   ('3', 'Verwijderen bacteriën d.m.v. hoge drukspuit'),
-       
+	   ('3', 'Verwijderen van bacterien dmv hoge druk spuit');
+
+/** Diensten aanbieden **/
+INSERT INTO gebruiker_bied_dienst_aan (gebruiker_id, dienst_dienst)
+VALUES
        ('4', 'Vissen'),
 	   ('4', 'Fietsen'),
        ('4', 'Timmeren'),
-       ('4', 'Monteren'),
-       
-       ('5', 'Electriciteit gerelateerd'),
+       ('4', 'Monteren');
+
+/** Diensten aanbieden **/
+INSERT INTO gebruiker_bied_dienst_aan (gebruiker_id, dienst_dienst)
+VALUES
+       ('5', 'Elektriciteit gerelateerd'),
        ('5', 'Openbaarvervoer (bus/trein/metro)');
        
 
@@ -138,15 +162,18 @@ VALUES ('1', 'Koken'),
 INSERT INTO gebruiker_vraagt_dienst (gebruiker_id, dienst_dienst)
 VALUES ('1', 'Vissen'),
 	   ('1', 'BBQ'),
-       ('1', 'Afwassen'),
+       ('1', 'Afwassen');
        
+       /** Gebruikers diensten vragen **/
+INSERT INTO gebruiker_vraagt_dienst (gebruiker_id, dienst_dienst)
+VALUES
        ('2', 'Kast in elkaar zetten'),
        ('2', 'Schuur opknappen'),
        ('2', 'Ramen lappen'),
        ('2', 'Elektriciteit gerelateerd'),
        
-       ('3', 'Openbaar vervoer (bus/trein/metro leren gebruiken)'),
-       ('3', 'Pasta maken'),
+       ('3', 'Openbaarvervoer (bus/trein/metro)'),
+       ('3', 'Eenvoudige gerechten'),
        ('3', 'Meal-preppen'),
        
        ('4', 'Bellen van instanties'),
