@@ -10,6 +10,20 @@
     // User's session id, used to reference currently logged in user in database queries
     $id = $_SESSION['user_id'];
 
+    if (!empty($_POST['Afkeuren']))
+    {
+       $match_gebruiker_id = $_POST['Afkeuren'];
+
+       if ($update = $connection->query("UPDATE match_categorie
+                                         SET match_afgekeurd = 1
+                                         WHERE gebruiker_Id = $id
+                                         AND match_gebruiker_Id = $match_gebruiker_id "))
+      {
+          $message = "De match is verwijderd";
+      }
+
+    }
+
     //Get the confirmd matches
     $query_match_goedgekeurd = "SELECT match_gebruiker_Id, match_goedgekeurd, match_afgekeurd
                                 FROM  match_categorie
@@ -31,67 +45,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Confirmed Match menu</title>
+    <title>Dienst aanbieden</title>
   </head>
 
   <body>
-    <?php 
-    include("Navigation.php");
-    ?>
-    <div class="container">
-      <h1>Matches</h1>
 
-   <!-- Added a extra nav bar for searching -->
-    <nav class= "navbar navbar-inverse">
-      <div class="container">
-          <ul class= "nav navbar-nav">
-
-              <li><a href="matchingMenu.php">Matches Categorieën</a></li>
-              <li><a href="DienstMatchMenu.php">Matches Diensten</a></li>
-              <li><a href="confirmCategorieMenu.php">Matches goedgekeurd catergorieën</a></li>
-              <li><a href="confirmDienstMatchMenu.php">Matches goedgekeurd diensten</a></li>
-
-          </ul>
+    <!-- Container that houses all the elements on the page -->
+    <div class = "container">
+      <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on interactible environment -->
+      <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
+        <div class = "title">
+          <!-- Green band to indicate content section with actual title elements -->
+          <div class = "tile_info">
+            <h1><c class = "white">Netwerk Talenten</c></h1>
+            <h2><c class = "white">Hieronder staan contact gegevens van mensen met tegenovergestelde talenten. Je kan nu zelf contact opnemen. </c></h2>
+          </div>
         </div>
-    </nav>
-      
-     <!-- Div with all the confirmed matches based on Catergorie  -->
-      <h3>Goedgekeurde match<h3>
-      <?php 
+
+        <!-- Subbody div indicates main area of user interaction and important content -->
+        <div class = "subbody">
+
+          <div class = "tile_info">
+            <h3><b class = "white">Matches</b></h3>
+          </div>
+
+        <?php 
        
         // output the matches.
           while ($row_match_goedgekeurd = $result_match_goedgekeurd->fetch_assoc()) 
           {
              $match_gebruiker_id = $row_match_goedgekeurd['match_gebruiker_Id'];
 
-             $query_match_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, omschrijving
+             $query_match_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, omschrijving, email, telefoonnummer
                                          FROM gebruiker
                                          WHERE Id = $match_gebruiker_id";
 
-             $result_match_goedgekeurd =  mysqli_query($connection, $query_match_goedgekeurd);
+              $result_match_goedgekeurd =  mysqli_query($connection, $query_match_goedgekeurd); 
+              $row_match_goedgekeurd = mysqli_fetch_assoc($result_match_goedgekeurd);
+            
+             $query_talent = "SELECT Categorie_Categorie 
+                              FROM gebruiker_is_goed_in_categorie
+                              WHERE Gebruiker_id = $match_gebruiker_id";
 
-               $row_match_goedgekeurd = mysqli_fetch_assoc($result_match_goedgekeurd);
+             $result_talent =  mysqli_query($connection, $query_talent);
+             $row_talent = mysqli_fetch_assoc($result_talent);
+
+             $query_hulp_nodig = "SELECT Categorie_Categorie 
+                                  FROM gebruiker_is_slecht_in_categorie
+                                  WHERE Gebruiker_id = $match_gebruiker_id";
+
+             $result_hulp_nodig =  mysqli_query($connection, $query_hulp_nodig);
+             $row_hulp_nodig = mysqli_fetch_assoc($result_hulp_nodig);       
+
+
 
                $naam = $row_match_goedgekeurd['naam'];
                $tussenvoegsel = $row_match_goedgekeurd['tussenvoegsel'];
                $achternaam = $row_match_goedgekeurd['achternaam'];
                $omschrijving = $row_match_goedgekeurd['omschrijving'];
+               $email = $row_match_goedgekeurd['email'];
+               $telefoonnummer = $row_match_goedgekeurd['telefoonnummer'];
+               $talent = $row_talent['Categorie_Categorie'];
+               $hulpNodig = $row_hulp_nodig['Categorie_Categorie'];
 
           ?>
-          <div class="list service-content col-xs-offset-0 col-xs-12 col-sm-6 col-md-offset-0 col-md-4 col-lg-3">
-          <h3>Matches</h3>
-            <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
-            <p><b>Omschrijving:</b> <?php echo ($omschrijving); ?> </p>
-          <form action="matchingMenu.php" method="POST">
 
+            <!-- Start of voorbeeld block -->
+            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block_info">
 
-            <input type="submit" name="Goedkeuren" value="Goedkeuren" />
-            <input type="submit" name="Afkeuren" value="Afkeuren   " />
-          </form>
-          </div>
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white">Match</b></h3>
+                  <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                  <p><b>Omschrijving:</b> <?php echo ($omschrijving); ?> </p>
+                  <br>
+                  <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
+                     goed in de categorie <b><?php echo ($talent);?></b> </p>
+                  <p><b>Email:</b><?php echo ($email); ?></p>
+                  <p><b>telefoonnummer:</b><?php echo ($telefoonnummer); ?></p>
+                </div>
+
+                <!-- Submit button -->
+                <div class = "service_button">
+
+                   <form action="ConfirmCategorieMenu.php" method="POST">
+                    <button type="submit" class="btn btn-info">Verwijderen</button>
+                    <input type="hidden" value= "<?php echo($match_gebruiker_id); ?>" name="Afkeuren"/>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <!-- End of block -->
+
         <?php
           }
         ?>
+
+            <!-- Back button in list of services - returns the user to the list of categories -->
+            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block_info">
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white">Terug naar match menu</b></h3>
+                  <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
+                </div>
+
+                <!-- Submit button -->
+                <div class = "service_button">
+                  <form action = "matchNavigationMenu.php">
+                    <button type = "submit" class = "btn btn-info">Klik om terug te gaan</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- End of block -->
+        </div>
+      </div>
+    </div>
+    <br>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 
