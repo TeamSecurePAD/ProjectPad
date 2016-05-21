@@ -47,11 +47,11 @@
 
 			if (empty($_POST['tussenvoegsel'])) 
 			{
-			$tussenvoegsel = strip_tags($_POST['tussenvoegsel']);
+				$tussenvoegsel = strip_tags($_POST['tussenvoegsel']);
 			}
 			else 
 			{
-			$tussenvoegsel = "";
+				$tussenvoegsel = "";
 			}
 
 			// Insert user data into the database
@@ -66,7 +66,7 @@
 			$id = $get_user_id['Id'];
 
 			// Insert competency data into the database
-			$query_insert_goed_in = "INSERT INTO  gebruiker_is_goed_in_categorie
+			$query_insert_goed_in = "INSERT INTO gebruiker_is_goed_in_categorie
 				  	 			  	 VALUES ($id, '$isGoedIn')";
 
 			// Insert incompetency data into the database
@@ -79,7 +79,7 @@
 			if ($result && $result_inset_goed_in && $result_inset_slecht_in)
 			{
 				$message .= '<b style="font-size: 20px;" class="green">U staat geregistreerd bij KoersWest!</b><br>
-							 <b style="font-size: 20px;" class="yellow">Klik <a href="login.php">hier</a> om naar de inlogpagina te gaan.</b><br>';
+							 <b style="font-size: 20px;" class="grey">Klik <a href="login.php">hier</a> om naar de inlogpagina te gaan.</b><br>';
 			}
 			else
 			{
@@ -89,7 +89,7 @@
 		else
 		{
 			$message .= '<b style="font-size: 20px;" class="red">Er is iets mis gegaan tijdens het registreren.</b><br>
-						 <b style="font-size: 20px;" class="yellow">Heeft u voor uw bekwaamheden twee keer hetzelfde ingevoerd?</b>';
+						 <b style="font-size: 20px;" class="grey">Heeft u voor uw bekwaamheden twee keer hetzelfde ingevoerd?</b>';
 		}
 	}
 	else
@@ -148,7 +148,6 @@
 	        				echo ($row);
 	        				echo "</option>";
 	        			}
-	        			
 	        		?>	
 					</select><br>
 
