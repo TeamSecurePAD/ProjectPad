@@ -11,6 +11,10 @@
 
   <body>
 
+    <?php
+    include("title.php");
+    ?>
+
     <!-- Container that houses all the elements on the page -->
     <div class = "container">
       <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on interactible environment -->
@@ -33,7 +37,7 @@
 
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_info_extra_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -55,7 +59,7 @@
 
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_info_extra_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -77,7 +81,7 @@
 
                         <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_info_extra_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -98,7 +102,7 @@
 
                         <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_info_extra_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
