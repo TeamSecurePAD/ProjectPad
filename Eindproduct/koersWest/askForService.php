@@ -83,7 +83,7 @@
       <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
-          <!-- Green band to indicate content section containing the actual title elements -->
+          <!-- Cyan band to indicate content section containing the actual title elements -->
           <div class = "tile_ask_for_service">
             <h1><c class = "white">Dienst vragen</c></h1>
             <?php
@@ -165,7 +165,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <form action = "index.php">
+                <form action = "home.php">
                   <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
                 </form>
 

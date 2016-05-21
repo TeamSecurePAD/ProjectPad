@@ -165,7 +165,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <form action = "index.php">
+                <form action = "home.php">
                   <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
                 </form>
 
