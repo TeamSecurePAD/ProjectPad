@@ -411,6 +411,35 @@ div.block_info_small
     min-height: 200px;
 }
 
+div.block_info_large
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(128, 212, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 350px;
+}
+
+div.block_info_extra_large
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(128, 212, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 400px;
+}
+
+
 /** General block DIV used in navigating the website - orange **/
 div.block_warning
 {

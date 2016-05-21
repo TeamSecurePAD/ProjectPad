@@ -10,6 +10,34 @@
     // User's session id, used to reference currently logged in user in database queries
     $id = $_SESSION['user_id'];
 
+    if (!empty($_POST['match_goedkeuren']))
+    {
+      $match_id = $_POST['match_goedkeuren'];
+
+      if ($update = $connection->query("UPDATE match_diensten
+                                        SET match_goedgekeurd = 1
+                                        WHERE gebruiker_Id = $id
+                                        AND match_gebruiker_Id = $match_id
+                                        AND match_goedgekeurd = 0"))
+      {
+          $message = "de gegevens zijn naar verstuurd";
+      }
+    }
+
+    if (!empty($_POST['match_negeren']))
+    {
+      $match_id = $_POST['match_negeren'];
+
+      if ($update = $connection->query("UPDATE match_diensten
+                                        SET match_afgekeurd = 1
+                                        WHERE gebruiker_Id = $id
+                                        AND match_gebruiker_Id = $match_id
+                                        AND match_afgekeurd = 0"))
+      {
+          $message = "de gebruiker is verwijderd uit de lijst";
+      }
+    }
+
     //Gets the matches that are not confirmed.
     $query_match_dient_gevonden = "SELECT match_gebruiker_Id, match_goedgekeurd, match_afgekeurd
                                    FROM  match_diensten
@@ -25,7 +53,14 @@
                              FROM gebruiker_bied_dienst_aan
                              WHERE Gebruiker_Id = $id";
 
-              $result_bied_aan = mysqli_query($connection, $query_bied_aan);
+          $result_bied_aan = mysqli_query($connection, $query_bied_aan);
+
+          //gets all the service's you offer
+          $query_vraagt = "SELECT Dienst_dienst
+                           FROM gebruiker_vraagt_dienst
+                           WHERE Gebruiker_Id = $id";
+
+          $result_vraagt = mysqli_query($connection, $query_vraagt);
 
   }
   
@@ -77,20 +112,40 @@
               while ($row_bied_aan = $result_bied_aan->fetch_assoc()) 
               {
                  $dienst = $row_bied_aan['Dienst_dienst'];
-
-            
                  
-                 $query_match_vraagt = "SELECT Dienst_dienst
-                                        FROM gebruiker_vraagt_dients
-                                        WHERE Dienst_dienst = $dienst
-                                        AND $match_dienst_id = $id";
+                 $query_match_aanbod = "SELECT Dienst_dienst
+                                        FROM gebruiker_vraagt_dienst
+                                        WHERE Dienst_dienst = '$dienst'
+                                        And Gebruiker_Id = $match_dienst_id";
 
-                 $result_match_vraagt = mysqli_query($connection, $query_bied_aan);
+                 $result_match_aanbod = mysqli_query($connection, $query_match_aanbod);
+                 $row_match_aanbod = mysqli_fetch_assoc($result_match_aanbod);
 
-                 $row_match_vraagt = mysqli_fetch_assoc($result_match_vraagt);
+                 if (!empty($row_match_aanbod['Dienst_dienst'])) 
+                 {
+                  $gebruikerBiedAan = ($row_match_aanbod['Dienst_dienst']);
+                 }
 
-                 echo ($row_match_vraagt['Dienst_dienst']);
-                 echo "<br>";
+              }
+
+              while ($row_vraagt = $result_vraagt->fetch_assoc()) 
+              {
+                 $dienst = $row_vraagt['Dienst_dienst'];
+                 
+                 $query_match_vraag = "SELECT Dienst_dienst
+                                        FROM gebruiker_bied_dienst_aan
+                                        WHERE Dienst_dienst = '$dienst'
+                                        AND Gebruiker_Id = $match_dienst_id";
+
+                 $result_match_vraag = mysqli_query($connection, $query_match_vraag);
+                 $row_match_vraag = mysqli_fetch_assoc($result_match_vraag);
+
+                 $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
+
+                 if (!empty($row_match_vraagt['Dienst_dienst'])) 
+                 {
+                  $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
+                 }
 
               }
 
@@ -111,20 +166,31 @@
 
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_info_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
                     <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
                     <p><b>Omschrijving:</b> <?php echo ($omschrijving); ?> </p>
+                    <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
                 </div>
 
                 <!-- Submit button -->
                 <div class = "service_button">
-                  <form action = "aanbiedMenu.php">
-                    <button type = "submit" class = "btn btn-info">Gegevens sturen</button>
+
+                  <form action = "matchingMenu.php" method="POST">
+                    <button type="submit" class="btn btn-info">Gegevens sturen</button>
+                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="match_goedkeuren"/>
                   </form>
+
+                  <br>
+
+                  <form action = "matchingMenu.php" method="POST">
+                    <button type="submit" class="btn btn-info">Negeren</button>
+                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="match_negeren"/>
+                  </form>
+
                 </div>
               </div>
             </div>

@@ -103,26 +103,6 @@
           }
         ?>
 
-            <!-- Start of voorbeeld block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
-
-                <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Voorbeeld</b></h3>
-                  <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
-                </div>
-
-                <!-- Submit button -->
-                <div class = "service_button">
-                  <form action = "aanbiedMenu.php">
-                    <button type = "submit" class = "btn btn-info">Voorbeeld</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <!-- End of block -->
-
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
               <div class = "block_info">
