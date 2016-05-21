@@ -67,27 +67,108 @@ div.list_cheat
     min-height: 300px;
 }
 
-/** div for showing red colored tiles in subsections **/
-div.tile_danger
+/** div for app header section **/
+div.header
 {
-	border-radius: 5px;
+	background-color: rgb(50, 50, 50);
 
-	background-color: rgb(255, 102, 102);
+	text-align: center;
+	/*padding-top: 10px;
+	padding-bottom: 10px;*/
+	padding: 10px;
 
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
+	display: inline-block;
+	width: 100%;
 }
 
-/** div for showing yellow colored tiles in subsections **/
-div.tile_warning
+/** div for app subheader section **/
+div.subheader
+{
+	border-radius: 10px;
+
+	background-color: rgb(75, 75, 75);
+
+	text-align: center;
+	/*padding-top: 5px;
+	padding-bottom: 5px;*/
+	padding: 5px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for app title in subheader **/
+div.subheadertitle
 {
 	border-radius: 5px;
 
-	background-color: rgb(255, 195, 112);
+	background-color: rgb(50, 50, 50);
+
+	color: rgb(100, 100, 100);
+
+	text-align: center;
+	padding-top: -10px;
+	padding-bottom: -10px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for titles and other headers **/
+div.title
+{
+	border-radius: 10px;
+
+	background-color: rgb(255, 255, 255);
+
+	text-align: center;
+	padding: 5px;
+
+	margin-top: 2px;
+	margin-bottom: 5px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for page sections **/
+div.body
+{
+	border-radius: 10px;
+
+	background-color: rgb(245, 245, 245);
+
+	text-align: center;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for page subsections **/
+div.subbody
+{
+	border-radius: 10px;
+
+	background-color: rgb(255, 255, 255);
+
+	padding: 5px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for showing blue colored tiles in subsections **/
+div.tile_primary
+{
+	border-radius: 5px;
+
+	background-color: rgb(61, 153, 255);
 
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -127,12 +208,12 @@ div.tile_info
 	margin: 5px;
 }
 
-/** div for showing blue colored tiles in subsections **/
-div.tile_primary
+/** div for showing yellow colored tiles in subsections **/
+div.tile_warning
 {
 	border-radius: 5px;
 
-	background-color: rgb(61, 153, 255);
+	background-color: rgb(255, 195, 112);
 
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -142,51 +223,64 @@ div.tile_primary
 	margin: 5px;
 }
 
-/** div for titles and other headers **/
-div.title
+/** div for showing red colored tiles in subsections **/
+div.tile_danger
 {
-	border-radius: 10px;
+	border-radius: 5px;
 
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(255, 102, 102);
 
-	text-align: center;
-	padding: 5px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
 
-	margin-top: 2px;
-	margin-bottom: 5px;
-
-	display: inline-block;
-	width: 100%;
+	margin: 5px;
 }
 
-/** div for page sections **/
-div.body
+/** div for showing light green colored tiles in subsections **/
+div.tile_offer_service
 {
-	border-radius: 10px;
+	border-radius: 5px;
 
-	background-color: rgb(245, 245, 245);
+	background-color: rgb(45, 195, 61);
 
-	text-align: center;
-	padding: 10px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
 
-	display: inline-block;
-	width: 100%;
+	margin: 5px;
 }
 
-/** div for page subsections **/
-div.subbody
+/** div for showing dark cyan colored tiles in subsections **/
+div.tile_ask_for_service
 {
-	border-radius: 10px;
+	border-radius: 5px;
 
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(0, 204, 153);
 
-	padding: 5px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
 
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin: 5px;
+}
 
-	display: inline-block;
-	width: 100%;
+/** div for showing bright orange colored tiles in subsections **/
+div.tile_confirmed
+{
+	border-radius: 5px;
+
+	background-color: rgb(255, 153, 51);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
 }
 
 /** General block DIV used in navigating the website - blue **/
@@ -199,7 +293,7 @@ div.block_primary
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 275px;
 }
@@ -214,7 +308,7 @@ div.block_primary_small
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 200px;
 }
@@ -231,7 +325,7 @@ div.block_success
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 275px;
 }
@@ -248,7 +342,41 @@ div.block_success_small
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - dark cyan **/
+div.block_success2
+{
+	/*border: 2px solid rgb(0, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 115);
+
+	text-align: center;
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - dark cyan **/
+div.block_success2_small
+{
+	/*border: 2px solid rgb(0, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 115);
+
+	text-align: center;
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
     margin: 5px;
     min-height: 200px;
 }
@@ -263,7 +391,7 @@ div.block_info
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 275px;
 }
@@ -278,7 +406,7 @@ div.block_info_small
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 200px;
 }
@@ -293,7 +421,7 @@ div.block_warning
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 275px;
 }
@@ -308,7 +436,7 @@ div.block_warning_small
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 200px;
 }
@@ -323,7 +451,7 @@ div.block_danger
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     min-height: 275px;
 }
@@ -338,7 +466,97 @@ div.block_danger_small
 
     color: rgb(255, 255, 255);
 
-    padding: 15px;
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - light green **/
+div.block_offer_service
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(45, 195, 61);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - light green **/
+div.block_offer_service_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(45, 195, 61);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - dark cyan **/
+div.block_ask_for_service
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 204, 153);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - dark cyan **/
+div.block_ask_for_service_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 204, 153);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - bright orange **/
+div.block_confirmed
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - bright orange **/
+div.block_confirmed_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
     margin: 5px;
     min-height: 200px;
 }

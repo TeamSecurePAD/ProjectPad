@@ -1,17 +1,4 @@
 <?php
-
-  // TO-DO //
-  // 
-  // Als een dienst aangeboden is door op de knop te drukken
-  // moet de lijst diensten blijven staan en de zojuist
-  // toegevoegde dienst in een andere kleur worden getoond
-  // zodat de gebruiker weet dat deze dienst succesvol is
-  // toegevoegd.
-  //
-  // TO-DO //
-
-
-
   session_start();
 
   // Make sure we're connected to the database
@@ -30,6 +17,10 @@
       $insert_new_service = "INSERT INTO gebruiker_bied_dienst_aan
                              VALUES ('$id', '$aan_te_bieden_dienst')";
       mysqli_query($connection, $insert_new_service);
+    }
+    else
+    {
+      $aan_te_bieden_dienst = "NONE";
     }
 
     $my_services_query = "SELECT Dienst_dienst
@@ -80,20 +71,35 @@
   </head>
 
   <body>
-    <?php 
-    include("Navigation.php");
+
+    <?php
+    include("title.php");
     ?>
 
     <!-- Container that houses all the elements on the page -->
     <div class = "container">
-      <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on interactible environment -->
+
+      <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on section -->
       <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
-          <!-- Green band to indicate content section with actual title elements -->
-          <div class = "tile_info">
+          <!-- Green band to indicate content section containing the actual title elements -->
+          <div class = "tile_offer_service">
             <h1><c class = "white">Dienst aanbieden</c></h1>
-            <h2><c class = "white">Selecteer een categorie om diensten te tonen.</c></h2>
+            <?php
+            if ($geselecteerde_categorie == "NONE")
+            {
+              ?>
+              <h2><c class = "white">Selecteer een categorie om diensten te tonen.</c></h2>
+              <?php
+            }
+            else
+            {
+              ?>
+              <h2><c class = "white">Selecteer een dienst om aan te bieden.</c></h2>
+              <?php
+            }
+            ?>
           </div>
         </div>
 
@@ -104,7 +110,7 @@
           $show_services = false;
 
           // Subbody title to indicate current page
-          echo "<div class = \"tile_info\">";
+          echo "<div class = \"tile_offer_service\">";
           if ($geselecteerde_categorie != "NONE")
           {
             echo "<h3><b class = \"white\">".$geselecteerde_categorie."</b></h3>";
@@ -128,7 +134,7 @@
               ?>
               <!-- Block that shows a service category -->
               <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_info_small">
+                <div class = "block_offer_service_small">
 
                   <!-- Block text -->
                   <div class = "media-body">
@@ -138,7 +144,7 @@
 
                   <!-- Submit button -->
                   <form action = "aanbiedMenu.php" method = "POST">
-                    <button type = "submit" class = "btn btn-info" value = "Diensten bekijken">Diensten bekijken</button>
+                    <button type = "submit" class = "btn btn-primary" value = "Diensten bekijken">Diensten bekijken</button>
                     <input type = "hidden" value = "<?php echo $current_category['categorie']; ?>" name = "geselecteerde_categorie"/>
                   </form>
 
@@ -150,7 +156,7 @@
 
             <!-- Back button in category list - returns the user to the home page -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_small">
+              <div class = "block_offer_service_small">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -160,7 +166,7 @@
 
                 <!-- Submit button -->
                 <form action = "index.php">
-                  <button type = "submit" class = "btn btn-info">Klik om terug te gaan</button>
+                  <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
                 </form>
 
               </div>
@@ -193,32 +199,57 @@
 
               <?php
               // If the current service is part of the current category and the user doesn't offer it yet, show it to the user
-              if ($already_own_service == false && $current_service['Categorie_Categorie'] == $geselecteerde_categorie)
+              if ($current_service['Categorie_Categorie'] == $geselecteerde_categorie)
               {
                 $any_services = true;
-                ?>
-                <!-- Block that shows a potentially offerable service -->
-                <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_info">
+                if (!$already_own_service)
+                {
+                  ?>
+                  <!-- Block that shows a potentially offerable service -->
+                  <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class = "block_offer_service">
 
-                    <!-- Block text -->
-                    <div class = "media-body">
-                      <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
-                      <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
-                      <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
+                      <!-- Block text -->
+                      <div class = "media-body">
+                        <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
+                        <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
+                        <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
+                      </div>
+
+                      <!-- Submit button -->
+                      <div class = "service_button">
+                        <form action = "aanbiedMenu.php" method = "POST">
+                          <button type = "submit" class = "btn btn-primary" value = "Dienst aanbieden">Dienst aanbieden</button>
+                          <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "aan_te_bieden_dienst"/>
+                          <input type = "hidden" value = "<?php echo $geselecteerde_categorie ?>" name = "geselecteerde_categorie"/>
+                        </form>
+                      </div>
+
                     </div>
-
-                    <!-- Submit button -->
-                    <div class = "service_button">
-                      <form action = "aanbiedMenu.php" method = "POST">
-                        <button type = "submit" class = "btn btn-info" value = "Dienst aanbieden">Dienst aanbieden</button>
-                        <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "aan_te_bieden_dienst"/>
-                        <input type = "hidden" value = "<?php echo $geselecteerde_categorie ?>" name = "geselecteerde_categorie"/>
-                      </form>
-                    </div>
-
                   </div>
-                </div>
+                  <?php
+                }
+                else if (!($aan_te_bieden_dienst == $current_service['dienst']))
+                {
+                  ?>
+                  <!-- Block that shows a potentially offerable service -->
+                  <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class = "block_success">
+
+                      <!-- Block text -->
+                      <div class = "media-body">
+                        <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
+                        <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
+                        <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
+
+                        <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white">U biedt deze dienst al aan.</b></h3>
+                      </div>
+
+                    </div>
+                  </div>
+                  <?php
+                }
+                ?>
                 <?php
               }
               ?>
@@ -230,7 +261,7 @@
                 ?>
                 <!-- Shows the service that has just been offered in a different color -->
                 <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_success">
+                  <div class = "block_confirmed">
 
                     <!-- Block text -->
                     <div class = "media-body">
@@ -238,7 +269,7 @@
                       <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
                       <b>Omschrijving: </b><?php echo $current_service['omschijving'];?><br>
 
-                      <h3 class = "media-heading" style = "position: absolute; bottom: 20px; left: 20%; right: 20%;"><b class = "white">U biedt nu deze dienst aan.</b></h3>
+                      <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white">U biedt vanaf nu deze dienst aan.</b></h3>
                     </div>
 
                   </div>
@@ -254,13 +285,14 @@
             ?>
 
             <?php
+            // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED //
             // Check if the user offers all services in the current category
             if ($geselecteerde_categorie != "NONE" && !$any_services)
             {
               ?>
               <!-- Warning message to inform the user that they offer all services in the current category -->
               <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_success">
+                <div class = "block_offer_service">
 
                   <!-- Block text -->
                   <div class = "media-body">
@@ -273,11 +305,12 @@
               </div>
               <?php
             }
+            // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED //
             ?>
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_offer_service">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -288,7 +321,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "aanbiedMenu.php">
-                    <button type = "submit" class = "btn btn-info">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
                   </form>
                 </div>
 
