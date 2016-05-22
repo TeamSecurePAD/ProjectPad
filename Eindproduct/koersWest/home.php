@@ -155,6 +155,29 @@
               <!-- End of block -->
           </div>
         <?php
+            
+          /*This php script is for making the matches*/
+          $query_is_goed_in_categorie = "SELECT Categorie_Categorie
+                                         FROM gebruiker_is_goed_in_categorie
+                                         WHERE Gebruiker_Id = $id";
+
+          $query_is_slecht_in_categorie = "SELECT Categorie_Categorie
+                                           FROM gebruiker_is_slecht_in_categorie
+                                           WHERE Gebruiker_Id = $id";
+
+          $result_is_goed_in_categorie = mysqli_query($connection, $query_is_goed_in_categorie);
+          $result_is_slecht_in_categorie = mysqli_query($connection, $query_is_slecht_in_categorie);
+
+          $row_goed = mysqli_fetch_assoc($result_is_goed_in_categorie);
+          $row_slecht = mysqli_fetch_assoc($result_is_slecht_in_categorie);
+
+          $is_goed_in_categorie = $row_goed["Categorie_Categorie"];
+          $is_slecht_in_categorie = $row_slecht["Categorie_Categorie"];
+
+
+          //Include's the code that adds the matches to the database.
+          include ('matchCategorie.php');
+          include ('matchDienst.php');
         }
         // -------------------------------------------------------------------- //
         // HOME PAGE -> WELCOME PAGE - DISPLAYED WHEN USER IS NOT LOGGED IN YET

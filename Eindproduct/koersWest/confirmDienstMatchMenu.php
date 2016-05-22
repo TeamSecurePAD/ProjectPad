@@ -11,13 +11,27 @@
     $id = $_SESSION['user_id'];
 
         //Get the confirmd matches
-    $query_match_dient_goedgekeurd = "SELECT match_gebruiker_Id, match_goedgekeurd, match_afgekeurd
+    $query_match_dient_goedgekeurd = "SELECT gebruiker_Id, match_goedgekeurd, match_afgekeurd
                                       FROM  match_diensten
-                                      WHERE gebruiker_Id = $id 
+                                      WHERE match_gebruiker_Id = $id 
                                       AND match_goedgekeurd = 1
                                       AND match_afgekeurd = 0";  
 
     $result_match_dienst_goedgekeurd =  mysqli_query($connection, $query_match_dient_goedgekeurd); 
+
+    //gets all the service's you offer
+    $query_bied_aan = "SELECT Dienst_dienst
+                       FROM gebruiker_bied_dienst_aan
+                       WHERE Gebruiker_Id = $id";
+
+    $result_bied_aan = mysqli_query($connection, $query_bied_aan);
+
+          //gets all the service's you offer
+    $query_vraagt = "SELECT Dienst_dienst
+                     FROM gebruiker_vraagt_dienst
+                     WHERE Gebruiker_Id = $id";
+
+    $result_vraagt = mysqli_query($connection, $query_vraagt);
 
   }
   
@@ -57,13 +71,54 @@
           </div>
 
         <?php 
-       
+        $any_match = false;
         // output the matches.
           while ($row_match_dienst_gevonden = $result_match_dienst_goedgekeurd->fetch_assoc()) 
           {
-             $match_gebruiker_id = $row_match_dienst_gevonden['match_gebruiker_Id'];
+             $any_match = true;
+             $match_gebruiker_id = $row_match_dienst_gevonden['gebruiker_Id'];
 
-             $query_match_dienst_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, omschrijving
+             while ($row_bied_aan = $result_bied_aan->fetch_assoc()) 
+              {
+                 $dienst = $row_bied_aan['Dienst_dienst'];
+                 
+                 $query_match_aanbod = "SELECT Dienst_dienst
+                                        FROM gebruiker_vraagt_dienst
+                                        WHERE Dienst_dienst = '$dienst'
+                                        And Gebruiker_Id = $match_gebruiker_id";
+
+                 $result_match_aanbod = mysqli_query($connection, $query_match_aanbod);
+                 $row_match_aanbod = mysqli_fetch_assoc($result_match_aanbod);
+
+                 if (!empty($row_match_aanbod['Dienst_dienst'])) 
+                 {
+                  $gebruikerBiedAan = ($row_match_aanbod['Dienst_dienst']);
+                 }
+
+              }
+
+              while ($row_vraagt = $result_vraagt->fetch_assoc()) 
+              {
+                 $dienst = $row_vraagt['Dienst_dienst'];
+                 
+                 $query_match_vraag = "SELECT Dienst_dienst
+                                        FROM gebruiker_bied_dienst_aan
+                                        WHERE Dienst_dienst = '$dienst'
+                                        AND Gebruiker_Id = $match_gebruiker_id";
+
+                 $result_match_vraag = mysqli_query($connection, $query_match_vraag);
+                 $row_match_vraag = mysqli_fetch_assoc($result_match_vraag);
+
+                 $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
+
+                 if (!empty($row_match_vraagt['Dienst_dienst'])) 
+                 {
+                  $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
+                 }
+
+              }
+
+             $query_match_dienst_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, omschrijving, email, telefoonnummer
                                                 FROM gebruiker
                                                 WHERE Id = $match_gebruiker_id";
 
@@ -75,24 +130,29 @@
                $tussenvoegsel = $row_match_dienst_goedgekeurd['tussenvoegsel'];
                $achternaam = $row_match_dienst_goedgekeurd['achternaam'];
                $omschrijving = $row_match_dienst_goedgekeurd['omschrijving'];
+               $email = $row_match_dienst_goedgekeurd['email'];
+               $telefoonnummer = $row_match_dienst_goedgekeurd['telefoonnummer'];
 
           ?>
 
           <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_info_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
                   <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
                   <p><b>Omschrijving:</b> <?php echo ($omschrijving); ?> </p>
+                  <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
+                  <p><b>Email: </b><?php echo ($email); ?></p>
+                  <p><b>telefoonnummer: </b><?php echo ($telefoonnummer); ?></p>                
                 </div>
 
                 <!-- Submit button -->
                 <div class = "service_button">
-                  <form action = "aanbiedMenu.php">
-                    <button type = "submit" class = "btn btn-info">Verwijderen</button>
+                  <form action = "confirmDienstMatchMenu.php">
+                    <button type = "submit" class = "btn btn-primary">Verwijderen</button>
                   </form>
                 </div>
               </div>
@@ -101,11 +161,34 @@
 
         <?php
           }
+          if (!$any_match) {
+        ?>
+
+          <!-- Start no match block-->
+            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block_info_large">
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white">Geen match</b></h3>
+                  <img class = "image" src = "images/NoResult.png" width = "150" height = "150"><br><br>
+                  Helaas nog geen match gevonden. Tijdens de spreekuren van Boot kunt u langs komen
+                  met dringende problemen.
+                </div>
+
+
+              </div>
+            </div>
+            <!-- End of block -->
+
+
+        <?php
+          }
         ?>
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info">
+              <div class = "block_grey">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -116,7 +199,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchNavigationMenu.php">
-                    <button type = "submit" class = "btn btn-info">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>
