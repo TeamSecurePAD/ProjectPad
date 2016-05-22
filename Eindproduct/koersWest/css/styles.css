@@ -498,7 +498,8 @@ div.block_error_small_blue
     padding: 10px;
     margin: 5px;
     min-height: 200px;
-    max-width: 25%;
+    min-width: 25%;
+    max-width: 200px;
 
     display: inline-block;
 }
@@ -516,7 +517,8 @@ div.block_error_small_orange
     padding: 10px;
     margin: 5px;
     min-height: 200px;
-    max-width: 25%;
+    min-width: 25%;
+    max-width: 200px;
 
     display: inline-block;
 }
@@ -534,7 +536,8 @@ div.block_error_small_red
     padding: 10px;
     margin: 5px;
     min-height: 200px;
-    max-width: 25%;
+    min-width: 25%;
+    max-width: 200px;
 
     display: inline-block;
 }
