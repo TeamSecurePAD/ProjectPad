@@ -11,7 +11,7 @@
     $id = $_SESSION['user_id'];
 
         //Get the confirmd matches
-    $query_match_dient_goedgekeurd = "SELECT gebruiker_Id, match_goedgekeurd, match_afgekeurd
+    $query_match_dient_goedgekeurd = "SELECT gebruiker_Id
                                       FROM  match_diensten
                                       WHERE match_gebruiker_Id = $id 
                                       AND match_goedgekeurd = 1
@@ -33,6 +33,19 @@
 
     $result_vraagt = mysqli_query($connection, $query_vraagt);
 
+    if (!empty($_POST['Afkeuren']))
+    {
+       $match_gebruiker_id = $_POST['Afkeuren'];
+
+       if ($update = $connection->query("UPDATE match_diensten
+                                         SET match_afgekeurd = 1
+                                         WHERE gebruiker_Id = $match_gebruiker_id
+                                         AND match_gebruiker_Id = $id "))
+      {
+          $message = "De match is verwijderd";
+      }
+    }
+
   }
   
 ?>
@@ -48,6 +61,10 @@
   </head>
 
   <body>
+
+    <?php
+    include("title.php");
+    ?>
 
     <!-- Container that houses all the elements on the page -->
     <div class = "container">
@@ -73,6 +90,7 @@
         <?php 
         $any_match = false;
         // output the matches.
+
           while ($row_match_dienst_gevonden = $result_match_dienst_goedgekeurd->fetch_assoc()) 
           {
              $any_match = true;
@@ -122,44 +140,83 @@
                                                 FROM gebruiker
                                                 WHERE Id = $match_gebruiker_id";
 
-               $result_match_dienst_goedgekeurd =  mysqli_query($connection, $query_match_dienst_goedgekeurd);
+               $result_match_dienst_gegegevens =  mysqli_query($connection, $query_match_dienst_goedgekeurd);
 
-               $row_match_dienst_goedgekeurd = mysqli_fetch_assoc($result_match_dienst_goedgekeurd);
+               $row_match_dienst_gegevens = mysqli_fetch_assoc($result_match_dienst_gegegevens);
 
-               $naam = $row_match_dienst_goedgekeurd['naam'];
-               $tussenvoegsel = $row_match_dienst_goedgekeurd['tussenvoegsel'];
-               $achternaam = $row_match_dienst_goedgekeurd['achternaam'];
-               $omschrijving = $row_match_dienst_goedgekeurd['omschrijving'];
-               $email = $row_match_dienst_goedgekeurd['email'];
-               $telefoonnummer = $row_match_dienst_goedgekeurd['telefoonnummer'];
+               $naam = $row_match_dienst_gegevens['naam'];
+               $tussenvoegsel = $row_match_dienst_gegevens['tussenvoegsel'];
+               $achternaam = $row_match_dienst_gegevens['achternaam'];
+               $omschrijving = $row_match_dienst_gegevens['omschrijving'];
+               $email = $row_match_dienst_gegevens['email'];
+               $telefoonnummer = $row_match_dienst_gegevens['telefoonnummer'];
 
+             $block_number = 1; 
+
+             if (!empty($_POST['Afkeuren']))
+              {
+                if ($_POST['Afkeuren'] == $match_gebruiker_id)
+                {
+                  $block_number = 2;
+                }
+                else
+                {
+                  $block_number = 1;
+                }
+              }
+             
+             if ($block_number == 1) 
+             {
           ?>
-
-          <!-- Start of voorbeeld block -->
+            <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
+              <div class = "block_info_extra_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
                   <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
-                  <p><b>Omschrijving:</b> <?php echo ($omschrijving); ?> </p>
                   <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
+                  <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
+                  <br>
                   <p><b>Email: </b><?php echo ($email); ?></p>
                   <p><b>telefoonnummer: </b><?php echo ($telefoonnummer); ?></p>                
                 </div>
 
                 <!-- Submit button -->
                 <div class = "service_button">
-                  <form action = "confirmDienstMatchMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Verwijderen</button>
+                  <form action="ConfirmDienstMatchMenu.php" method="POST">
+                    <button type="submit" class="btn btn-primary">Verwijderen</button>
+                    <input type="hidden" value= "<?php echo($match_gebruiker_id); ?>" name="Afkeuren"/>
                   </form>
+
                 </div>
               </div>
             </div>
           <!-- End of block -->
 
         <?php
+             }
+             else if ($block_number == 2)
+             {
+        ?>
+                <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                  <div class = "block_confirmed_large">
+
+                    <!-- Block text -->
+                    <div class = "media-body">
+                      <h3 class = "media-heading"><b class = "white">Match</b></h3>
+                        <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                        <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
+                        <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
+
+                      <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white"><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
+                    </div>
+
+                  </div>
+                </div>        
+        <?php
+             }
           }
           if (!$any_match) {
         ?>
@@ -175,8 +232,6 @@
                   Helaas nog geen match gevonden. Tijdens de spreekuren van Boot kunt u langs komen
                   met dringende problemen.
                 </div>
-
-
               </div>
             </div>
             <!-- End of block -->

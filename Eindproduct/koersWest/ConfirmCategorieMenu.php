@@ -7,9 +7,20 @@
   {
     // User's session id, used to reference currently logged in user in database queries
     $id = $_SESSION['user_id'];
+
+    //Get the confirmd matches
+    $query_match_goedgekeurd = "SELECT gebruiker_Id
+                                FROM  match_categorie
+                                WHERE match_gebruiker_id = $id
+                                AND match_goedgekeurd = 1
+                                AND match_afgekeurd = 0"; 
+
+    $result_match_goedgekeurd =  mysqli_query($connection, $query_match_goedgekeurd); 
+
     if (!empty($_POST['Afkeuren']))
     {
        $match_gebruiker_id = $_POST['Afkeuren'];
+
        if ($update = $connection->query("UPDATE match_categorie
                                          SET match_afgekeurd = 1
                                          WHERE gebruiker_Id = $match_gebruiker_id
@@ -17,14 +28,8 @@
       {
           $message = "De match is verwijderd";
       }
-    }
-    //Get the confirmd matches
-    $query_match_goedgekeurd = "SELECT gebruiker_Id, match_goedgekeurd, match_afgekeurd
-                                FROM  match_categorie
-                                WHERE match_gebruiker_id = $id
-                                AND match_goedgekeurd = 1
-                                AND match_afgekeurd = 0";  
-    $result_match_goedgekeurd =  mysqli_query($connection, $query_match_goedgekeurd);      
+    }     
+
   }
   
 ?>
@@ -41,6 +46,10 @@
   </head>
 
   <body>
+
+    <?php
+    include("title.php");
+    ?>
 
     <!-- Container that houses all the elements on the page -->
     <div class = "container">
@@ -68,46 +77,73 @@
         // output the matches.
           while ($row_match_goedgekeurd = $result_match_goedgekeurd->fetch_assoc()) 
           {
+
              $any_match = true;
+
              $match_gebruiker_id = $row_match_goedgekeurd['gebruiker_Id'];
-             $query_match_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, omschrijving, email, telefoonnummer
-                                         FROM gebruiker
-                                         WHERE Id = $match_gebruiker_id";
-              $result_match_goedgekeurd =  mysqli_query($connection, $query_match_goedgekeurd); 
-              $row_match_goedgekeurd = mysqli_fetch_assoc($result_match_goedgekeurd);
+
+             $query_match_gegevens = "SELECT naam, tussenvoegsel, achternaam, omschrijving, email, telefoonnummer
+                                      FROM gebruiker
+                                      WHERE Id = $match_gebruiker_id";
+
+              $result_match_gegevens =  mysqli_query($connection, $query_match_gegevens); 
+              $row_match_gegevens = mysqli_fetch_assoc($result_match_gegevens);
             
              $query_talent = "SELECT Categorie_Categorie 
                               FROM gebruiker_is_goed_in_categorie
                               WHERE Gebruiker_id = $match_gebruiker_id";
+
              $result_talent =  mysqli_query($connection, $query_talent);
              $row_talent = mysqli_fetch_assoc($result_talent);
+
              $query_hulp_nodig = "SELECT Categorie_Categorie 
                                   FROM gebruiker_is_slecht_in_categorie
                                   WHERE Gebruiker_id = $match_gebruiker_id";
+
              $result_hulp_nodig =  mysqli_query($connection, $query_hulp_nodig);
-             $row_hulp_nodig = mysqli_fetch_assoc($result_hulp_nodig);       
-               $naam = $row_match_goedgekeurd['naam'];
-               $tussenvoegsel = $row_match_goedgekeurd['tussenvoegsel'];
-               $achternaam = $row_match_goedgekeurd['achternaam'];
-               $omschrijving = $row_match_goedgekeurd['omschrijving'];
-               $email = $row_match_goedgekeurd['email'];
-               $telefoonnummer = $row_match_goedgekeurd['telefoonnummer'];
+             $row_hulp_nodig = mysqli_fetch_assoc($result_hulp_nodig); 
+
+               $naam = $row_match_gegevens['naam'];
+               $tussenvoegsel = $row_match_gegevens['tussenvoegsel'];
+               $achternaam = $row_match_gegevens['achternaam'];
+               $omschrijving = $row_match_gegevens['omschrijving'];
+               $email = $row_match_gegevens['email'];
+               $telefoonnummer = $row_match_gegevens['telefoonnummer'];
                $talent = $row_talent['Categorie_Categorie'];
                $hulpNodig = $row_hulp_nodig['Categorie_Categorie'];
+
+
+             $block_number = 1; 
+
+             if (!empty($_POST['Afkeuren']))
+              {
+                if ($_POST['Afkeuren'] == $match_gebruiker_id)
+                {
+                  $block_number = 2;
+                }
+                else
+                {
+                  $block_number = 1;
+                }
+              }
+             
+             if ($block_number == 1) 
+             {               
           ?>
 
             <!-- Start of Contact block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
+              <div class = "block_info_extra_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
                   <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
-                  <p><b>Omschrijving:</b> <?php echo ($omschrijving); ?> </p>
                   <br>
                   <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
                      goed in de categorie <b><?php echo ($talent);?></b> </p>
+                     <img class = "image" src = "<?php echo "images/".$talent.".png"; ?>" width = "86" height = "86">
+
                   <p><b>Email: </b><?php echo ($email); ?></p>
                   <p><b>telefoonnummer: </b><?php echo ($telefoonnummer); ?></p>
                 </div>
@@ -125,8 +161,33 @@
             </div>
             <!-- End of block -->
 
+
         <?php
+             }
+             else if ($block_number == 2)
+             {
+        ?>
+                <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                  <div class = "block_confirmed_extra_large">
+
+                    <!-- Block text -->
+                    <div class = "media-body">
+                      <h3 class = "media-heading"><b class = "white">Match</b></h3>
+                        <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                        <br>
+                        <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
+                        goed in de categorie <b><?php echo ($talent);?></b> </p>
+                        <img class = "image" src = "<?php echo "images/".$talent.".png"; ?>" width = "86" height = "86">
+
+                      <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white"><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
+                    </div>
+
+                  </div>
+                </div>   
+        <?php
+            }
           }
+
           if (!$any_match) {
         ?>
 

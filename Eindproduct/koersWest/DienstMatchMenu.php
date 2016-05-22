@@ -10,6 +10,30 @@
     // User's session id, used to reference currently logged in user in database queries
     $id = $_SESSION['user_id'];
 
+    //Gets the matches that are not confirmed.
+    $query_match_dient_gevonden = "SELECT match_gebruiker_Id, match_goedgekeurd, match_afgekeurd
+                                   FROM  match_diensten
+                                   WHERE gebruiker_Id = $id 
+                                   AND match_goedgekeurd = 0
+                                   AND match_afgekeurd = 0";
+
+    $result_match_dienst_gevonden = mysqli_query($connection, $query_match_dient_gevonden);
+
+
+          //gets all the service's you offer
+          $query_bied_aan = "SELECT Dienst_dienst
+                             FROM gebruiker_bied_dienst_aan
+                             WHERE Gebruiker_Id = $id";
+
+          $result_bied_aan = mysqli_query($connection, $query_bied_aan);
+
+          //gets all the service's you offer
+          $query_vraagt = "SELECT Dienst_dienst
+                           FROM gebruiker_vraagt_dienst
+                           WHERE Gebruiker_Id = $id";
+
+          $result_vraagt = mysqli_query($connection, $query_vraagt);
+
     if (!empty($_POST['match_goedkeuren']))
     {
       $match_id = $_POST['match_goedkeuren'];
@@ -40,30 +64,6 @@
       }
     }
 
-    //Gets the matches that are not confirmed.
-    $query_match_dient_gevonden = "SELECT match_gebruiker_Id, match_goedgekeurd, match_afgekeurd
-                                   FROM  match_diensten
-                                   WHERE gebruiker_Id = $id 
-                                   AND match_goedgekeurd = 0
-                                   AND match_afgekeurd = 0";
-
-    $result_match_dienst_gevonden = mysqli_query($connection, $query_match_dient_gevonden);
-
-
-          //gets all the service's you offer
-          $query_bied_aan = "SELECT Dienst_dienst
-                             FROM gebruiker_bied_dienst_aan
-                             WHERE Gebruiker_Id = $id";
-
-          $result_bied_aan = mysqli_query($connection, $query_bied_aan);
-
-          //gets all the service's you offer
-          $query_vraagt = "SELECT Dienst_dienst
-                           FROM gebruiker_vraagt_dienst
-                           WHERE Gebruiker_Id = $id";
-
-          $result_vraagt = mysqli_query($connection, $query_vraagt);
-
   }
   
 ?>
@@ -80,6 +80,9 @@
   </head>
 
   <body>
+    <?php
+    include("title.php");
+    ?>
 
     <!-- Container that houses all the elements on the page -->
     <div class = "container">
@@ -166,18 +169,47 @@
                $achternaam = $row_match_dienst['achternaam'];
                $omschrijving = $row_match_dienst['omschrijving'];
 
+             $block_number = 1;  
+
+             if (!empty($_POST['goedkeuren']) || !empty($_POST['afkeuren']))
+             {
+              if (!empty($_POST['goedkeuren'])) {
+                
+                if ($_POST['goedkeuren'] == $match_dienst_id)
+                {
+                  $block_number = 2;
+                }
+                else
+                {
+                  $block_number = 1;
+                }
+              }
+
+             if (!empty($_POST['afkeuren']))
+              {
+                if ($_POST['afkeuren'] == $match_dienst_id)
+                {
+                  $block_number = 3;
+                }
+                else
+                {
+                  $block_number = 1;
+                }
+              }
+             }
+
+          if ($block_number == 1){        
           ?>
 
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
               <div class = "block_info_large">
-
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
                     <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
-                    <p><b>Omschrijving:</b> <?php echo ($omschrijving); ?> </p>
                     <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
+                    <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
                 </div>
 
                 <!-- Submit button -->
@@ -186,13 +218,15 @@
                   <form action = "DienstMatchMenu.php" method="POST">
                     <button type="submit" class="btn btn-primary">Gegevens sturen</button>
                     <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="match_goedkeuren"/>
+                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="goedkeuren"/>
                   </form>
 
-                  <br>
+                  <?php if (empty($_POST['match_negeren'])) { echo "<br>";}  ?>
 
                   <form action = "DienstMatchMenu.php" method="POST">
                     <button type="submit" class="btn btn-primary">Negeren</button>
                     <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="match_negeren"/>
+                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="afkeuren"/>
                   </form>
 
                 </div>
@@ -200,6 +234,50 @@
             </div>
             <!-- End of block -->
         <?php
+            }
+            else if ($block_number == 2) 
+            {
+        ?>
+                      <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class = "block_confirmed_large">
+
+                          <!-- Block text -->
+                          <div class = "media-body">
+                            <h3 class = "media-heading"><b class = "white">Match</b></h3>
+                              <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                              <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
+                              <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
+                            
+
+                            <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white">Je gegevens zijn naar <?php echo($naam)?> verstuurd. </b></h3>
+                          </div>
+
+                        </div>
+                      </div>         
+
+        <?php
+            }
+            else if ($block_number == 3)
+            {
+        ?>
+                <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                  <div class = "block_confirmed_large">
+
+                    <!-- Block text -->
+                    <div class = "media-body">
+                      <h3 class = "media-heading"><b class = "white">Match</b></h3>
+                        <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                        <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
+                        <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
+
+                      <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white"><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
+                    </div>
+
+                  </div>
+                </div>
+
+        <?php
+            }
           }
           if (!$any_match) {
         ?>
@@ -219,7 +297,6 @@
               </div>
             </div>
             <!-- End of block -->
-
 
         <?php
           }

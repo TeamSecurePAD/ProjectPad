@@ -662,6 +662,34 @@ div.block_confirmed_small
     min-height: 200px;
 }
 
+div.block_confirmed_large
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 350px;
+}
+
+div.block_confirmed_extra_large
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 400px;
+}
+
 /** General block DIV used in navigating the website - grey **/
 div.block_grey
 {
