@@ -213,7 +213,7 @@ div.tile_warning
 {
 	border-radius: 5px;
 
-	background-color: rgb(255, 195, 112);
+	background-color: rgb(255, 181, 77);
 
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -461,7 +461,7 @@ div.block_warning
 	/*border: 2px solid rgb(150, 100, 0);*/
     border-radius: 10px;
 
-    background-color: rgb(255, 195, 112);
+    background-color: rgb(255, 181, 77);
 
     color: rgb(255, 255, 255);
 
@@ -476,13 +476,67 @@ div.block_warning_small
 	/*border: 2px solid rgb(150, 100, 0);*/
     border-radius: 10px;
 
-    background-color: rgb(255, 195, 112);
+    background-color: rgb(255, 181, 77);
 
     color: rgb(255, 255, 255);
 
     padding: 10px;
     margin: 5px;
     min-height: 200px;
+}
+
+/** Error DIV used to inform the user of an error message - orange **/
+div.block_error_small_blue
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(61, 153, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+    max-width: 25%;
+
+    display: inline-block;
+}
+
+/** Error DIV used to inform the user of an error message - orange **/
+div.block_error_small_orange
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 181, 77);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+    max-width: 25%;
+
+    display: inline-block;
+}
+
+/** Error DIV used to inform the user of an error message - red **/
+div.block_error_small_red
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 102, 102);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+    max-width: 25%;
+
+    display: inline-block;
 }
 
 /** General block DIV used in navigating the website - red **/
@@ -638,7 +692,6 @@ div.block_grey_small
 div.block
 {
 	display: inline-block;
-	min-height: 275px;
 }
 
 div.service_button
@@ -647,6 +700,13 @@ div.service_button
     bottom: 20px;
     left: 5%;
     right: 5%;
+}
+
+div.form-block
+{
+	min-width: 75%;
+
+	display: inline-block;
 }
 
 /*** SINGLE LETTER TAGS ***/
@@ -710,13 +770,6 @@ c.blue
 input
 {
 	color: rgb(0, 0, 0);
-}
-
-/** Input windows for forms **/
-input.form-control
-{
-	max-width: 350px;
-	margin: 3px;
 }
 
 /** Select element for forms **/
