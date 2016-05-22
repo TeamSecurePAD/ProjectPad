@@ -156,17 +156,17 @@
 
             <!-- Back button in category list - returns the user to the home page -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_ask_for_service_small">
+              <div class = "block_grey_small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Home</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Terug naar hoofdmenu</b></h3>
                   <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
                 </div>
 
                 <!-- Submit button -->
                 <form action = "home.php">
-                  <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                  <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
                 </form>
 
               </div>
@@ -310,7 +310,7 @@
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_ask_for_service">
+              <div class = "block_grey">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -321,7 +321,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "askForService.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
                   </form>
                 </div>
 

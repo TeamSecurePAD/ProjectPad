@@ -41,7 +41,7 @@
         <div class = "title">
           <!-- Grey band to indicate content section containing the actual title elements -->
           <div class = "tile_primary">
-            <h1><c class = "white">Home</c></h1>
+            <h1><c class = "white">Hoofdmenu</c></h1>
             <h2><c class = "white">Selecteer een optie uit het menu om naar die pagina te gaan.</c></h2>
           </div>
         </div>
@@ -50,7 +50,7 @@
         <div class = "subbody">
 
           <div class = "tile_primary">
-            <h3><b class = "white">Menu</b></h3>
+            <h3><b class = "white">Pagina's</b></h3>
           </div>
 
             <!-- Profile page block -->
@@ -120,6 +120,24 @@
                 <!-- Submit button -->
                 <form action = "matchNavigationMenu.php">
                   <button type = "submit" class = "btn btn-primary">Ga naar matching menu</button>
+                </form>
+              </div>
+            </div>
+            <!-- End of block -->
+
+            <!-- Matching block -->
+            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block_grey_small">
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white">Uitloggen</b></h3>
+                  <img class = "image" src = "images/logout.png" width = "150" height = "150"><br><br>
+                </div>
+
+                <!-- Submit button -->
+                <form action = "logout.php">
+                  <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik hier om uit te loggen</button>
                 </form>
               </div>
             </div>

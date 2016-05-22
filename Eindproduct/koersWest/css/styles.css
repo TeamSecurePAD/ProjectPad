@@ -283,6 +283,21 @@ div.tile_confirmed
 	margin: 5px;
 }
 
+/** div for showing bright grey tiles in subsections **/
+div.tile_grey
+{
+	border-radius: 5px;
+
+	background-color: rgb(150, 150, 150);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
 /** General block DIV used in navigating the website - blue **/
 div.block_primary
 {
@@ -582,6 +597,36 @@ div.block_confirmed_small
     border-radius: 10px;
 
     background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - grey **/
+div.block_grey
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(150, 150, 150);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - grey **/
+div.block_grey_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(150, 150, 150);
 
     color: rgb(255, 255, 255);
 

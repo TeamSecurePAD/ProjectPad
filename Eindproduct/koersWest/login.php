@@ -33,7 +33,7 @@
     if ($email == $dbemail && $wachtwoord == $dbwachtwoord)
     {
       $_SESSION['user_id'] = $gebruikerID; 
-      header('location:index.php');
+      header('location:home.php');
     }
     else
     {
