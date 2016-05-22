@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id']))
                                         AND match_goedgekeurd = 0"))
       {
 
-          echo ("succes");
+          $message = "de gegevens zijn naar verstuurd";
       }
     }
 
@@ -90,11 +90,9 @@ if (isset($_SESSION['user_id']))
           </div>
 
          <?php 
-         $any_match = false;
         // output the matches.
       while ($row_match_gevonden = $result_match_gevonden->fetch_assoc()) 
       {
-        $any_match = true;
        $match_gebruiker_id = $row_match_gevonden['match_gebruiker_Id'];
 
        $query_match_gegevens = "SELECT id, naam, tussenvoegsel, achternaam, omschrijving
@@ -134,7 +132,7 @@ if (isset($_SESSION['user_id']))
 
           <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
+              <div class = "block_info">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -149,14 +147,14 @@ if (isset($_SESSION['user_id']))
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchingMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Gegevens sturen</button>
+                    <button type="submit" class="btn btn-info">Gegevens sturen</button>
                     <input type="hidden" value= "<?php echo($id); ?>" name="match_goedkeuren"/>
                   </form>
 
                   <br>
 
                   <form action = "matchingMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Negeren</button>
+                    <button type="submit" class="btn btn-info">Negeren</button>
                     <input type="hidden" value= "<?php echo($id); ?>" name="match_negeren"/>
                   </form>
 
@@ -165,35 +163,19 @@ if (isset($_SESSION['user_id']))
             </div>
             <!-- End of block -->
         <?php
-          }
-
-          }
-          if (!$any_match) {
+      }
+      else 
+      {
         ?>
-
-          <!-- Start no match block-->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
-
-                <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Geen match</b></h3>
-                  <img class = "image" src = "images/NoResult.png" width = "150" height = "150"><br><br>
-                  <p>Er is op dit moment niks voor u om te bevestigen. Kom nog eens terug op een later moment.</p>
-                </div>
-
-
-              </div>
-            </div>
-            <!-- End of block -->
-
-        <?php
-          }
-        ?>
+        <h3>Op dit moment is er geen match gevonden.<h3>
+          <?php
+        }
+      }
+      ?>
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey">
+              <div class = "block_info">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -204,7 +186,7 @@ if (isset($_SESSION['user_id']))
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchNavigationMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-info">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>

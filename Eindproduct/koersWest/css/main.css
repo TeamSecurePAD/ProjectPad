@@ -93,23 +93,10 @@
     font-size: xx-large;
    
 }
-input.form-control{
+input.form-control
+{
     font-size: large;
     max-width: 350px;
-    margin: 3px;    
-        
+    text-align: center;
+    position: relative;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

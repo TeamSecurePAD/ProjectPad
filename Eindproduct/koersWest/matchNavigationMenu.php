@@ -50,7 +50,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "DienstMatchMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Matches Bekijken</button>
+                    <button type = "submit" class = "btn btn-info">Matches Bekijken</button>
                   </form>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchingMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Matches Bekijken</button>
+                    <button type = "submit" class = "btn btn-info">Matches Bekijken</button>
                   </form>
                 </div>
               </div>
@@ -93,7 +93,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "confirmDienstmatchMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Matches Bekijken</button>
+                    <button type = "submit" class = "btn btn-info">Matches Bekijken</button>
                   </form>
                 </div>
               </div>
@@ -106,7 +106,7 @@
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Netwerk Talenten</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Netwerk categoriën</b></h3>
                   <img class = "image" src = "images/handshake.png" width = "150" height = "150"><br>
                   <p>Hier vind je mensen die tegenovergestelde talenten hebben, en contact gegevens naar je verstuurd hebben.
                      Je kan zelf contact met deze mensen opnemen.</p>
@@ -115,7 +115,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "ConfirmCategorieMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Matches Bekijken</button>
+                    <button type = "submit" class = "btn btn-info">Matches Bekijken</button>
                   </form>
                 </div>
               </div>
@@ -126,7 +126,7 @@
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey">
+              <div class = "block_info">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -136,8 +136,8 @@
 
                 <!-- Submit button -->
                 <div class = "service_button">
-                  <form action = "home.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                  <form action = "index.php">
+                    <button type = "submit" class = "btn btn-info">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>
