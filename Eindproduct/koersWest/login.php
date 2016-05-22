@@ -1,117 +1,236 @@
 <?php
   session_start();
 
-  // Return to index page if already logged in
-  if (isset($_SESSION['user_id']))
-  {
-    header('location:index.php');
-  }
-
+  // Make sure we're connected to the database
   require 'databaseConnectionOpening.php';
 
-  if (!empty($_POST['email']) && !empty($_POST['wachtwoord']))
+  // If a user is logged in, send them back to the home page (main menu)
+  if (isset($_SESSION['user_id']))
   {
-    $message = '';
+    header('location:home.php');
+  }
 
-    $email = strip_tags($_POST['email']);
-    $wachtwoord = strip_tags($_POST['wachtwoord']);
+  $message = '';
+  $error_number = 0;
+  $error_title = '';
 
-    $query = "SELECT id, email, wachtwoord
-              FROM gebruiker
-              WHERE email = '$email'";
-
-    $result = mysqli_query($connection, $query);
-
-    if ($result)
+  if ($connection) // A successful connection to the database has been established
+  {
+    if (!empty($_POST['email']) || !empty($_POST['wachtwoord'])) // Either password or e-mail (or both) entered
     {
-        $row = mysqli_fetch_row($result);
-        $gebruikerID = $row[0];
-        $dbemail = $row[1];
-        $dbwachtwoord = $row[2];
-    }
+      if (!empty($_POST['email']) && !empty($_POST['wachtwoord'])) // E-mail and password entered successfully
+      {
+        $email = strip_tags($_POST['email']);
+        $wachtwoord = strip_tags($_POST['wachtwoord']);
 
-    if ($email == $dbemail && $wachtwoord == $dbwachtwoord)
-    {
-      $_SESSION['user_id'] = $gebruikerID; 
-      header('location:home.php');
+        $get_user_data = "SELECT id, email, wachtwoord
+                          FROM gebruiker
+                          WHERE email = '$email'";
+
+        $user_data = mysqli_query($connection, $get_user_data);
+
+        if ($user_data) // The e-mail that was entered was matched to that of a user in the database
+        {
+          $row = mysqli_fetch_row($user_data);
+          $gebruikerID = $row[0];
+          $dbemail = $row[1];
+          $dbwachtwoord = $row[2];
+
+          if ($email == $dbemail)
+          {
+            if ($wachtwoord == $dbwachtwoord)
+            {
+              $_SESSION['user_id'] = $gebruikerID; 
+              header('location:home.php');
+            }
+            else // Username and password incompatible
+            {
+              $message .= 'Wachtwoord en e-mail adres komen niet overeen.';
+              $error_number = 11;
+            }
+          }
+          else // Given e-mail does not appear in database
+          {
+            $message .= 'Wij kennen geen gebruiker met het zojuist ingevoerde e-mail adres.';
+            $error_number = 12;
+          }
+        }
+        else // Query failed for unknown reason
+        {
+          $message .= 'Er is een onbekende fout opgetreden in het inlogproces.<br><br>Probeer later opnieuw in te loggen of neem contact op met BOOT als deze fout zich herhaalt.';
+          $error_number = 21;
+        }
+      }
+      else if (!empty($_POST['email'])) // Password was not entered
+      {
+        $message .= 'Bent u uw wachtwoord vergeten in te vullen?';
+        $error_number = 1;
+      }
+      else // E-mail was not entered
+      {
+        $message .= 'Bent u uw e-mail adres vergeten in te vullen?';
+        $error_number = 2;
+      }
     }
-    else
+    else // Neither e-mail nor password were entered
     {
-      $message .= '<b class="red">Uw wachtwoord en/of e-mail adres is incorrect ingevoerd.</b>';
+      $message .= 'U dient uw e-mail adres en wachtwoord in te vullen alvorens u kunt inloggen.';
+      $error_number = 3;
     }
+  }
+  else // A database connection could not be established
+  {
+    $message .= 'Er is een onbekende fout opgetreden in het verbinden met de database.<br><br>Probeer later opnieuw in te loggen of neem contact op met BOOT als deze fout zich herhaalt.';
+    $error_number = 22;
   }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/styles.css">
-        <title>Inloggen</title>
-        <style>
-            body {
-                padding-bottom: 60px;
-                font-size: 20px;
-                margin-top: 110px;
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Inloggen</title>
+  </head>
 
-            }
-            #footer{
-                color:white;
-                text-align: center;
-                padding: 0px;
+  <body>
 
+    <?php
+    include("title.php");
+    ?>
 
-            }
-            #section{
-                text-align: center;
-                margin: auto;
-                width: 90%;
-                border: 5px solid grey;
-                padding: 10px;
-                margin-top: 50px;
-                margin-left: auto;
+    <!-- Container that houses all the elements on the page -->
+    <div class = "container">
+      <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on section -->
+      <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
+        <?php
+        // ------------------------------------------------------------------------- //
+        // LOGIN PAGE - ALLOWS THE USER TO ENTER THEIR USERNAME & PASSWORD AND LOGIN
+        // ------------------------------------------------------------------------- //
+        ?>
+        <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
+        <div class = "title">
+          <!-- Deep blue band to indicate content section containing the actual title elements -->
+          <div class = "tile_primary">
+            <h1><c class = "white">Inlogscherm</c></h1>
+            <h2><c class = "white">Voer uw gegevens in om in te loggen bij KoersWest.</c></h2>
+          </div>
+          <!-- End of colored title band -->
+        </div>
+        <!-- End of title div -->
 
-            }
-        </style>
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
-      <?php 
-      include("Navigation.php");
-      ?>
-      <div id="section">
+        <!-- Subbody div indicates main area of user interaction and important content -->
+        <div class = "subbody">
 
-          <form class="form-horizontal col-md-4 col-md-offset-4" action="login.php" method="POST">
-              Voer uw e-mail en wachtwoord in:
+          <div class = "tile_primary">
+            <h3><b class = "white">Opties</b></h3>
+          </div>
 
-              <input type="text" placeholder="Email" name="email" class="form-control">
-              <input type="password" placeholder="Wachtwoord" name ="wachtwoord" class="form-control">
-              <button type="submit" class="btn btn-success" type="submit" name="submit">Login</button>
+          <!-- Login block -->
+          <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class = "block_primary_small">
 
-          </form>
+              <!-- Block text -->
+              <div class = "media-body">
+                <h3 class = "media-heading"><b class = "white">Inloggen</b></h3><br>
+              </div>
 
-          <form>
+              <!-- User data input windows and submit button -->
+              <form action = "login.php" method = "POST">
+                <div class = "form-block">
+                  <input type = "text" <?php if (!empty($_POST['email'])) { echo "value = \"".$_POST['email']."\""; } ?> placeholder = "E-mail" name = "email" class = "form-control">
+                  <input type = "password" placeholder = "Wachtwoord" name = "wachtwoord" class = "form-control">
+                  <input type = "hidden" value = "true" name = "login_attempt"/>
+                </div>
 
-              <div class="round-button"><div class="round-button-circle"><a href="register.php"> <img src ="http://image005.flaticon.com/1/svg/109/109705.svg"></a></div></div>
+                <div class = "service_button">
+                  <button type = "submit" class = "btn btn-success">Klik hier om in te loggen</button>
+                </div>
+              </form>
 
-          </form>
+            </div>
+          </div>
+          <!-- End of block -->
+
+          <!-- Back button - returns the user to the home page -->
+          <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class = "block_grey_small">
+
+              <!-- Block text -->
+              <div class = "media-body">
+                <h3 class = "media-heading"><b class = "white">Terug naar welkomstpagina</b></h3>
+                <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
+              </div>
+
+              <!-- Submit button -->
+              <form action = "home.php">
+                <div class = "service_button">
+                  <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik hier om terug te gaan</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <!-- End of block -->
+
+          <?php
+          // Show (error) message to the user after a failed login attempt has been made
+          if(!empty($message) && !empty($_POST['login_attempt']))
+          {
+            ?>
+
+            <!-- Error message block - informs the user of any errors in the login process -->
+            <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class = 
+                <?php
+                if ($error_number > 0 && $error_number < 10)
+                {
+                  echo "\"block_error_small_blue\"";
+                  $error_title .= "Ontbrekende gegevens";
+                }
+                else if ($error_number > 10 && $error_number < 20)
+                {
+                  echo "\"block_error_small_orange\"";
+                  $error_title .= "Let op";
+                }
+                else if ($error_number > 20 && $error_number < 30)
+                {
+                  echo "\"block_error_small_red\"";
+                  $error_title .= "Error";
+                }
+                ?>
+              >
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white"><?php echo $error_title; ?></b></h3>
+                  <img class = "image" src = "images/warning.png" width = "86" height = "86"><br><br>
+                  <b class = "white"><?php echo $message; ?></b>
+                </div>
+
+              </div>
+            </div>
+            <!-- End of block -->
+
+            <?php
+          }
+          ?>
+
+        </div>
+        <!-- End of subbody div -->
+        
       </div>
+      <!-- End of body div -->
+    </div>
+    <!-- End of page container -->
+    <br>
 
-      <?php
-        //This will output error message's << Waar we het over hebben gehad.
-        if(!empty($message)):
-          echo $message."<br><br>";
-        endif;
-      ?>
-
-        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="js/bootstrap.min.js"></script> 
-        <script src="js/script.js"></script>
-    </body>
-
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>

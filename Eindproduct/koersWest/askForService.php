@@ -166,7 +166,7 @@
 
                 <!-- Submit button -->
                 <form action = "home.php">
-                  <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
+                  <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik hier om terug te gaan</button>
                 </form>
 
               </div>
@@ -321,7 +321,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "askForService.php">
-                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik hier om terug te gaan</button>
                   </form>
                 </div>
 
