@@ -198,7 +198,7 @@ div.tile_info
 {
 	border-radius: 5px;
 
-	background-color: rgb(128, 212, 255);
+	background-color: rgb(77, 195, 255);
 
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -268,6 +268,39 @@ div.tile_ask_for_service
 	margin: 5px;
 }
 
+/** div for showing salmon colored tiles in subsections **/
+div.tile_profile
+{
+	border-radius: 5px;
+
+	background-color: rgb(255, 179, 128);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing white tiles in subsections **/
+div.tile_profile_dark
+{
+	border-radius: 5px;
+
+	background-color: rgb(255, 148, 77);
+
+	text-align: left;
+	font-size: 20px;
+
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 7px;
+	padding-right: 7px;
+
+	margin: 5px;
+}
+
 /** div for showing bright orange colored tiles in subsections **/
 div.tile_confirmed
 {
@@ -283,7 +316,7 @@ div.tile_confirmed
 	margin: 5px;
 }
 
-/** div for showing bright grey tiles in subsections **/
+/** div for showing grey tiles in subsections **/
 div.tile_grey
 {
 	border-radius: 5px;
@@ -402,7 +435,7 @@ div.block_info
 	/*border: 2px solid rgb(75, 100, 150);*/
     border-radius: 10px;
 
-    background-color: rgb(128, 212, 255);
+    background-color: rgb(77, 195, 255);
 
     color: rgb(255, 255, 255);
 
@@ -417,7 +450,7 @@ div.block_info_small
 	/*border: 2px solid rgb(75, 100, 150);*/
     border-radius: 10px;
 
-    background-color: rgb(128, 212, 255);
+    background-color: rgb(77, 195, 255);
 
     color: rgb(255, 255, 255);
 
@@ -431,7 +464,7 @@ div.block_info_large
 	/*border: 2px solid rgb(75, 100, 150);*/
     border-radius: 10px;
 
-    background-color: rgb(128, 212, 255);
+    background-color: rgb(77, 195, 255);
 
     color: rgb(255, 255, 255);
 
@@ -445,7 +478,7 @@ div.block_info_extra_large
 	/*border: 2px solid rgb(75, 100, 150);*/
     border-radius: 10px;
 
-    background-color: rgb(128, 212, 255);
+    background-color: rgb(77, 195, 255);
 
     color: rgb(255, 255, 255);
 
@@ -455,7 +488,7 @@ div.block_info_extra_large
 }
 
 
-/** General block DIV used in navigating the website - orange **/
+/** General block DIV used in navigating the website - yellow **/
 div.block_warning
 {
 	/*border: 2px solid rgb(150, 100, 0);*/
@@ -470,7 +503,7 @@ div.block_warning
     min-height: 275px;
 }
 
-/** General small block DIV used in navigating the website - orange **/
+/** General small block DIV used in navigating the website - yellow **/
 div.block_warning_small
 {
 	/*border: 2px solid rgb(150, 100, 0);*/
@@ -485,7 +518,7 @@ div.block_warning_small
     min-height: 200px;
 }
 
-/** Error DIV used to inform the user of an error message - orange **/
+/** Error DIV used to inform the user of an error message - blue **/
 div.block_error_small_blue
 {
 	/*border: 2px solid rgb(150, 100, 0);*/
@@ -497,9 +530,28 @@ div.block_error_small_blue
 
     padding: 10px;
     margin: 5px;
-    min-height: 200px;
+    /*min-height: 200px;*/
     min-width: 25%;
-    max-width: 200px;
+    max-width: 100%;
+
+    display: inline-block;
+}
+
+/** Error DIV used to inform the user of an error message - green **/
+div.block_error_small_green
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    /*min-height: 200px;*/
+    min-width: 25%;
+    max-width: 100%;
 
     display: inline-block;
 }
@@ -516,9 +568,9 @@ div.block_error_small_orange
 
     padding: 10px;
     margin: 5px;
-    min-height: 200px;
+    /*min-height: 200px;*/
     min-width: 25%;
-    max-width: 200px;
+    max-width: 100%;
 
     display: inline-block;
 }
@@ -535,9 +587,9 @@ div.block_error_small_red
 
     padding: 10px;
     margin: 5px;
-    min-height: 200px;
+    /*min-height: 200px;*/
     min-width: 25%;
-    max-width: 200px;
+    max-width: 100%;
 
     display: inline-block;
 }
@@ -624,6 +676,51 @@ div.block_ask_for_service_small
     border-radius: 10px;
 
     background-color: rgb(0, 204, 153);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - salmon **/
+div.block_profile
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 179, 128);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 300px;
+}
+
+/** General block DIV used in navigating the website - dark salmon **/
+div.block_profile_edit
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 117, 26);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 300px;
+}
+
+/** General small block DIV used in navigating the website - salmon **/
+div.block_profile_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 179, 128);
 
     color: rgb(255, 255, 255);
 
@@ -801,6 +898,13 @@ c.blue
 input
 {
 	color: rgb(0, 0, 0);
+}
+
+/** Input element for forms **/
+input.form-control
+{
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 /** Select element for forms **/

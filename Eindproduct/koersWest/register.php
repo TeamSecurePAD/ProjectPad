@@ -45,7 +45,7 @@
 			$achternaam = strip_tags($_POST['achternaam']);
 			$omschrijving = strip_tags($_POST['omschrijving']);
 
-			if (empty($_POST['tussenvoegsel'])) 
+			if (!empty($_POST['tussenvoegsel'])) 
 			{
 				$tussenvoegsel = strip_tags($_POST['tussenvoegsel']);
 			}

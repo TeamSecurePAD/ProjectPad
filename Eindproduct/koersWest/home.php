@@ -9,6 +9,28 @@
   {
     // User's session id, used to reference currently logged in user in database queries
     $id = $_SESSION['user_id'];
+
+    // This php script is for making the matches
+    $query_is_goed_in_categorie = "SELECT Categorie_Categorie
+                                   FROM gebruiker_is_goed_in_categorie
+                                   WHERE Gebruiker_Id = $id";
+
+    $query_is_slecht_in_categorie = "SELECT Categorie_Categorie
+                                     FROM gebruiker_is_slecht_in_categorie
+                                     WHERE Gebruiker_Id = $id";
+
+    $result_is_goed_in_categorie = mysqli_query($connection, $query_is_goed_in_categorie);
+    $result_is_slecht_in_categorie = mysqli_query($connection, $query_is_slecht_in_categorie);
+
+    $row_goed = mysqli_fetch_assoc($result_is_goed_in_categorie);
+    $row_slecht = mysqli_fetch_assoc($result_is_slecht_in_categorie);
+
+    $is_goed_in_categorie = $row_goed["Categorie_Categorie"];
+    $is_slecht_in_categorie = $row_slecht["Categorie_Categorie"];
+
+    // Includes the code that adds the matches to the database
+    include ('matchCategorie.php');
+    include ('matchDienst.php');
   }
 ?>
 
@@ -39,11 +61,11 @@
         // HOME PAGE -> MAIN MENU - DISPLAYED WHEN USER IS LOGGED IN
         // --------------------------------------------------------- //
         // MENU OPTIONS:
-        //   * PROFILE
-        //   * OFFER SERVICE
-        //   * ASK FOR SERVICE
-        //   * MATCHING MENU
-        //   * LOGOUT
+        //   * Mijn profiel
+        //   * Dienst aanbieden
+        //   * Dienst vragen
+        //   * Matching
+        //   * Uitloggen
         // -------------------------------------------- //
         if (isset($_SESSION['user_id']))
         {
@@ -66,7 +88,7 @@
 
               <!-- Profile page block -->
               <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_primary_small">
+                <div class = "block_profile_small">
 
                   <!-- Block text -->
                   <div class = "media-body">
@@ -75,7 +97,7 @@
                   </div>
 
                   <!-- Submit button -->
-                  <form action = "index.php">
+                  <form action = "profile.php">
                     <button type = "submit" class = "btn btn-primary">Bekijk uw profiel</button>
                   </form>
                 </div>
@@ -84,7 +106,7 @@
 
               <!-- Offer-service block -->
               <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_primary_small">
+                <div class = "block_offer_service_small">
 
                   <!-- Block text -->
                   <div class = "media-body">
@@ -102,7 +124,7 @@
 
               <!-- Ask-for-service block -->
               <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_primary_small">
+                <div class = "block_ask_for_service_small">
 
                   <!-- Block text -->
                   <div class = "media-body">
@@ -120,7 +142,7 @@
 
               <!-- Matching block -->
               <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_primary_small">
+                <div class = "block_info_small">
 
                   <!-- Block text -->
                   <div class = "media-body">
@@ -154,37 +176,15 @@
               </div>
               <!-- End of block -->
           </div>
-        <?php
-            
-          /*This php script is for making the matches*/
-          $query_is_goed_in_categorie = "SELECT Categorie_Categorie
-                                         FROM gebruiker_is_goed_in_categorie
-                                         WHERE Gebruiker_Id = $id";
 
-          $query_is_slecht_in_categorie = "SELECT Categorie_Categorie
-                                           FROM gebruiker_is_slecht_in_categorie
-                                           WHERE Gebruiker_Id = $id";
-
-          $result_is_goed_in_categorie = mysqli_query($connection, $query_is_goed_in_categorie);
-          $result_is_slecht_in_categorie = mysqli_query($connection, $query_is_slecht_in_categorie);
-
-          $row_goed = mysqli_fetch_assoc($result_is_goed_in_categorie);
-          $row_slecht = mysqli_fetch_assoc($result_is_slecht_in_categorie);
-
-          $is_goed_in_categorie = $row_goed["Categorie_Categorie"];
-          $is_slecht_in_categorie = $row_slecht["Categorie_Categorie"];
-
-
-          //Include's the code that adds the matches to the database.
-          include ('matchCategorie.php');
-          include ('matchDienst.php');
+          <?php
         }
         // -------------------------------------------------------------------- //
         // HOME PAGE -> WELCOME PAGE - DISPLAYED WHEN USER IS NOT LOGGED IN YET
         // -------------------------------------------------------------------- //
         // MENU OPTIONS:
-        //   * LOGIN
-        //   * REGISTER
+        //   * Inloggen
+        //   * Registreren
         // -------------------------------------------------------------------- //
         else
         {

@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  // Make sure we're connected to the database
+  // Establish a connection with the database
   require 'databaseConnectionOpening.php';
 
   // If a user is logged in, send them back to the home page (main menu)
@@ -16,7 +16,7 @@
 
   if ($connection) // A successful connection to the database has been established
   {
-    if (!empty($_POST['email']) || !empty($_POST['wachtwoord'])) // Either password or e-mail (or both) entered
+    if (!empty($_POST['email']) || !empty($_POST['wachtwoord'])) // Either password or e-mail (or both) entered successfully
     {
       if (!empty($_POST['email']) && !empty($_POST['wachtwoord'])) // E-mail and password entered successfully
       {
@@ -29,14 +29,14 @@
 
         $user_data = mysqli_query($connection, $get_user_data);
 
-        if ($user_data) // The e-mail that was entered was matched to that of a user in the database
+        if ($user_data) // The database query was successful
         {
           $row = mysqli_fetch_row($user_data);
           $gebruikerID = $row[0];
           $dbemail = $row[1];
           $dbwachtwoord = $row[2];
 
-          if ($email == $dbemail)
+          if ($email == $dbemail) // Verify that a user was found with the provided e-mail address
           {
             if ($wachtwoord == $dbwachtwoord)
             {
@@ -45,42 +45,42 @@
             }
             else // Username and password incompatible
             {
-              $message .= 'Wachtwoord en e-mail adres komen niet overeen.';
+              $message = 'Wachtwoord en e-mail adres komen niet overeen.';
               $error_number = 11;
             }
           }
           else // Given e-mail does not appear in database
           {
-            $message .= 'Wij kennen geen gebruiker met het zojuist ingevoerde e-mail adres.';
+            $message = 'Wij kennen geen gebruiker met het zojuist ingevoerde e-mail adres.';
             $error_number = 12;
           }
         }
         else // Query failed for unknown reason
         {
-          $message .= 'Er is een onbekende fout opgetreden in het inlogproces.<br><br>Probeer later opnieuw in te loggen of neem contact op met BOOT als deze fout zich herhaalt.';
+          $message = 'Er is een onbekende fout opgetreden in het inlogproces.<br><br>Probeer later opnieuw in te loggen of neem contact op met een medewerker van BOOT als deze fout zich herhaalt.';
           $error_number = 21;
         }
       }
       else if (!empty($_POST['email'])) // Password was not entered
       {
-        $message .= 'Bent u uw wachtwoord vergeten in te vullen?';
+        $message = 'Bent u uw wachtwoord vergeten in te vullen?';
         $error_number = 1;
       }
       else // E-mail was not entered
       {
-        $message .= 'Bent u uw e-mail adres vergeten in te vullen?';
+        $message = 'Bent u uw e-mail adres vergeten in te vullen?';
         $error_number = 2;
       }
     }
     else // Neither e-mail nor password were entered
     {
-      $message .= 'U dient uw e-mail adres en wachtwoord in te vullen alvorens u kunt inloggen.';
+      $message = 'U dient uw e-mail adres en wachtwoord in te vullen alvorens u kunt inloggen.';
       $error_number = 3;
     }
   }
   else // A database connection could not be established
   {
-    $message .= 'Er is een onbekende fout opgetreden in het verbinden met de database.<br><br>Probeer later opnieuw in te loggen of neem contact op met BOOT als deze fout zich herhaalt.';
+    $message = 'Er is een onbekende fout opgetreden in het verbinden met de database.<br><br>Probeer later opnieuw in te loggen of neem contact op met BOOT als deze fout zich herhaalt.';
     $error_number = 22;
   }
 ?>
@@ -130,6 +130,49 @@
             <h3><b class = "white">Opties</b></h3>
           </div>
 
+          <?php
+          // Show (error) message to the user after a failed login attempt has been made
+          if(!empty($message) && !empty($_POST['login_attempt']))
+          {
+            ?>
+
+            <!-- Error message block - informs the user of any errors in the login process -->
+            <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class = 
+                <?php
+                if ($error_number >= 0 && $error_number < 10)
+                {
+                  echo "\"block_error_small_blue\"";
+                  $error_title = "Ontbrekende gegevens";
+                }
+                else if ($error_number > 10 && $error_number < 20)
+                {
+                  echo "\"block_error_small_orange\"";
+                  $error_title = "Let op";
+                }
+                else if ($error_number > 20 && $error_number < 30)
+                {
+                  echo "\"block_error_small_red\"";
+                  $error_title = "Error";
+                }
+                ?>
+              >
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white"><?php echo $error_title; ?></b></h3>
+                  <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
+                  <b class = "white"><?php echo $message; ?></b>
+                </div>
+
+              </div>
+            </div>
+            <!-- End of block -->
+
+            <?php
+          }
+          ?>
+
           <!-- Login block -->
           <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div class = "block_primary_small">
@@ -177,48 +220,7 @@
           </div>
           <!-- End of block -->
 
-          <?php
-          // Show (error) message to the user after a failed login attempt has been made
-          if(!empty($message) && !empty($_POST['login_attempt']))
-          {
-            ?>
-
-            <!-- Error message block - informs the user of any errors in the login process -->
-            <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class = 
-                <?php
-                if ($error_number > 0 && $error_number < 10)
-                {
-                  echo "\"block_error_small_blue\"";
-                  $error_title .= "Ontbrekende gegevens";
-                }
-                else if ($error_number > 10 && $error_number < 20)
-                {
-                  echo "\"block_error_small_orange\"";
-                  $error_title .= "Let op";
-                }
-                else if ($error_number > 20 && $error_number < 30)
-                {
-                  echo "\"block_error_small_red\"";
-                  $error_title .= "Error";
-                }
-                ?>
-              >
-
-                <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white"><?php echo $error_title; ?></b></h3>
-                  <img class = "image" src = "images/warning.png" width = "86" height = "86"><br><br>
-                  <b class = "white"><?php echo $message; ?></b>
-                </div>
-
-              </div>
-            </div>
-            <!-- End of block -->
-
-            <?php
-          }
-          ?>
+          
 
         </div>
         <!-- End of subbody div -->
