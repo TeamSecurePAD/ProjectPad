@@ -459,6 +459,20 @@ div.block_info_small
     min-height: 200px;
 }
 
+div.block_info_medium
+{
+    /*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(77, 195, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 300px;
+}
+
 div.block_info_large
 {
 	/*border: 2px solid rgb(75, 100, 150);*/
@@ -757,6 +771,20 @@ div.block_confirmed_small
     padding: 10px;
     margin: 5px;
     min-height: 200px;
+}
+
+div.block_confirmed_medium
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    margin: 5px;
+    min-height: 300px;
 }
 
 div.block_confirmed_large

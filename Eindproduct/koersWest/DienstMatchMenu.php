@@ -34,33 +34,32 @@
 
           $result_vraagt = mysqli_query($connection, $query_vraagt);
 
-    if (!empty($_POST['match_goedkeuren']))
+    if (!empty($_POST['gekeurd']))
     {
-      $match_id = $_POST['match_goedkeuren'];
+      echo "test";
+      $match_id = $_POST['match_id'];
 
-      if ($update = $connection->query("UPDATE match_diensten
-                                        SET match_goedgekeurd = 1
-                                        WHERE gebruiker_Id = $id
-                                        AND match_gebruiker_Id = $match_id
-                                        AND match_goedgekeurd = 0"))
+      if ($_POST['gekeurd'] == "goedgekeurd") 
       {
-          $message = "de gegevens zijn naar verstuurd";
+        if ($update = $connection->query("UPDATE match_diensten
+                                          SET match_goedgekeurd = 1
+                                          WHERE gebruiker_Id = $id
+                                          AND match_gebruiker_Id = $match_id
+                                          AND match_goedgekeurd = 0"))
+        {
+            echo ("succes");
+        }
       }
-    }
-
-    if (!empty($_POST['match_negeren']))
-    {
-      $match_id = $_POST['match_negeren'];
-
-      echo ($match_id);
-
-      if ($update = $connection->query("UPDATE match_diensten
-                                        SET match_afgekeurd = 1
-                                        WHERE gebruiker_Id = $id
-                                        AND match_gebruiker_Id = $match_id
-                                        AND match_afgekeurd = 0"))
+      else if ($_POST['gekeurd'] == "afgekeurd")
       {
-          $message = "de gebruiker is verwijderd uit de lijst";
+          if ($update = $connection->query("UPDATE match_diensten
+                                          SET match_afgekeurd = 1
+                                          WHERE gebruiker_Id = $id
+                                          AND match_gebruiker_Id = $match_id
+                                          AND match_afgekeurd = 0"))
+        {
+        $message = "de gebruiker is verwijderd uit de lijst";
+        }
       }
     }
 
@@ -92,7 +91,7 @@
         <div class = "title">
           <!-- Green band to indicate content section with actual title elements -->
           <div class = "tile_info">
-            <h1><c class = "white">matches Diensten</c></h1>
+            <h1><c class = "white">Matches diensten</c></h1>
             <h2><c class = "white">In dit scherm kan je mensen gegevens sturen die tegenovergestelde 
               diensten aanbieden en vragen. De ander kan dan contact met je opnemen zodat jullie elkaar
               kunnen helpen.</c></h2>
@@ -103,7 +102,7 @@
         <div class = "subbody">
 
           <div class = "tile_info">
-            <h3><b class = "white">matches</b></h3>
+            <h3><b class = "white">Matches</b></h3>
           </div>
 
           <?php 
@@ -147,9 +146,7 @@
                  $result_match_vraag = mysqli_query($connection, $query_match_vraag);
                  $row_match_vraag = mysqli_fetch_assoc($result_match_vraag);
 
-                 $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
-
-                 if (!empty($row_match_vraagt['Dienst_dienst'])) 
+                 if (!empty($row_match_vraag['Dienst_dienst'])) 
                  {
                   $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
                  }
@@ -171,44 +168,34 @@
 
              $block_number = 1;  
 
-             if (!empty($_POST['goedkeuren']) || !empty($_POST['afkeuren']))
-             {
-              if (!empty($_POST['goedkeuren'])) {
-                
-                if ($_POST['goedkeuren'] == $match_dienst_id)
-                {
-                  $block_number = 2;
-                }
-                else
-                {
-                  $block_number = 1;
-                }
-              }
+         $block_number = 1;
 
-             if (!empty($_POST['afkeuren']))
-              {
-                if ($_POST['afkeuren'] == $match_dienst_id)
-                {
-                  $block_number = 3;
-                }
-                else
-                {
-                  $block_number = 1;
-                }
-              }
-             }
+         if (!empty($_POST['gekeurd']))
+         {
+
+          if  ($_POST['gekeurd'] == "goedgekeurd" && $_POST['match_id'] == $match_dienst_id ) 
+          {  
+              $block_number = 2;
+          }
+
+          if  ($_POST['gekeurd'] == "afgekeurd" && $_POST['match_id'] == $match_dienst_id ) 
+          {             
+              $block_number = 3;
+          }
+
+         }
 
           if ($block_number == 1){        
           ?>
 
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
+              <div class = "block_info_medium">
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                    <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
-                    <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
+                    <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
+                    <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
                     <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
                 </div>
 
@@ -216,17 +203,10 @@
                 <div class = "service_button">
 
                   <form action = "DienstMatchMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Gegevens sturen</button>
-                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="match_goedkeuren"/>
-                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="goedkeuren"/>
-                  </form>
-
-                  <?php if (empty($_POST['match_negeren'])) { echo "<br>";}  ?>
-
-                  <form action = "DienstMatchMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Negeren</button>
-                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="match_negeren"/>
-                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="afkeuren"/>
+                    <button type="submit" class="btn btn-success" value= "goedgekeurd" name="gekeurd">Gegevens sturen</button>
+                    <button type="submit" class="btn btn-danger" value= "afgekeurd" name="gekeurd">Afwijzen</button>                    
+                    <input type="hidden" value= "<?php echo($id); ?>" name="id"/>
+                    <input type="hidden" value= "<?php echo($match_dienst_id); ?>" name="match_id"/>
                   </form>
 
                 </div>
@@ -239,12 +219,12 @@
             {
         ?>
                       <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class = "block_confirmed_large">
+                        <div class = "block_confirmed_medium">
 
                           <!-- Block text -->
                           <div class = "media-body">
                             <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                              <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                              <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                               <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
                               <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
                             
@@ -261,12 +241,12 @@
             {
         ?>
                 <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_confirmed_large">
+                  <div class = "block_confirmed_medium">
 
                     <!-- Block text -->
                     <div class = "media-body">
                       <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                        <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                        <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                         <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
                         <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
 
@@ -315,7 +295,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchNavigationMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>

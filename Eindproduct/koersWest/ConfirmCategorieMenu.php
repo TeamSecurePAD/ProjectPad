@@ -138,11 +138,12 @@
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                  <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                  <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?>  <?php echo ($achternaam); ?> </p>
                   <br>
                   <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
                      goed in de categorie <b><?php echo ($talent);?></b> </p>
                      <img class = "image" src = "<?php echo "images/".$talent.".png"; ?>" width = "86" height = "86">
+                     <br><br>
 
                   <p><b>Email: </b><?php echo ($email); ?></p>
                   <p><b>telefoonnummer: </b><?php echo ($telefoonnummer); ?></p>
@@ -152,7 +153,7 @@
                 <div class = "service_button">
 
                    <form action="ConfirmCategorieMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Verwijderen</button>
+                    <button type="submit" class="btn btn-danger">Verwijderen</button>
                     <input type="hidden" value= "<?php echo($match_gebruiker_id); ?>" name="Afkeuren"/>
                   </form>
 
@@ -178,6 +179,7 @@
                         <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
                         goed in de categorie <b><?php echo ($talent);?></b> </p>
                         <img class = "image" src = "<?php echo "images/".$talent.".png"; ?>" width = "86" height = "86">
+                        <br>
 
                       <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white"><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
                     </div>
@@ -226,7 +228,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchNavigationMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>

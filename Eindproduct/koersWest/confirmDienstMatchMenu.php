@@ -127,9 +127,7 @@
                  $result_match_vraag = mysqli_query($connection, $query_match_vraag);
                  $row_match_vraag = mysqli_fetch_assoc($result_match_vraag);
 
-                 $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
-
-                 if (!empty($row_match_vraagt['Dienst_dienst'])) 
+                 if (!empty($row_match_vraag['Dienst_dienst'])) 
                  {
                   $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
                  }
@@ -170,12 +168,12 @@
           ?>
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_extra_large">
+              <div class = "block_info_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                  <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                  <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                   <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
                   <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
                   <br>
@@ -186,7 +184,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action="ConfirmDienstMatchMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Verwijderen</button>
+                    <button type="submit" class="btn btn-danger">Verwijderen</button>
                     <input type="hidden" value= "<?php echo($match_gebruiker_id); ?>" name="Afkeuren"/>
                   </form>
 
@@ -201,12 +199,12 @@
              {
         ?>
                 <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_confirmed_large">
+                  <div class = "block_large">
 
                     <!-- Block text -->
                     <div class = "media-body">
                       <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                        <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                        <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                         <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
                         <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
 
@@ -223,7 +221,7 @@
 
           <!-- Start no match block-->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
+              <div class = "block_info">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -254,7 +252,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchNavigationMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>

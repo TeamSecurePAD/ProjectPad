@@ -18,28 +18,32 @@ if (isset($_SESSION['user_id']))
 
   $result_match_gevonden =  mysqli_query($connection, $query_match_gevonden);
 
-    if (!empty($_POST['match_goedkeuren']))
+    if (!empty($_POST['gekeurd']))
     {
-      $match_id = $_POST['match_goedkeuren'];
-      if ($update = $connection->query("UPDATE match_categorie
-                                        SET match_goedgekeurd = 1
-                                        WHERE gebruiker_Id = $id
-                                        AND match_gebruiker_Id = $match_id
-                                        AND match_goedgekeurd = 0"))
+      echo "test";
+      $match_id = $_POST['match_id'];
+
+      if ($_POST['gekeurd'] == "goedgekeurd") 
       {
-          echo ("succes");
+        if ($update = $connection->query("UPDATE match_categorie
+                                          SET match_goedgekeurd = 1
+                                          WHERE gebruiker_Id = $id
+                                          AND match_gebruiker_Id = $match_id
+                                          AND match_goedgekeurd = 0"))
+        {
+            echo ("succes");
+        }
       }
-    }
-    if (!empty($_POST['match_negeren']))
-    {
-      $match_id = $_POST['match_negeren'];
-      if ($update = $connection->query("UPDATE match_categorie
-                                        SET match_afgekeurd = 1
-                                        WHERE gebruiker_Id = $id
-                                        AND match_gebruiker_Id = $match_id
-                                        AND match_afgekeurd = 0"))
+      else if ($_POST['gekeurd'] == "afgekeurd")
       {
-          $message = "de gebruiker is verwijderd uit de lijst";
+          if ($update = $connection->query("UPDATE match_categorie
+                                          SET match_afgekeurd = 1
+                                          WHERE gebruiker_Id = $id
+                                          AND match_gebruiker_Id = $match_id
+                                          AND match_afgekeurd = 0"))
+        {
+        $message = "de gebruiker is verwijderd uit de lijst";
+        }
       }
     }
 }
@@ -125,31 +129,19 @@ if (isset($_SESSION['user_id']))
 
          $block_number = 1;
 
-         if (!empty($_POST['goedkeuren']) || !empty($_POST['afkeuren']))
+         if (!empty($_POST['gekeurd']))
          {
-          if (!empty($_POST['goedkeuren'])) {
-            
-            if ($_POST['goedkeuren'] == $match_gebruiker_id)
-            {
+
+          if  ($_POST['gekeurd'] == "goedgekeurd" && $_POST['match_id'] == $match_gebruiker_id ) 
+          {  
               $block_number = 2;
-            }
-            else
-            {
-              $block_number = 1;
-            }
           }
 
-         if (!empty($_POST['afkeuren']))
-          {
-            if ($_POST['afkeuren'] == $match_gebruiker_id)
-            {
+          if  ($_POST['gekeurd'] == "afgekeurd" && $_POST['match_id'] == $match_gebruiker_id ) 
+          {             
               $block_number = 3;
-            }
-            else
-            {
-              $block_number = 1;
-            }
           }
+
          }
 
          if ($block_number == 1){
@@ -157,12 +149,12 @@ if (isset($_SESSION['user_id']))
 
           <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
+              <div class = "block_info_medium">
 
                 <!-- Block text -->
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                  <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                  <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                   <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
                      goed in de categorie <b><?php echo ($talent);?></b> </p>
                 <img class = "image" src = "<?php echo "images/".$talent.".png"; ?>" width = "86" height = "86"><br><br>
@@ -171,19 +163,12 @@ if (isset($_SESSION['user_id']))
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchingMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Gegevens sturen</button>
-                    <input type="hidden" value= "<?php echo($id); ?>" name="match_goedkeuren"/>
-                    <input type="hidden" value= "<?php echo($match_gebruiker_id); ?>" name="goedkeuren"/>
+                    <button type="submit" class="btn btn-success" value= "goedgekeurd" name="gekeurd">Gegevens sturen</button>
+                    <button type="submit" class="btn btn-danger" value= "afgekeurd" name="gekeurd">Afwijzen</button>                    
+                    <input type="hidden" value= "<?php echo($id); ?>" name="id"/>
+                    <input type="hidden" value= "<?php echo($match_gebruiker_id); ?>" name="match_id"/>
                   </form>
 
-                  <!-- This is a fix for a weird bugg -->
-                  <?php if (empty($_POST['match_goedkeuren'])) { echo "<br>";}  ?>
-
-                  <form action = "matchingMenu.php" method="POST">
-                    <button type="submit" class="btn btn-primary">Negeren</button>
-                    <input type="hidden" value= "<?php echo($id); ?>" name="match_negeren"/>
-                    <input type="hidden" value= "<?php echo($match_gebruiker_id); ?>" name="afkeuren"/>
-                  </form>
 
                 </div>
               </div>
@@ -195,12 +180,12 @@ if (isset($_SESSION['user_id']))
               {
                     ?>
                       <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class = "block_confirmed_large">
+                        <div class = "block_confirmed_medium">
 
                           <!-- Block text -->
                           <div class = "media-body">
                             <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                            <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                            <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                             <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
                             goed in de categorie <b><?php echo ($talent);?></b> </p>
                             <img class = "image" src = "<?php echo "images/".$talent.".png"; ?>" width = "86" height = "86"><br>
@@ -219,12 +204,12 @@ if (isset($_SESSION['user_id']))
               {
                 ?>
                 <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_confirmed_large">
+                  <div class = "block_confirmed_medium">
 
                     <!-- Block text -->
                     <div class = "media-body">
                       <h3 class = "media-heading"><b class = "white">Match</b></h3>
-                       <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel); echo ($achternaam); ?> </p>
+                       <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                        <p><?php echo ($naam);?> kan hulp gebruiken bij de categorie <b><?php echo ($hulpNodig); ?></b> en is 
                         goed in de categorie <b><?php echo ($talent);?></b> </p>
                       <img class = "image" src = "<?php echo "images/".$talent.".png"; ?>" width = "86" height = "86"><br>
@@ -244,7 +229,7 @@ if (isset($_SESSION['user_id']))
 
           <!-- Start no match block-->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_info_large">
+              <div class = "block_info_medium">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -275,7 +260,7 @@ if (isset($_SESSION['user_id']))
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "matchNavigationMenu.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>

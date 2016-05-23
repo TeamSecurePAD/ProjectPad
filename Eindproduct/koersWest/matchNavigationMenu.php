@@ -32,7 +32,7 @@
         <div class = "subbody">
 
           <div class = "tile_info">
-            <h3><b class = "white">Soorten Matching</b></h3>
+            <h3><b class = "white">Soorten matching</b></h3>
           </div>
 
             <!-- Start of voorbeeld block -->
@@ -63,7 +63,7 @@
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Gevonden matches Talenten</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Gevonden matches talenten</b></h3>
                   <img class = "image" src = "images/matcharrow.png" width = "150" height = "150"><br>
                   <p>Hier kan mensen vinden die tegenovergestelde talenten hebben. Je kan zelf kiezen wie je
                     je contact gegevens stuurt</p>
@@ -106,7 +106,7 @@
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Netwerk Talenten</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Netwerk talenten</b></h3>
                   <img class = "image" src = "images/handshake.png" width = "150" height = "150"><br>
                   <p>Hier vind je mensen die tegenovergestelde talenten hebben, en contact gegevens naar je verstuurd hebben.
                      Je kan zelf contact met deze mensen opnemen.</p>
@@ -137,7 +137,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
                   <form action = "home.php">
-                    <button type = "submit" class = "btn btn-primary">Klik om terug te gaan</button>
+                    <button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
                   </form>
                 </div>
               </div>
