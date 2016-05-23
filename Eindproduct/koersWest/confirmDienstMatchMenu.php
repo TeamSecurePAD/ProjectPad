@@ -175,7 +175,7 @@
                   <h3 class = "media-heading"><b class = "white">Match</b></h3>
                   <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                   <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
-                  <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
+                  <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
                   <br>
                   <p><b>Email: </b><?php echo ($email); ?></p>
                   <p><b>telefoonnummer: </b><?php echo ($telefoonnummer); ?></p>                
@@ -206,7 +206,7 @@
                       <h3 class = "media-heading"><b class = "white">Match</b></h3>
                         <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                         <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
-                        <img class = "image" src = "<?php echo "images/".$gebruikerBiedAan.".png"; ?>" width = "86" height = "86">
+                        <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
 
                       <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white"><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
                     </div>

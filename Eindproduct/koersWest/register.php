@@ -294,7 +294,7 @@
 
 	                  <!-- Submit button -->
 	                  <form action = "register.php" method = "POST">
-	                    <button type = "submit" class = "btn btn-primary" value = "Diensten bekijken">Bevestigen</button>
+	                    <button type = "submit" class = "btn btn-success" value = "Diensten bekijken">Bevestigen</button>
 	                    <input type = "hidden" value = "<?php echo $current_category['categorie']; ?>" name = "bevestig_categorie"/>
 	                    <input type = "hidden" value = "<?php echo $id; ?>" name = "id"/>
 	                  </form>
@@ -379,7 +379,7 @@
 
 			                  <!-- Submit button -->
 			                  <form action = "register.php" method = "POST">
-			                    <button type = "submit" class = "btn btn-primary" value = "Diensten bekijken">Bevestigen</button>
+			                    <button type = "submit" class = "btn btn-success" value = "Diensten bekijken">Bevestigen</button>
 			                    <input type = "hidden" value = "<?php echo $current_category['categorie']; ?>" name = "bevestig_slecht_in_categorie"/>
 			                    <input type = "hidden" value = "<?php echo $id; ?>" name = "id"/>
 			                  </form>
