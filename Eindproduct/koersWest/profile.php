@@ -682,7 +682,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <form action = "myServices.php" method = "POST">
+                <form action = "myOfferedServices.php" method = "POST">
                   <div class = "service_button">
                     <button type = "submit" class = "btn btn-primary">Bekijk diensten</button>
                   </div>
@@ -702,7 +702,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <form action = "myServices.php" method = "POST">
+                <form action = "myAskedForServices.php" method = "POST">
                   <div class = "service_button">
                     <button type = "submit" class = "btn btn-primary">Bekijk diensten</button>
                   </div>
@@ -712,23 +712,23 @@
             <!-- End of block -->
 
             <!-- Contacts block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_profile_small">
+            <!-- <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3"> -->
+              <!-- <div class = "block_profile_small"> -->
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Contacten</b></h3>
-                  <img class = "image" src = "images/contacts.png" width = "86" height = "86"><br><br>
-                </div>
+                <!-- <div class = "media-body"> -->
+                  <!-- <h3 class = "media-heading"><b class = "white">Contacten</b></h3> -->
+                  <!-- <img class = "image" src = "images/contacts.png" width = "86" height = "86"><br><br> -->
+                <!-- </div> -->
 
                 <!-- Submit button -->
-                <form action = "myContacts.php" method = "POST">
-                  <div class = "service_button">
-                    <button type = "submit" class = "btn btn-primary">Bekijk uw contacten</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+                <!-- <form action = "myContacts.php" method = "POST"> -->
+                  <!-- <div class = "service_button"> -->
+                    <!-- <button type = "submit" class = "btn btn-primary">Bekijk uw contacten</button> -->
+                  <!-- </div> -->
+                <!-- </form> -->
+              <!-- </div> -->
+            <!-- </div> -->
             <!-- End of block -->
 
             <!-- Back button block -->

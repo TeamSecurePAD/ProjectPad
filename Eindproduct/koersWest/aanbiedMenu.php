@@ -86,6 +86,7 @@
           <!-- Green band to indicate content section containing the actual title elements -->
           <div class = "tile_offer_service">
             <h1><c class = "white">Dienst aanbieden</c></h1>
+            <img class = "image" src = "images/offer_service.png" width = "86" height = "86">
             <?php
             if ($geselecteerde_categorie == "NONE")
             {
