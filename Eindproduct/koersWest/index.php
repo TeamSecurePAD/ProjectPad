@@ -1,7 +1,9 @@
   <?php
   session_start();
   require 'databaseConnectionOpening.php';
-
+  
+  header('location:home.php');
+    
   if (isset($_SESSION['user_id']))
   {
     $id = $_SESSION['user_id'];
