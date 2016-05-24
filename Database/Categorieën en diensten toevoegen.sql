@@ -19,7 +19,7 @@ VALUES
 	   ('Woningnet','Hulp bij het zoeken van een woning bij woningnet.','Woning'),
        ('Bezichtigingen','Hulp bij het reageren op bezichtigingen m.a.v. een datum prikken.','Woning'),
        ('E-mail gebruiken','Hulp bij het gebruik maken van email.','Computer'),
-       ('Internet configureren','Hulp bij het leren opzetten van een internet verbinding op de computer of telefoon.','Computer'),
+       ('Internet configureren','Hulp bij het leren opzetten van een internet verbinding.','Computer'),
        ('Social media','Hulp bij het leren grbuiken van social media.','Computer'),
        ('Computer aanschaffen','Hulp bij het uitkiezen van een nieuwe computer.','Computer');
        
@@ -27,7 +27,7 @@ VALUES
 INSERT INTO dienst (dienst, omschijving, Categorie_Categorie)
 VALUES 
        ('Virus verwijderen','Het laten verwijderen van een virus op de computer.','Computer'),
-       ('Mobiele telefoon','De basics van de mobiele telefoon zoals een sms versturen of applicaties installeren uitgelegd krijgen.','Computer'),
+       ('Mobiele telefoon','De basics van de mobiele telefoon.','Computer'),
        ('Post lezen','Leren hoe u de post moet lezen en waar u op moet letten.','Administratie'),
        ('Post afhandelen','Hulp bij het Post afhandelen van bijv. instanties.','Administratie'),
        ('Instanties bellen','Leer hoe je een gesprek kan voeren met instanties.','Administratie'),
@@ -38,7 +38,7 @@ VALUES
 INSERT INTO dienst (dienst, omschijving, Categorie_Categorie)
 VALUES 
        ('Online solliciteren','Leer hoe u kunt reageren op online sollicitaties.','Solliciteren'),
-       ('Inschrijven uitzendbureau','Laat u Inschrijven uitzendbureau om zo aan een baan te komen.','Solliciteren'),
+       ('Inschrijven uitzendbureau','Laat u Inschrijven uitzendbureau.','Solliciteren'),
        ('Verlof aanvragen','Leer hoe u verlof aan kunt vragen bij uw werkgever.','Solliciteren'),
        ('Sollicitatiegesprek','Leren hoe u een sollicitatiegesprek moet voeren.','Solliciteren'),
        ('Aanvragen DigiD','Hulp bij het aanvragen van een DigdiD.','Overheid'),
@@ -63,8 +63,8 @@ VALUES
        ('Knippen','Krijg hulp bij het knippen van uw haar.','Handwerk'),
        ('Elektriciteit','Hulp bij bedradingen e.d. in uw huis.','Handwerk'),
        ('Afwassen','Hulp bij het afwassen van uw serviesgoed.','Sanitair'),
-       ('Badkamer schoonmaken','Hulp bij het schoonmaken van uw badkamer en uw WC.','Sanitair'),
-       ('Hogedrukspuit','Laat uw keuken badkamer of toilet weer stralen door met een hogedrukspuit alles grondig schoon te maken.','Sanitair'),
+       ('Badkamer reinigen','Hulp bij het schoonmaken van uw badkamer en uw WC.','Sanitair'),
+       ('Hogedrukspuit','Laat uw keuken badkamer of toilet weer stralen.','Sanitair'),
        ('Openbaar vervoer','Hulp bij het gebruik maken van openbaar vervoer.','Vervoer'),
        ('Fietsen','Hulp in het leren fietsen zodat je zelf veilig met de fiets over straat kan.','Vervoer'),
        ('Eenvoudige gerechten','Leer eenvoudige gerechten maken zoals bijv. pasta of rijst.','Koken'),
@@ -76,7 +76,7 @@ VALUES
        ('Thee drinken','Samen lekker kopje thee drinken met gegarandeerd leuke gesprekstof.','Sociaal'),
        ('Uit eten gaan','Gezellig Uit eten gaan met zn 2en of in een groep.','Sociaal'),
        ('Luisterend oor','Het luisterend oor voor uw problemen of juist een gezellig gesprek.','Sociaal'),
-       ('Activiteiten','Gezellig samen of in een groepsverband activiteiten houden zoals bowlen of hardlopen.','Sociaal'),
+       ('Activiteiten','Gezellig samen of in een groepsverband activiteiten houden.','Sociaal'),
        ('Sporten','Samen elkaar motiveren om je doel te behalen!','Sociaal'),
        ('Bordspel spelen','Elkaar gezelschap houden door samen een bordspel te spelen.','Sociaal'),
        ('Film kijken','Samen gezellig een fimpje kijken, dat kan zowel thuis als in de bioscoop.','Sociaal');
