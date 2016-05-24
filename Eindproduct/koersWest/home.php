@@ -151,7 +151,7 @@
                   </div>
 
                   <!-- Submit button -->
-                  <form action = "matchNavigationMenu.php">
+                  <form action = "matchIndex.php">
                     <button type = "submit" class = "btn btn-primary">Bekijk uw matches</button>
                   </form>
                 </div>
