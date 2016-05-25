@@ -4,7 +4,7 @@
 	  <!-- Gray band to indicate content section containing the actual title of the app -->
 	  <a href = "home.php">
 	  <div class = "subheadertitle">
-	    <span title = "Terug naar home"><h1><c class = "white">KoersWest</c></h1></span>
+	    <span title = "Terug naar home"><h1><c class = "blue">KoersWest</c></h1></span>
 	  </div>
 	  </a>
 	</div>
