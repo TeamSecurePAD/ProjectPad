@@ -145,8 +145,6 @@
     			 {
     			 ?>
 
-          <div class = "tile_info">
-            <h3><b class = "white">Gegevens</b></h3>
             <?php 
             if (!empty($message)) {
             	?>
@@ -417,6 +415,8 @@
 
         </div>
       </div>
+    </div>
+    </div>
     </div>
     <br>
 

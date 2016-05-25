@@ -59,10 +59,10 @@
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Green band to indicate content section with actual title elements -->
-          <div class = "block_categorie">
+          <div class = "tile_categorie">
             <h1><c class = "white">Categorie contacten</c></h1>
             <img class = "image" src = "images/contacts.png" width = "150" height = "150">
-            <h2><c class = "white">Hier staan de goedgekeurde matches. Je kan nu zelf contact opnemen met je matches</c></h2>
+            <h2><c class = "white">Hier staan de goedgekeurde matches. Je kan nu zelf contact opnemen met je contacten.</c></h2>
           </div>
         </div>
 

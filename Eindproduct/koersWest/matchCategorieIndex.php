@@ -22,13 +22,15 @@
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Green band to indicate content section with actual title elements -->
-          <div class = "block_categorie">
+          <div class = "tile_categorie">
             <h1><c class = "white">Categorie matches</c></h1>
             <img class = "image" src = "images/label.png" width = "150" height = "150">
-            <h2><c class = "white">Selecteer of je matches wil keuren of naar contacten wil</c></h2>
+            <h2><c class = "white">Selecteer of je matches wilt keuren of naar je contacten wilt.</c></h2>
           </div>
         </div>
 
+        <!-- Subbody div indicates main area of user interaction and important content -->
+        <div class = "subbody">
 
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">

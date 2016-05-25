@@ -52,6 +52,18 @@
     // Provides a list of all categories in the database
     $query_all_categories = "SELECT categorie FROM categorie";
     $categories = mysqli_query($connection, $query_all_categories);
+
+    $show_categories = false;
+    $show_services = false;
+
+    if ($geselecteerde_categorie == "NONE")
+    {
+      $show_categories = true;
+    }
+    else
+    {
+      $show_services = true;
+    }
   }
   else // Return to the welcome page
   {
@@ -85,19 +97,21 @@
         <div class = "title">
           <!-- Cyan band to indicate content section containing the actual title elements -->
           <div class = "tile_ask_for_service">
-            <h1><c class = "white">Dienst vragen</c></h1>
-            <img class = "image" src = "images/ask_for_service.png" width = "86" height = "86">
             <?php
-            if ($geselecteerde_categorie == "NONE")
+            if ($show_categories)
             {
               ?>
+              <h1><c class = "white">Dienst vragen</c></h1>
+              <img class = "image" src = "images/ask_for_service.png" width = "86" height = "86">
               <h2><c class = "white">Selecteer een categorie om diensten te tonen.</c></h2>
               <?php
             }
-            else
+            else if ($show_services)
             {
               ?>
-              <h2><c class = "white">Selecteer een dienst om hulp bij te vragen.</c></h2>
+              <h1><c class = "white">Dienst vragen <?php echo "uit categorie ".$geselecteerde_categorie ?></c></h1>
+              <img class = "image" src = "images/<?php echo $geselecteerde_categorie; ?>.png" width = "86" height = "86">
+              <h2><c class = "white">Selecteer een dienst om te vragen hieronder.</c></h2>
               <?php
             }
             ?>
@@ -106,25 +120,6 @@
 
         <!-- Subbody div indicates main area of user interaction and important content -->
         <div class = "subbody">
-          <?php
-          $show_categories = false;
-          $show_services = false;
-
-          // Subbody title to indicate current page
-          echo "<div class = \"tile_ask_for_service\">";
-          if ($geselecteerde_categorie != "NONE")
-          {
-            echo "<h3><b class = \"white\">".$geselecteerde_categorie."</b></h3>";
-            $show_services = true;
-          }
-          else
-          {
-            echo "<h3><b class = \"white\">Categorieën</b></h3>";
-            $show_categories = true;
-          }
-          echo "</div>";
-          ?>
-
           <?php
           if ($show_categories)
           {
@@ -161,7 +156,7 @@
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar hoofdmenu</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Terug naar menu</b></h3>
                   <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
                 </div>
 

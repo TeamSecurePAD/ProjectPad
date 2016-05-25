@@ -90,11 +90,11 @@
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Green band to indicate content section with actual title elements -->
-          <div class = "block_dienst">
+          <div class = "tile_dienst">
             <h1><c class = "white">Dienst matches keuren</c></h1>
             <img class = "image" src = "images/approve.png" width = "150" height = "150">
-            <h2><c class = "white">In dit scherm staan alle matches gebaseerd op wat je aanbied en vraagt.
-                                   Je kan er voor kiezen of je contact gegevens wil uitwisselen</c></h2>
+            <h2><c class = "white">In dit scherm staan alle matches gebaseerd op wat je aanbiedt en vraagt.
+                                   Je kan kiezen of je wel of niet contactgegevens wilt uitwisselen.</c></h2>
           </div>
         </div>
 

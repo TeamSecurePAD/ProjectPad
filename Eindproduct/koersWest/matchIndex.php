@@ -25,10 +25,12 @@
           <div class = "tile_info">
             <h1><c class = "white">Soort match kiezen</c></h1>
             <img class = "image" src = "images/handshake_2.png" width = "150" height = "150">
-            <h2><c class = "white">Selecteer hieronder wat voor soort match je zoekt</c></h2>
+            <h2><c class = "white">Selecteer hieronder wat voor soort match je zoekt.</c></h2>
           </div>
         </div>
 
+        <!-- Subbody div indicates main area of user interaction and important content -->
+        <div class = "subbody">
 
             <!-- Start of voorbeeld block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">

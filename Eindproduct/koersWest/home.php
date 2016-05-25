@@ -74,17 +74,12 @@
           <div class = "title">
             <!-- Deep blue band to indicate content section containing the actual title elements -->
             <div class = "tile_primary">
-              <h1><c class = "white">Hoofdmenu</c></h1>
-              <h2><c class = "white">Selecteer een optie uit het menu om naar die pagina te gaan.</c></h2>
+              <h1><c class = "white">Menu</c></h1>
             </div>
           </div>
 
           <!-- Subbody div indicates main area of user interaction and important content -->
           <div class = "subbody">
-
-            <div class = "tile_primary">
-              <h3><b class = "white">Pagina's</b></h3>
-            </div>
 
               <!-- Profile page block -->
               <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -193,17 +188,12 @@
           <div class = "title">
             <!-- Deep blue band to indicate content section containing the actual title elements -->
             <div class = "tile_primary">
-              <h1><c class = "white">Welkom bij KoersWest!</c></h1>
-              <h2><c class = "white">Log in om verder te gaan naar de applicatie of registreer een nieuw account.</c></h2>
+              <h1><c class = "white">Welkom</c></h1>
             </div>
           </div>
 
           <!-- Subbody div indicates main area of user interaction and important content -->
           <div class = "subbody">
-
-            <div class = "tile_primary">
-              <h3><b class = "white">Opties</b></h3>
-            </div>
 
               <!-- Login block -->
               <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -232,7 +222,7 @@
                   <div class = "media-body">
                     <h3 class = "media-heading"><b class = "white">Registreren</b></h3>
                     <img class = "image" src = "images/register.png" width = "86" height = "86"><br><br>
-                    Op deze pagina kunt u een nieuw account aanmaken.<br><br>
+                    Bent u hier voor de eerste keer, dan kunt u hier een account aanmaken.<br><br>
                   </div>
 
                   <!-- Submit button -->

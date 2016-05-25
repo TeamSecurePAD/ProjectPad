@@ -144,18 +144,18 @@
             else if (!empty($_POST['new_email'])) // User neglected to enter phone number
             {
               $message = 'U dient een telefoonnummer in te vullen.';
-              $error_number = 14;
+              $error_number = 15;
             }
             else if (!empty($_POST['new_telnummer'])) // User neglected to enter e-mail address
             {
               $message = 'U dient een e-mail adres in te vullen.';
-              $error_number = 15;
+              $error_number = 16;
             }
           }
           else // No fields entered
           {
             $message = 'U dient een e-mail adres en telefoonnummer in te vullen.';
-            $error_number = 16;
+            $error_number = 17;
           }
         }
 
@@ -186,36 +186,51 @@
               else // Unknown error in database update
               {
                 $message = 'Er is een onbekende fout opgetreden in het aanpassen van uw adresgegevens.<br><br>Probeer later opnieuw uw gegevens aan te passen of neem contact op met een medewerker van BOOT als deze fout zich herhaalt.';
-                $error_number = 101;
+                $error_number = 103;
               }
             }
-            else if (!empty($_POST['new_voornaam'])) // User neglected to enter last name
+            else if (!empty($_POST['new_straat']) && !empty($_POST['new_postcode'])) // User neglected to enter city of residence
             {
-              $message = 'U dient een achternaam in te vullen.';
-              $error_number = 16;
-            }
-            else if (!empty($_POST['new_achternaam'])) // User neglected to enter first name
-            {
-              $message = 'U dient een voornaam in te vullen.';
-              $error_number = 17;
-            }
-            else // User neglected to enter first and last name
-            {
-              $message = 'U dient een voor- en achternaam in te vullen.';
+              $message = 'U dient een woonplaats in te vullen.';
               $error_number = 18;
+            }
+            else if (!empty($_POST['new_postcode']) && !empty($_POST['new_woonplaats'])) // User neglected to enter street
+            {
+              $message = 'U dient een straat in te vullen.';
+              $error_number = 19;
+            }
+            else if (!empty($_POST['new_straat']) && !empty($_POST['new_woonplaats'])) // User neglected to enter postal code
+            {
+              $message = 'U dient een postcode in te vullen.';
+              $error_number = 20;
+            }
+            else if (!empty($_POST['new_straat'])) // User neglected to enter postal code and city of residence
+            {
+              $message = 'U dient een postcode en woonplaats in te vullen.';
+              $error_number = 21;
+            }
+            else if (!empty($_POST['new_postcode'])) // User neglected to enter street and city of residence
+            {
+              $message = 'U dient een straat en woonplaats in te vullen.';
+              $error_number = 22;
+            }
+            else if (!empty($_POST['new_woonplaats'])) // User neglected to enter street and postal code
+            {
+              $message = 'U dient een straat en postcode in te vullen.';
+              $error_number = 23;
             }
           }
           else // No fields entered
           {
-            $message = 'U dient een voor- en achternaam in te vullen.';
-            $error_number = 19;
+            $message = 'U dient een straat, postcode en woonplaats in te vullen.';
+            $error_number = 24;
           }
         }
       }
       else if ($_POST['submit'] == "cancel") // User clicked the cancel button to revert changes
       {
-        $message = 'De bewerking is ongedaan gemaakt.';
-        $error_number = 1;
+        // $message = 'De bewerking is ongedaan gemaakt.';
+        // $error_number = 1;
 
         $edit_personal_information = false;
         $edit_contact_information = false;
@@ -291,57 +306,47 @@
         //   * Aangeboden diensten
         //   * Gevraagde diensten
         //   * Contacten
-        //   * Terug naar hoofdmenu
+        //   * Terug naar menu
         // -------------------------------------------- //
         ?>
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
-          <!-- Deep blue band to indicate content section containing the actual title elements -->
+          <!-- Band to indicate content section containing the actual title elements -->
           <div class = "tile_profile">
-            <h1><c class = "white">
-              Profiel van <?php
-                            if (!empty($tussenvoegsel))
-                            {
-                              echo $voornaam." ".$tussenvoegsel." ".$achternaam;
-                            }
-                            else
-                            {
-                              echo $voornaam." ".$achternaam;
-                            }
-                          ?>
-            </c></h1>
-            <h2><c class = "white">
             <?php
             if ($page == "user_data")
             {
-              echo "Uw persoonlijke informatie.<br>Deze informatie is zichtbaar voor u en al uw contacten.";
+                ?>
+
+                <h1><c class = "white">Persoonlijke gegevens</c></h1>
+
+                <?php
             }
             else
             {
-              echo "Selecteer een onderdeel van uw profiel om te bekijken.";
+              ?>
+
+              <h1><c class = "white">
+                Profiel van <?php
+                              if (!empty($tussenvoegsel))
+                              {
+                                echo $voornaam." ".$tussenvoegsel." ".$achternaam;
+                              }
+                              else
+                              {
+                                echo $voornaam." ".$achternaam;
+                              }
+                            ?>
+              </c></h1>
+
+              <?php
             }
             ?>
-            </c></h2>
           </div>
         </div>
 
         <!-- Subbody div indicates main area of user interaction and important content -->
         <div class = "subbody">
-
-          <div class = "tile_profile">
-            <h3><b class = "white">
-            <?php
-            if ($page == "user_data")
-            {
-              echo "Uw gegevens";
-            }
-            else
-            {
-              echo "Onderdelen";
-            }
-            ?>
-            </b></h3>
-          </div>
 
           <?php
           if ($page == "user_data") // Display personal user data
@@ -426,7 +431,7 @@
                     </div>
 
                     <div class = "service_button">
-                      <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Gegevens bijwerken</button>
+                      <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Opslaan</button>
                       <button type = "submit" class = "btn btn-danger" value = "cancel" name = "submit">Annuleren</button>
                       <input type = "hidden" value = "true" name = "edit_personal_information"/>
                       <input type = "hidden" value = "true" name = "show_data"/>
@@ -453,15 +458,15 @@
                   </div>
 
                   <div class = "tile_profile_dark">
-                    <b>Voornaam: </b><?php echo $voornaam; ?><br>
-                    <b>Tussenvoegsel: </b><?php if (!empty($tussenvoegsel)) { echo $tussenvoegsel; } else { echo "(geen)"; } ?><br>
-                    <b>Achternaam: </b><?php echo $achternaam; ?><br>
+                    <b>Voornaam: </b><br><?php echo $voornaam; ?><br>
+                    <b>Tussenvoegsel: </b><br><?php if (!empty($tussenvoegsel)) { echo $tussenvoegsel; } else { echo "(geen)"; } ?><br>
+                    <b>Achternaam: </b><br><?php echo $achternaam; ?><br>
                   </div>
 
                   <!-- Submit button -->
                   <form action = "profile.php" method = "POST">
                     <div class = "service_button">
-                      <button type = "submit" class = "btn btn-primary">Gegevens bewerken</button>
+                      <button type = "submit" class = "btn btn-primary">Gegevens aanpassen</button>
                       <input type = "hidden" value = "true" name = "edit_personal_information"/>
                       <input type = "hidden" value = "true" name = "show_data"/>
                     </div>
@@ -500,7 +505,7 @@
                     </div>
 
                     <div class = "service_button">
-                      <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Gegevens bijwerken</button>
+                      <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Opslaan</button>
                       <button type = "submit" class = "btn btn-danger" value = "cancel" name = "submit">Annuleren</button>
                       <input type = "hidden" value = "true" name = "edit_contact_information"/>
                       <input type = "hidden" value = "true" name = "show_data"/>
@@ -527,14 +532,14 @@
                   </div>
 
                   <div class = "tile_profile_dark">
-                    <b>E-mail adres: </b><?php echo $email; ?><br>
-                    <b>Telefoonnummer: </b><?php echo $telnummer; ?><br>
+                    <b>E-mail adres: </b><br><?php echo $email; ?><br>
+                    <b>Telefoonnummer: </b><br><?php echo $telnummer; ?><br>
                   </div>
 
                   <!-- Submit button -->
                   <form action = "profile.php" method = "POST">
                     <div class = "service_button">
-                      <button type = "submit" class = "btn btn-primary">Gegevens bewerken</button>
+                      <button type = "submit" class = "btn btn-primary">Gegevens aanpassen</button>
                       <input type = "hidden" value = "true" name = "edit_contact_information"/>
                       <input type = "hidden" value = "true" name = "show_data"/>
                     </div>
@@ -575,7 +580,7 @@
                     </div>
 
                     <div class = "service_button">
-                      <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Gegevens bijwerken</button>
+                      <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Opslaan</button>
                       <button type = "submit" class = "btn btn-danger" value = "cancel" name = "submit">Annuleren</button>
                       <input type = "hidden" value = "true" name = "edit_address_information"/>
                       <input type = "hidden" value = "true" name = "show_data"/>
@@ -602,15 +607,15 @@
                   </div>
 
                   <div class = "tile_profile_dark">
-                    <b>Straat: </b><?php echo $straat; ?><br>
-                    <b>Postcode: </b><?php echo $postcode; ?><br>
-                    <b>Woonplaats: </b><?php echo $woonplaats; ?><br>
+                    <b>Straat: </b><br><?php echo $straat; ?><br>
+                    <b>Postcode: </b><br><?php echo $postcode; ?><br>
+                    <b>Woonplaats: </b><br><?php echo $woonplaats; ?><br>
                   </div>
 
                   <!-- Submit button -->
                   <form action = "profile.php" method = "POST">
                     <div class = "service_button">
-                      <button type = "submit" class = "btn btn-primary">Gegevens bewerken</button>
+                      <button type = "submit" class = "btn btn-primary">Gegevens aanpassen</button>
                       <input type = "hidden" value = "true" name = "edit_address_information"/>
                       <input type = "hidden" value = "true" name = "show_data"/>
                     </div>
@@ -737,7 +742,7 @@
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar hoofdmenu</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Terug naar menu</b></h3>
                   <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
                 </div>
 

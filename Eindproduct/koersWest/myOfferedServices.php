@@ -36,7 +36,7 @@
   }
   else // Return to the welcome page
   {
-    header('location:index.php');
+    header('location:home.php');
   }
 ?>
 
@@ -121,7 +121,13 @@
                   <!-- Block text -->
                   <div class = "media-body">
                     <h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
-                    <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
+                    <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br>
+                    <b>
+                      <?php
+                      $number_of_services = 0;
+                      
+                      ?>
+                    </b><br>
                   </div>
 
                   <!-- Submit button -->
@@ -185,7 +191,7 @@
               {
                 if ($own_current_service)
                 {
-            	  $any_services = true;
+                  $any_services = true;
                   ?>
                   <!-- Block that shows an owned service -->
                   <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">

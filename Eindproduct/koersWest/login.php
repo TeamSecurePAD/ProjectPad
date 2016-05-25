@@ -117,7 +117,7 @@
           <!-- Deep blue band to indicate content section containing the actual title elements -->
           <div class = "tile_primary">
             <h1><c class = "white">Inlogscherm</c></h1>
-            <h2><c class = "white">Voer uw gegevens in om in te loggen bij KoersWest.</c></h2>
+            <!-- <h2><c class = "white">Voer uw gegevens in om in te loggen bij KoersWest.</c></h2> -->
           </div>
           <!-- End of colored title band -->
         </div>
@@ -125,10 +125,6 @@
 
         <!-- Subbody div indicates main area of user interaction and important content -->
         <div class = "subbody">
-
-          <div class = "tile_primary">
-            <h3><b class = "white">Opties</b></h3>
-          </div>
 
           <?php
           // Show (error) message to the user after a failed login attempt has been made

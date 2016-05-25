@@ -268,12 +268,12 @@ div.tile_ask_for_service
 	margin: 5px;
 }
 
-/** div for showing salmon colored tiles in subsections **/
+/** div for showing lime green tiles in subsections **/
 div.tile_profile
 {
 	border-radius: 5px;
 
-	background-color: rgb(255, 179, 128);
+	background-color: rgb(153, 204, 0);
 
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -283,15 +283,31 @@ div.tile_profile
 	margin: 5px;
 }
 
-/** div for showing white tiles in subsections **/
+/** div for showing lime green tiles in subsections **/
+div.tile_profile_services
+{
+	border-radius: 5px;
+
+	background-color: rgb(153, 204, 0);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/** div for showing dark lime tiles in subsections **/
 div.tile_profile_dark
 {
 	border-radius: 5px;
 
-	background-color: rgb(255, 148, 77);
+	background-color: rgb(96, 128, 0);
 
 	text-align: left;
-	font-size: 20px;
+	font-size: 16px;
 
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -307,6 +323,36 @@ div.tile_confirmed
 	border-radius: 5px;
 
 	background-color: rgb(255, 153, 51);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing bright blue colored tiles in subsections **/
+div.tile_dienst
+{
+	border-radius: 5px;
+
+	background-color: rgb(51, 51, 255);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing dark purple colored tiles in subsections **/
+div.tile_categorie
+{
+	border-radius: 5px;
+
+	background-color: rgb(133, 51, 255);
 
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -342,7 +388,7 @@ div.block_primary
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -357,7 +403,7 @@ div.block_primary_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -374,7 +420,7 @@ div.block_success
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -391,7 +437,7 @@ div.block_success_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -408,7 +454,7 @@ div.block_success2
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -425,7 +471,7 @@ div.block_success2_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -440,7 +486,7 @@ div.block_info
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -455,7 +501,7 @@ div.block_info_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -469,7 +515,7 @@ div.block_info_medium
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 300px;
 }
 
@@ -483,7 +529,7 @@ div.block_info_large
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 350px;
 }
 
@@ -497,7 +543,7 @@ div.block_info_extra_large
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 400px;
 }
 
@@ -513,7 +559,7 @@ div.block_warning
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -528,7 +574,7 @@ div.block_warning_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -543,7 +589,7 @@ div.block_error_small_blue
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     /*min-height: 200px;*/
     min-width: 25%;
     max-width: 100%;
@@ -562,7 +608,7 @@ div.block_error_small_green
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     /*min-height: 200px;*/
     min-width: 25%;
     max-width: 100%;
@@ -581,7 +627,7 @@ div.block_error_small_orange
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     /*min-height: 200px;*/
     min-width: 25%;
     max-width: 100%;
@@ -600,7 +646,7 @@ div.block_error_small_red
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     /*min-height: 200px;*/
     min-width: 25%;
     max-width: 100%;
@@ -619,7 +665,7 @@ div.block_danger
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -634,12 +680,13 @@ div.block_danger_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
 /** General block DIV used in navigating the website - light green **/
 div.block_offer_service
+
 {
 	/*border: 2px solid rgb(150, 0, 0);*/
     border-radius: 10px;
@@ -649,7 +696,7 @@ div.block_offer_service
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -664,7 +711,7 @@ div.block_offer_service_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -679,7 +726,7 @@ div.block_ask_for_service
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -694,7 +741,7 @@ div.block_ask_for_service_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -704,12 +751,12 @@ div.block_profile
 	/*border: 2px solid rgb(150, 0, 0);*/
     border-radius: 10px;
 
-    background-color: rgb(255, 179, 128);
+    background-color: rgb(153, 204, 0);
 
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 300px;
 }
 
@@ -719,12 +766,12 @@ div.block_profile_edit
 	/*border: 2px solid rgb(150, 0, 0);*/
     border-radius: 10px;
 
-    background-color: rgb(255, 117, 26);
+    background-color: rgb(77, 102, 0);
 
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 300px;
 }
 
@@ -734,12 +781,12 @@ div.block_profile_small
 	/*border: 2px solid rgb(150, 0, 0);*/
     border-radius: 10px;
 
-    background-color: rgb(255, 179, 128);
+    background-color: rgb(153, 204, 0);
 
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -754,7 +801,7 @@ div.block_confirmed
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -769,7 +816,7 @@ div.block_confirmed_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
 
@@ -783,7 +830,7 @@ div.block_confirmed_medium
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 300px;
 }
 
@@ -797,7 +844,7 @@ div.block_confirmed_large
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 350px;
 }
 
@@ -811,7 +858,7 @@ div.block_confirmed_extra_large
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 400px;
 }
 
@@ -826,7 +873,7 @@ div.block_grey
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -841,10 +888,9 @@ div.block_grey_small
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 200px;
 }
-
 
 div.block_categorie
 {
@@ -856,7 +902,7 @@ div.block_categorie
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -870,7 +916,7 @@ div.block_categorie_medium
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 300px;
 }
 
@@ -884,7 +930,7 @@ div.block_categorie_extra_large
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 400px;
 }
 
@@ -898,7 +944,7 @@ div.block_dienst
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 275px;
 }
 
@@ -912,7 +958,7 @@ div.block_dienst_medium
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 300px;
 }
 
@@ -926,13 +972,16 @@ div.block_dienst_extra_large
     color: rgb(255, 255, 255);
 
     padding: 10px;
-    margin: 5px;
+    /*margin: 5px;*/
     min-height: 400px;
 }
 
 div.block
 {
 	display: inline-block;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 div.service_button

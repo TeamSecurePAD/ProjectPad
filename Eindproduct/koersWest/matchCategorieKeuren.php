@@ -73,11 +73,11 @@ if (isset($_SESSION['user_id']))
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Green band to indicate content section with actual title elements -->
-          <div class = "block_categorie">
+          <div class = "tile_categorie">
             <h1><c class = "white">Categorie matches keuren</c></h1>
             <img class = "image" src = "images/approve.png" width = "150" height = "150">
             <h2><c class = "white">In dit scherm staan alle matches gebaseerd op de categorie waar jullie goed in zijn.
-                                   Je kan er voor kiezen of je contact gegevens wil uitwisselen</c></h2>
+                                   Je kan kiezen of je wel of niet je contactgegevens wilt uitwisselen.</c></h2>
           </div>
         </div>
 
