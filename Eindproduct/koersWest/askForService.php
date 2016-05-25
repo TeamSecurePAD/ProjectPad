@@ -10,6 +10,37 @@
     // User's session id, used to reference currently logged in user in database queries
     $id = $_SESSION['user_id'];
 
+    $removeService = '';
+
+    if (!empty($_POST['message_title']))
+    {
+      $message_title = $_POST['message_title'];
+    }
+    else
+    {
+      $message_title = '';
+    }
+
+    if (!empty($_POST['message']))
+    {
+      $message = $_POST['message'];
+    }
+    else
+    {
+      $message = '';
+    }
+
+    if (!empty($_POST['removeService']))
+    {
+      $removeService = $_POST['removeService'];
+
+      $query_remove_service = "DELETE FROM gebruiker_vraagt_dienst
+                               WHERE Gebruiker_Id = '$id'
+                               AND Dienst_dienst = '$removeService'";
+
+      mysqli_query($connection, $query_remove_service);
+    }
+
     // If a service has just been asked for
     if (!empty($_POST['te_vragen_dienst']))
     {
@@ -111,7 +142,7 @@
               ?>
               <h1><c class = "white">Dienst vragen <?php echo "uit categorie ".$geselecteerde_categorie ?></c></h1>
               <img class = "image" src = "images/<?php echo $geselecteerde_categorie; ?>.png" width = "86" height = "86">
-              <h2><c class = "white">Selecteer een dienst om te vragen hieronder.</c></h2>
+              <h2><c class = "white">Selecteer een dienst om te vragen.</c></h2>
               <?php
             }
             ?>
@@ -120,6 +151,28 @@
 
         <!-- Subbody div indicates main area of user interaction and important content -->
         <div class = "subbody">
+        
+          <?php
+          if (!empty($message))
+          {
+            ?>
+            <!-- Service removed notice -->
+            <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class = "block_error_small_green">
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white"><?php echo $message_title; ?></b></h3>
+                  <img class = "image" src = "images/bin.png" width = "86" height = "86"><br>
+                  <b class = "white"><?php echo $message; ?></b>
+                </div>
+
+              </div>
+            </div>
+            <?php
+          }
+          ?>
+
           <?php
           if ($show_categories)
           {
@@ -228,17 +281,26 @@
                 else if (!($te_vragen_dienst == $current_service['dienst']))
                 {
                   ?>
-                  <!-- Block that shows a potentially askable service -->
+                  <!-- Block that shows a service that is already being asked for -->
                   <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class = "block_success2">
 
                       <!-- Block text -->
                       <div class = "media-body">
                         <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
-                        <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
-                        <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
+                        <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
+                        <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?> -->
+                        <h3 class = "media-heading"><b class = "white">U vraagt al om deze dienst.</b></h3>
 
-                        <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white">U vraagt al om deze dienst.</b></h3>
+                        <form action = "askForService.php" method = "POST">
+                          <div class = "service_button">
+                            <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Verwijderen</button>
+                            <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
+                            <input type = "hidden" value = "<?php echo $geselecteerde_categorie; ?>" name = "geselecteerde_categorie"/>
+                            <input type = "hidden" value = "Dienst verwijderd" name = "message_title"/>
+                            <input type = "hidden" value = "U vraagt niet langer om de dienst &quot;<?php echo $current_service['dienst']; ?>&quot;." name = "message"/>
+                          </div>
+                        </form>
                       </div>
 
                     </div>
@@ -262,10 +324,19 @@
                     <!-- Block text -->
                     <div class = "media-body">
                       <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
-                      <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
-                      <b>Omschrijving: </b><?php echo $current_service['omschijving'];?><br>
+                      <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
+                      <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?><br> -->
+                      <h3 class = "media-heading"><b class = "white">U vraagt vanaf nu om deze dienst.</b></h3>
 
-                      <h3 class = "media-heading" style = "margin-left: -5px; margin-right: -5px; position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white">U vraagt vanaf nu om deze dienst.</b></h3>
+                      <form action = "askForService.php" method = "POST">
+                        <div class = "service_button">
+                          <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Annuleren</button>
+                          <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
+                          <input type = "hidden" value = "<?php echo $geselecteerde_categorie; ?>" name = "geselecteerde_categorie"/>
+                          <!-- <input type = "hidden" value = "Bewerking geannuleerd" name = "message_title"/> -->
+                          <!-- <input type = "hidden" value = "Aanbieden <?php echo $current_service['dienst']; ?> geannuleerd." name = "message"/> -->
+                        </div>
+                      </form>
                     </div>
 
                   </div>
