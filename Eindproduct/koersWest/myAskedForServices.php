@@ -23,6 +23,20 @@
     // Provides a list of all categories in the database
     $query_all_categories = "SELECT categorie FROM categorie";
     $categories = mysqli_query($connection, $query_all_categories);
+
+    if (!empty($_POST['removeService']))
+    {
+
+        $removeService = $_POST['removeService'];
+
+        $query_remove_service = "DELETE FROM gebruiker_vraagt_dienst
+                                 WHERE Gebruiker_Id = $id
+                                 AND   Dienst_dienst = '$removeService'";
+
+        mysqli_query($connection, $query_remove_service);
+    }
+
+
   }
   else // Return to the welcome page
   {
@@ -85,9 +99,7 @@
             {
               // Used to check if the user already owns a service
               $own_current_service = false;
-              ?>
 
-              <?php
               // Loops through the user's services to check if the current service is being asked for
               while($my_current_service = $my_services->fetch_assoc())
               {
@@ -104,32 +116,66 @@
               {
                 if ($own_current_service)
                 {
+                    $blockNumber = 1;
+
+                    // Used to check if the service is removed
+                    if (!empty($_POST['removeService']))
+                    {
+                      if ($_POST['removeService'] == $current_service['dienst']){
+                        $blockNumber = 2;
+                      }
+                    }
+
+                  if ($blockNumber == 1) 
+                  {
                   $any_services = true;
                   ?>
-                  <!-- Block that shows an owned service -->
-                  <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class = "block_ask_for_service">
+                    <!-- Block that shows an owned service -->
+                    <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                      <div class = "block_ask_for_service">
 
-                      <!-- Block text -->
-                      <div class = "media-body">
-                        <img class = "image" src = "<?php echo "images/".$current_category["categorie"].".png"; ?>" width = "43" height = "43" style = "position: absolute; right: 30px; bottom: 15px;">
-                        <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
-                        <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
-                        <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
+                        <!-- Block text -->
+                        <div class = "media-body">
+                          <img class = "image" src = "<?php echo "images/".$current_category["categorie"].".png"; ?>" width = "43" height = "43" style = "position: absolute; right: 30px; bottom: 15px;">
+                          <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
+                          <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
+                          <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
 
-                        <form action = "myAskedForServices.php" method = "POST">
-                          <div class = "service_button">
-                            <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Verwijderen</button>
-                          </div>
-                        </form>
+                          <form action = "myAskedForServices.php" method = "POST">
+                            <div class = "service_button">
+                              <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Verwijderen</button>
+                              <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
+                            </div>
+                          </form>
+                        </div>
+
                       </div>
-
                     </div>
-                  </div>
                   <?php
-                }
-                ?>
+                  }
+                  else
+                  if ($blockNumber == 2) 
+                  {
+                  ?>
+
+                  <!-- Block that shows an owned service -->
+                    <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                      <div class = "block_confirmed">
+
+                        <!-- Block text -->
+                        <div class = "media-body">
+                          <img class = "image" src = "<?php echo "images/".$current_category["categorie"].".png"; ?>" width = "43" height = "43" style = "position: absolute; right: 30px; bottom: 15px;">
+                          <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
+                          <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
+                          <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
+
+                          <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white">U vraagt <?php echo($current_service["dienst"])?> niet langer</b></h3>                        </div>
+
+                      </div>
+                    </div>
                 <?php
+                  }
+                }
               }
               ?>
 
