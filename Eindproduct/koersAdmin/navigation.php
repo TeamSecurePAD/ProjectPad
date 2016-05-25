@@ -29,10 +29,9 @@
 
 				<div class="collapse navbar-collapse" id = "collapsemenu">
 					<ul class= "nav navbar-nav">
-							<li><a href="overzichtGebruikers.php">Gebruikers</a></li>
+							<li><a href="gebruikerOverzicht.php">Gebruikers</a></li>
 							<li><a href="dienstenOverzicht.php">Diensten</a></li>
 							<li><a href="categorieOverzicht.php">Categoriën</a></li>
-							<li><a href="Meldingen.php">Meldingen</a></li>
 					</ul>
 				</div>
 			</div>

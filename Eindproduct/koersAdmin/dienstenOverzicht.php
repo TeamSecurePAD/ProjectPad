@@ -1,8 +1,16 @@
   <?php
   require 'databaseConnectionOpening.php';
+
+  $categorie = "";
+
+     if (!empty($_POST['categorie']))
+    {
+      $categorie = $_POST['categorie'];
+    }
   
    $query = "SELECT dienst
-             FROM dienst";
+             FROM dienst
+             WHERE Categorie_Categorie = '$categorie'";
 
    $result = mysqli_query($connection, $query);
 
@@ -24,6 +32,13 @@
 
    $totaalDiensten += $row_gevraagd_count['totalGevraagdCount'];
 
+      $query_all_categories = "SELECT Categorie FROM Categorie";
+      $result_all_categories = mysqli_query($connection, $query_all_categories);
+
+      while ($row_categories = $result_all_categories->fetch_assoc()) {
+        $list_categories[] = $row_categories['Categorie'];
+        }
+
   ?>
 
   <!DOCTYPE html>
@@ -41,6 +56,27 @@
     <?php 
     include("Navigation.php");
     ?>
+    <form action="dienstenOverzicht.php" method="POST">
+      <nav class = "navbar navbar-inverse">
+        <div class = "container">
+          <ul class = "nav navbar-nav">
+            <li><label style="padding: 5px; margin: 5px;" for="selectCategorie"><b class="white">Categorie:</b></label></li>
+            <li><select style="padding: 5px; margin: 5px;" class="form-control" id="selectCategorie" name="categorie">
+              <?php
+                foreach ($list_categories as $rows)
+                {
+                      echo"<option>";
+                      echo ($rows);
+                      echo "</option>";
+                } 
+              ?>
+            </select></li>
+
+            <li><input style="margin: 10px;" type="submit" name="submit" value="Zoeken"></li>
+          </ul>
+        </div>
+      </nav>
+    </form>
     <div class="container">
 
       <table class="table">
@@ -54,6 +90,7 @@
         </thead>
         <tbody>
           <?php 
+
           while ($row = $result->fetch_assoc()) {
 
             $dienstNaam = $row['dienst'];

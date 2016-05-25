@@ -18,6 +18,8 @@
     include("Navigation.php");
     ?>
 
+    <h1>Welkom medewerker</h1>
+
    
 
     <script src="js/jquery-2.1.4.min.js"></script>
