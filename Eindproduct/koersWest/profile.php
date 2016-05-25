@@ -374,16 +374,22 @@
                     {
                       $error_title = "Bewerking voltooid";
                     }
+
+                    $error_icon = "thumbsUp";
                   }
                   else if ($error_number >= 10 && $error_number < 100)
                   {
                     echo "\"block_error_small_orange\"";
                     $error_title = "Ontbrekende gegevens";
+
+                    $error_icon = "warning";
                   }
                   else if ($error_number >= 100)
                   {
                     echo "\"block_error_small_red\"";
                     $error_title = "Error";
+
+                    $error_icon = "warning";
                   }
                   ?>
                 >
@@ -391,7 +397,7 @@
                   <!-- Block text -->
                   <div class = "media-body">
                     <h3 class = "media-heading"><b class = "white"><?php echo $error_title; ?></b></h3>
-                    <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
+                    <img class = "image" src = "<?php echo "images/".$error_icon.".png"; ?>" width = "86" height = "86"><br>
                     <b class = "white"><?php echo $message; ?></b>
                   </div>
 
