@@ -206,7 +206,7 @@
 
           <!-- Start no match block-->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_categorie">
+              <div class = "block_categorie_extra_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -228,11 +228,11 @@
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey">
+              <div class = "block_grey_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar Categorie matches</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Terug naar Categorie matches</b></h3><br><br><br>
                   <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
                 </div>
 

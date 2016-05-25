@@ -225,7 +225,7 @@ if (isset($_SESSION['user_id']))
 
           <!-- Start no match block-->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_categorie">
+              <div class = "block_categorie_medium">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -245,7 +245,7 @@ if (isset($_SESSION['user_id']))
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey">
+              <div class = "block_grey_medium">
 
                 <!-- Block text -->
                 <div class = "media-body">

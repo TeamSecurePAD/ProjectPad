@@ -36,7 +36,7 @@
 
     if (!empty($_POST['gekeurd']))
     {
-      echo "test";
+
       $match_id = $_POST['match_id'];
 
       if ($_POST['gekeurd'] == "goedgekeurd") 
@@ -47,7 +47,7 @@
                                           AND match_gebruiker_Id = $match_id
                                           AND match_goedgekeurd = 0"))
         {
-            echo ("succes");
+        $message = "de gebruiker is verwijderd uit de lijst";
         }
       }
       else if ($_POST['gekeurd'] == "afgekeurd")
@@ -113,6 +113,10 @@
              $any_match = true;
              $match_dienst_id = $row_match_dienst_gevonden['match_gebruiker_Id'];
 
+             $verwijderd = false;
+             $gebruikerBiedAan = "";
+             $gebruikerVraagt = "";
+
 
               while ($row_bied_aan = $result_bied_aan->fetch_assoc()) 
               {
@@ -152,6 +156,24 @@
 
               }
 
+              if (empty($gebruikerVraagt) || empty($gebruikerBiedAan))
+              {
+                $query = "DELETE FROM match_diensten
+                          WHERE gebruiker_Id = $id
+                          AND match_gebruiker_Id = $match_dienst_id";
+
+                mysqli_query($connection, $query);
+
+                $query = "DELETE FROM match_diensten
+                          WHERE gebruiker_Id = $match_dienst_id
+                          AND match_gebruiker_Id = $id";
+
+                mysqli_query($connection, $query);
+
+                $verwijderd = true;
+
+              }
+
              $query_match_dienst = "SELECT naam, tussenvoegsel, achternaam, omschrijving
                                     FROM gebruiker
                                     WHERE Id = $match_dienst_id";
@@ -166,8 +188,6 @@
                $omschrijving = $row_match_dienst['omschrijving'];
 
              $block_number = 1;  
-
-         $block_number = 1;
 
          if (!empty($_POST['gekeurd']))
          {
@@ -184,7 +204,7 @@
 
          }
 
-          if ($block_number == 1){        
+          if ($block_number == 1 && !$verwijderd ){        
           ?>
 
             <!-- Start of voorbeeld block -->
@@ -201,7 +221,7 @@
                 <!-- Submit button -->
                 <div class = "service_button">
 
-                  <form action = "DienstMatchMenu.php" method="POST">
+                  <form action = "matchDienstKeuren.php" method="POST">
                     <button type="submit" class="btn btn-success" value= "goedgekeurd" name="gekeurd">Gegevens sturen</button>
                     <button type="submit" class="btn btn-danger" value= "afgekeurd" name="gekeurd">Afwijzen</button>                    
                     <input type="hidden" value= "<?php echo($id); ?>" name="id"/>
@@ -263,7 +283,7 @@
 
           <!-- Start no match block-->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_dienst">
+              <div class = "block_dienst_medium">
 
                 <!-- Block text -->
                 <div class = "media-body">
@@ -283,7 +303,7 @@
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey">
+              <div class = "block_grey_medium">
 
                 <!-- Block text -->
                 <div class = "media-body">

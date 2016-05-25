@@ -108,6 +108,9 @@
              $result_bied_aan -> data_seek(0);
              $result_vraagt -> data_seek(0);
              $any_match = true;
+             $gebruikerBiedAan = "";
+             $gebruikerVraagt = "";
+             $verwijderd = false;
              $match_gebruiker_id = $row_match_dienst_gevonden['gebruiker_Id'];
 
              while ($row_bied_aan = $result_bied_aan->fetch_assoc()) 
@@ -146,6 +149,25 @@
                   $gebruikerVraagt = ($row_match_vraag['Dienst_dienst']);
                  }
 
+
+              }
+
+              if (empty($gebruikerVraagt) || empty($gebruikerBiedAan))
+              {
+                $query = "DELETE FROM match_diensten
+                          WHERE gebruiker_Id = $id
+                          AND match_gebruiker_Id = $match_gebruiker_id";
+
+                mysqli_query($connection, $query);
+
+                $query = "DELETE FROM match_diensten
+                          WHERE gebruiker_Id = $match_gebruiker_id
+                          AND match_gebruiker_Id = $id";
+
+                mysqli_query($connection, $query);
+
+                $verwijderd = true;
+
               }
 
              $query_match_dienst_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, omschrijving, email, telefoonnummer
@@ -177,7 +199,7 @@
                 }
               }
              
-             if ($block_number == 1) 
+             if ($block_number == 1 && !$verwijderd) 
              {
           ?>
             <!-- Start of voorbeeld block -->
@@ -256,11 +278,11 @@
 
             <!-- Back button in list of services - returns the user to the list of categories -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey">
+              <div class = "block_grey_large">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar match menu</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Terug naar match menu</b></h3><br><br><br>
                   <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
                 </div>
 
