@@ -636,11 +636,11 @@
 
             <!-- Back button block -->
             <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-              <div class = "block_grey">
+              <div class = "block_grey_medium">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar profiel</b></h3>
+                  <h3 class = "media-heading"><b class = "white">Terug naar profiel</b></h3><br>
                   <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
                 </div>
 
