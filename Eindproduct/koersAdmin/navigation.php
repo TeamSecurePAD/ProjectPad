@@ -24,7 +24,7 @@
 						<span class="icon-bar"></span>
 					</button>
 			      
-					<a href="about.php" class= navbar-brand>KoersWest</a>
+					<a href="gebruikerOverzicht.php" class= navbar-brand>KoersWest</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id = "collapsemenu">

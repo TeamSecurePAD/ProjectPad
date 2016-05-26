@@ -3,6 +3,8 @@
 	border: none;
 }
 
+/*** HEADINGS ***/
+
 body
 {
     background-color: rgb(235, 235, 235);
@@ -12,26 +14,41 @@ body
 
 h1
 {
-    color: rgb(0, 125, 0);
     font-size: 40px;
+
+    margin-top: 15px;
 }
 
 h2
 {
-    color: rgb(0, 0, 0);
     font-size: 30px;
+
+    margin-top: 15px;
 }
 
 h3
 {
-    color: rgb(0, 0, 0);
     font-size: 20px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
+
+h1, h2, h3
+{
+	color: rgb(0, 0, 0);
+}
+
+/*** DIVS ***/
 
 /** DIV element describing a list that needs a border around it - adjusts to text width in block **/
 div.list
 {
     border: 3px solid rgb(100, 100, 100);
+    border-radius: 15px;
+
+    background-color: rgb(150, 200, 150);
+
     padding: 10px;
     display: inline-block;
 }
@@ -40,29 +57,977 @@ div.list
 div.list_cheat
 {
     border: 2px solid rgb(100, 100, 100);
+    border-radius: 15px;
+
+    background-color: rgb(150, 200, 150);
+
     padding: 10px;
     margin: 10px;
     display: inline-block;
     min-height: 300px;
 }
 
-/** set the heigt op the blocks of service's**/
-div.service-content
+/** div for app header section **/
+div.header
 {
-    margin: 10px;
+	background-color: rgb(245, 245, 245);
+
+	text-align: center;
+	/*padding-top: 10px;
+	padding-bottom: 10px;*/
+	padding: 10px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for app subheader section **/
+div.subheader
+{
+	border-radius: 10px;
+
+	background-color: rgb(255, 255, 255);
+
+	text-align: center;
+	/*padding-top: 5px;
+	padding-bottom: 5px;*/
+	padding: 5px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for app title in subheader **/
+div.subheadertitle
+{
+	border-radius: 5px;
+
+	background-color: rgb(245, 245, 245);
+
+	color: rgb(100, 100, 100);
+
+	text-align: center;
+	padding-top: -10px;
+	padding-bottom: -10px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for titles and other headers **/
+div.title
+{
+	border-radius: 10px;
+
+	background-color: rgb(255, 255, 255);
+
+	text-align: center;
+	padding: 5px;
+
+	margin-top: 2px;
+	margin-bottom: 5px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for page sections **/
+div.body
+{
+	border-radius: 10px;
+
+	background-color: rgb(245, 245, 245);
+
+	text-align: center;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for page subsections **/
+div.subbody
+{
+	border-radius: 10px;
+
+	background-color: rgb(255, 255, 255);
+
+	padding: 5px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	display: inline-block;
+	width: 100%;
+}
+
+/** div for showing blue colored tiles in subsections **/
+div.tile_primary
+{
+	border-radius: 5px;
+
+	background-color: rgb(61, 153, 255);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing green colored tiles in subsections **/
+div.tile_success
+{
+	border-radius: 5px;
+
+	background-color: rgb(0, 153, 51);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing light blue colored tiles in subsections **/
+div.tile_info
+{
+	border-radius: 5px;
+
+	background-color: rgb(77, 195, 255);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing yellow colored tiles in subsections **/
+div.tile_warning
+{
+	border-radius: 5px;
+
+	background-color: rgb(255, 181, 77);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing red colored tiles in subsections **/
+div.tile_danger
+{
+	border-radius: 5px;
+
+	background-color: rgb(255, 102, 102);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing light green colored tiles in subsections **/
+div.tile_offer_service
+{
+	border-radius: 5px;
+
+	background-color: rgb(45, 195, 61);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing dark cyan colored tiles in subsections **/
+div.tile_ask_for_service
+{
+	border-radius: 5px;
+
+	background-color: rgb(0, 204, 153);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing lime green tiles in subsections **/
+div.tile_profile
+{
+	border-radius: 5px;
+
+	background-color: rgb(153, 204, 0);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing lime green tiles in subsections **/
+div.tile_profile_services
+{
+	border-radius: 5px;
+
+	background-color: rgb(153, 204, 0);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/** div for showing dark lime tiles in subsections **/
+div.tile_profile_dark
+{
+	border-radius: 5px;
+
+	background-color: rgb(96, 128, 0);
+
+	text-align: left;
+	font-size: 16px;
+
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 7px;
+	padding-right: 7px;
+
+	margin: 5px;
+}
+
+/** div for showing bright orange colored tiles in subsections **/
+div.tile_confirmed
+{
+	border-radius: 5px;
+
+	background-color: rgb(255, 153, 51);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing bright blue colored tiles in subsections **/
+div.tile_dienst
+{
+	border-radius: 5px;
+
+	background-color: rgb(51, 51, 255);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing dark purple colored tiles in subsections **/
+div.tile_categorie
+{
+	border-radius: 5px;
+
+	background-color: rgb(133, 51, 255);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** div for showing grey tiles in subsections **/
+div.tile_grey
+{
+	border-radius: 5px;
+
+	background-color: rgb(150, 150, 150);
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	margin: 5px;
+}
+
+/** General block DIV used in navigating the website - blue **/
+div.block_primary
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(61, 153, 255);
+
+    color: rgb(255, 255, 255);
+
     padding: 10px;
-    display: inline-block;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - blue **/
+div.block_primary_small
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(61, 153, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
     min-height: 200px;
-    border: 2px solid rgb(100, 100, 100);
 }
 
-div.service-button
-{   
-    position: absolute;
-    bottom: 0px;
-    margin: 20px;
+/** General block DIV used in navigating the website - green **/
+div.block_success
+{
+	/*border: 2px solid rgb(0, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 51);
+
+	text-align: center;
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
 }
 
+/** General small block DIV used in navigating the website - green **/
+div.block_success_small
+{
+	/*border: 2px solid rgb(0, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 51);
+
+	text-align: center;
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - dark cyan **/
+div.block_success2
+{
+	/*border: 2px solid rgb(0, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 115);
+
+	text-align: center;
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - dark cyan **/
+div.block_success2_small
+{
+	/*border: 2px solid rgb(0, 150, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 115);
+
+	text-align: center;
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - blue **/
+div.block_info
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(77, 195, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - blue **/
+div.block_info_small
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(77, 195, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+div.block_info_medium
+{
+    /*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(77, 195, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 300px;
+}
+
+div.block_info_large
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(77, 195, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 350px;
+}
+
+div.block_info_extra_large
+{
+	/*border: 2px solid rgb(75, 100, 150);*/
+    border-radius: 10px;
+
+    background-color: rgb(77, 195, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 400px;
+}
+
+
+/** General block DIV used in navigating the website - yellow **/
+div.block_warning
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 181, 77);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - yellow **/
+div.block_warning_small
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 181, 77);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+/** Error DIV used to inform the user of an error message - blue **/
+div.block_error_small_blue
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(61, 153, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    /*min-height: 200px;*/
+    min-width: 25%;
+    max-width: 100%;
+
+    display: inline-block;
+}
+
+/** Error DIV used to inform the user of an error message - green **/
+div.block_error_small_green
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    /*min-height: 200px;*/
+    min-width: 25%;
+    max-width: 100%;
+
+    display: inline-block;
+}
+
+/** Error DIV used to inform the user of an error message - orange **/
+div.block_error_small_orange
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 181, 77);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    /*min-height: 200px;*/
+    min-width: 25%;
+    max-width: 100%;
+
+    display: inline-block;
+}
+
+/** Error DIV used to inform the user of an error message - red **/
+div.block_error_small_red
+{
+	/*border: 2px solid rgb(150, 100, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 102, 102);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    /*min-height: 200px;*/
+    min-width: 25%;
+    max-width: 100%;
+
+    display: inline-block;
+}
+
+/** General block DIV used in navigating the website - red **/
+div.block_danger
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 102, 102);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - red **/
+div.block_danger_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 102, 102);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - light green **/
+div.block_offer_service
+
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(45, 195, 61);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - light green **/
+div.block_offer_service_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(45, 195, 61);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - dark cyan **/
+div.block_ask_for_service
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 204, 153);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - dark cyan **/
+div.block_ask_for_service_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(0, 204, 153);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - salmon **/
+div.block_profile
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(153, 204, 0);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 300px;
+}
+
+/** General block DIV used in navigating the website - dark salmon **/
+div.block_profile_edit
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(77, 102, 0);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 300px;
+}
+
+/** General small block DIV used in navigating the website - salmon **/
+div.block_profile_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(153, 204, 0);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+/** General block DIV used in navigating the website - bright orange **/
+div.block_confirmed
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+/** General small block DIV used in navigating the website - bright orange **/
+div.block_confirmed_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+div.block_confirmed_medium
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 300px;
+}
+
+div.block_confirmed_large
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 350px;
+}
+
+div.block_confirmed_extra_large
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(255, 153, 51);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 400px;
+}
+
+/** General block DIV used in navigating the website - grey **/
+div.block_grey
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(150, 150, 150);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+div.block_grey_medium
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(150, 150, 150);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 300px;
+}
+
+div.block_grey_large
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(150, 150, 150);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 400px;
+}
+
+/** General small block DIV used in navigating the website - grey **/
+div.block_grey_small
+{
+	/*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(150, 150, 150);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 200px;
+}
+
+div.block_categorie
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(133, 51, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+div.block_categorie_medium
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(133, 51, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 300px;
+}
+
+div.block_categorie_extra_large
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(133, 51, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 400px;
+}
+
+div.block_dienst
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(51, 51, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 275px;
+}
+
+div.block_dienst_medium
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(51, 51, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 300px;
+}
+
+div.block_dienst_extra_large
+{
+    /*border: 2px solid rgb(150, 0, 0);*/
+    border-radius: 10px;
+
+    background-color: rgb(51, 51, 255);
+
+    color: rgb(255, 255, 255);
+
+    padding: 10px;
+    /*margin: 5px;*/
+    min-height: 400px;
+}
+
+div.block
+{
+	display: inline-block;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+div.service_button
+{
+	position: absolute;
+    bottom: 20px;
+    left: 5%;
+    right: 5%;
+}
+
+div.form-block
+{
+	min-width: 75%;
+
+	display: inline-block;
+}
+
+/*** SINGLE LETTER TAGS ***/
 
 /** URL elements - LIGHT BLUE **/
 a
@@ -73,7 +1038,7 @@ a
 /** Bold text indicating something positive - DARK GREEN **/
 b.green
 {
-	color: rgb(0, 125, 0);
+	color: rgb(0, 153, 51);
 }
 
 /** Bold text indicating something negative - MEDIUM RED **/
@@ -83,23 +1048,53 @@ b.red
 }
 
 /** Bold text indicating something neutral - DARK GREY **/
-/* Change naming scheme from "color" to "concept" (yellow -> neutral) */
-b.yellow
+b.grey
 {
 	color: rgb(100, 100, 100);
 }
 
-/** Input windows and buttons - BLACK **/
+/** Bold text indicating something neutral - WHITE **/
+b.white
+{
+	color: rgb(255, 255, 255);
+}
+
+/** COLORS
+ ** Special tags that only influence text color **/
+
+c.white
+{
+	color: rgb(255, 255, 255);
+}
+
+c.red
+{
+	color: rgb(230, 0, 0);
+}
+
+c.green
+{
+	color: rgb(0, 153, 51);
+}
+
+c.blue
+{
+	color: rgb(75, 150, 255);
+}
+
+/*** INPUT ***/
+
+/** Input windows and buttons - BLACK TEXT **/
 input
 {
 	color: rgb(0, 0, 0);
 }
 
-/** Input windows for forms **/
+/** Input element for forms **/
 input.form-control
 {
-	max-width: 350px;
-	margin: 3px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 /** Select element for forms **/

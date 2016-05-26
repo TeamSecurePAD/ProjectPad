@@ -60,7 +60,7 @@
       <nav class = "navbar navbar-inverse">
         <div class = "container">
           <ul class = "nav navbar-nav">
-            <li><label style="padding: 5px; margin: 5px;" for="selectCategorie"><b class="white">Categorie:</b></label></li>
+            <li><label style="padding: 5px; margin: 5px;" for="selectCategorie"><c class="white">Categorie:</c></label></li>
             <li><select style="padding: 5px; margin: 5px;" class="form-control" id="selectCategorie" name="categorie">
               <?php
                 foreach ($list_categories as $rows)

@@ -5,6 +5,12 @@
   $name = "";
   $lastName = "";
   $id = "";
+  $email = '';
+  $straat = '';
+  $telnummer = '';
+  $postcode = '';
+  $woonplaats = '';
+  $tussenvoegsel = '';
 
   if (!empty($_POST['name']) && !empty($_POST['lastName']))
   {
@@ -18,13 +24,6 @@
                           AND achternaam = '$lastName'";
 
     $current_user_data_result = mysqli_query($connection, $current_user_data);
-
-    $email = '';
-    $straat = '';
-    $telnummer = '';
-    $postcode = '';
-    $woonplaats = '';
-    $tussenvoegsel = '';
 
     if ($current_user_data_result)
     {
@@ -40,6 +39,31 @@
 
     if (!empty($id))
     {
+      $query_bied_aan = "SELECT Dienst_dienst
+                         FROM gebruiker_bied_dienst_aan
+                         WHERE Gebruiker_Id = $id";
+
+      $result_bied_aan = mysqli_query($connection, $query_bied_aan);
+
+      $query_vraagt = "SELECT Dienst_dienst
+                       FROM gebruiker_vraagt_dienst
+                       WHERE Gebruiker_Id = $id";
+
+      $result_vraagt = mysqli_query($connection, $query_vraagt);
+
+      $query_is_goed_in = "SELECT Categorie_Categorie
+                           FROM gebruiker_is_goed_in_categorie
+                           WHERE Gebruiker_Id = $id";
+
+      $result_is_goed_in = mysqli_query($connection, $query_is_goed_in);
+      $row_is_goed_in = mysqli_fetch_assoc($result_is_goed_in);
+
+      $query_heeft_hulp_nodig = "SELECT Categorie_Categorie
+                                 FROM gebruiker_is_slecht_in_categorie
+                                 WHERE Gebruiker_Id = $id";
+
+      $result_heeft_hulp_nodig = mysqli_query($connection, $query_heeft_hulp_nodig);
+      $row_heeft_hulp_nodig = mysqli_fetch_assoc($result_heeft_hulp_nodig);
 
     }
 
@@ -60,6 +84,7 @@
     <?php 
     include("Navigation.php");
     ?>
+    <div class = "container">
 
       <form action="gebruikerOverzicht.php" method="POST"> 
 
@@ -71,15 +96,57 @@
 
           <button type = "submit" class = "btn btn-primary" value= "StepOne" name="stepNumber">Verzenden</button>
       </form>
+      <?php 
+      if (!empty($id))
+      {
+        ?>
 
-      <h1>Gegevens</h1>
-      <p><b>Naam: </b> <?php echo ($name); ?> </p>
-      <p><b>tussenvoegsel: </b> <?php echo ($tussenvoegsel); ?> </p>      
-      <p><b>Achternaam: </b> <?php echo ($lastName); ?> </p>
-      <p><b>Email: </b> <?php echo ($email); ?> </p>
-      <p><b>Telefoonnummer: </b> <?php echo ($telnummer); ?> </p>
-      <p><b>Postcode: </b> <?php echo ($postcode); ?> </p>
-      <p><b>Woonplaats: </b> <?php echo ($woonplaats); ?> </p>
+        <h1>Gegevens</h1>
+        <p><b>Naam: </b> <?php echo ($name); ?> </p>
+        <p><b>tussenvoegsel: </b> <?php echo ($tussenvoegsel); ?> </p>      
+        <p><b>Achternaam: </b> <?php echo ($lastName); ?> </p>
+        <p><b>Email: </b> <?php echo ($email); ?> </p>
+        <p><b>Telefoonnummer: </b> <?php echo ($telnummer); ?> </p>
+        <p><b>Postcode: </b> <?php echo ($postcode); ?> </p>
+        <p><b>Woonplaats: </b> <?php echo ($woonplaats); ?> </p><br>
+
+        <p><b>Goed in categorie:</b>
+        <?php 
+        echo ($row_is_goed_in['Categorie_Categorie']);
+        ?>
+        </p>
+
+        <p><b>hulp nodig in categorie:</b>
+        <?php
+        echo ($row_heeft_hulp_nodig['Categorie_Categorie']);
+        ?>
+        </p>
+
+        <br><p><b>Bied aan:</b></p>
+
+        <?php
+        while ($row_bied_aan = $result_bied_aan->fetch_assoc()) 
+        {
+          echo ($row_bied_aan['Dienst_dienst']);
+          echo "<br>";
+        }
+        ?>
+
+        <br><p><b>Vraagt:</b></p>
+
+        <?php
+        while ($row_vraagt = $result_vraagt->fetch_assoc()) 
+        {
+          echo ($row_vraagt['Dienst_dienst']);
+          echo "<br>";
+        }
+        ?>
+
+
+        <?php
+      }
+      ?>
+    </div>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 
