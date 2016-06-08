@@ -25,9 +25,9 @@ while ($row_bied_aan = $result_bied_aan->fetch_assoc()) {
 
   // Gets Id's of people who ask the service you offer.
   $query_vraagt_aanbod = "SELECT Gebruiker_Id
-                           FROM gebruiker_vraagt_dienst
-                           WHERE Dienst_dienst = '$dienst'
-                           AND Gebruiker_Id != $id";
+                          FROM gebruiker_vraagt_dienst
+                          WHERE Dienst_dienst = '$dienst'
+                          AND Gebruiker_Id != $id";
 
   $result_vraagt_aanbod = mysqli_query($connection, $query_vraagt_aanbod);
 
@@ -50,16 +50,16 @@ while ($row_bied_aan = $result_bied_aan->fetch_assoc()) {
        $match_dienst = $row_match_bied_aan['Dienst_dienst'];
 
        $query_vraag = "SELECT Dienst_dienst
-                        FROM gebruiker_vraagt_dienst
-                        WHERE Dienst_dienst = '$match_dienst'
-                        AND Gebruiker_Id = $id";
+                       FROM gebruiker_vraagt_dienst
+                       WHERE Dienst_dienst = '$match_dienst'
+                       AND Gebruiker_Id = $id";
 
        $result_vraag = mysqli_query($connection, $query_vraag);
 
        while ($row_vraag = $result_vraag->fetch_assoc()) {
 
         $query_insert_match = "INSERT INTO  match_diensten
-                                VALUES ($id, $match_id , 0, 0, 0)";
+                               VALUES ($id, $match_id , 0, 0, 0)";
 
         $result_test = mysqli_query($connection, $query_insert_match);
 
@@ -115,7 +115,7 @@ while ($row_goed_in_slecht = $result_is_goed_in_slecht->fetch_assoc())
   {
 
       $query_insert_match = "INSERT INTO  match_categorie
-                              VALUES ($id, $match_id, 0, 0, 0)";
+                             VALUES ($id, $match_id, 0, 0, 0)";
 
       mysqli_query($connection, $query_insert_match);
 

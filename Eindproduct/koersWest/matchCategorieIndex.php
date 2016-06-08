@@ -25,7 +25,7 @@
           <div class = "tile_categorie">
             <h1><c class = "white">Categorie matches</c></h1>
             <img class = "image" src = "images/label.png" width = "150" height = "150">
-            <h2><c class = "white">Selecteer of je matches wilt keuren of naar je contacten wilt.</c></h2>
+            <h2><c class = "white">Selecteer of je matches wilt accepteren of naar je contacten wilt.</c></h2>
           </div>
         </div>
 

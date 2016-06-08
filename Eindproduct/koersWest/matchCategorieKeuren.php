@@ -74,7 +74,7 @@ if (isset($_SESSION['user_id']))
         <div class = "title">
           <!-- Green band to indicate content section with actual title elements -->
           <div class = "tile_categorie">
-            <h1><c class = "white">Categorie matches keuren</c></h1>
+            <h1><c class = "white">Categorie matches accepteren</c></h1>
             <img class = "image" src = "images/approve.png" width = "150" height = "150">
             <h2><c class = "white">In dit scherm staan alle matches gebaseerd op de categorie waar jullie goed in zijn.
                                    Je kan kiezen of je wel of niet je contactgegevens wilt uitwisselen.</c></h2>
@@ -231,7 +231,7 @@ if (isset($_SESSION['user_id']))
                 <div class = "media-body">
                   <h3 class = "media-heading"><b class = "white">Geen match</b></h3>
                   <img class = "image" src = "images/NoResult.png" width = "150" height = "150"><br><br>
-                  <p>Er is op dit moment niks voor u om te keuren. Kom nog eens terug op een later moment.</p>
+                  <p>Er is op dit moment niks voor u om te accepteren. Kom nog eens terug op een later moment.</p>
                 </div>
 
 
