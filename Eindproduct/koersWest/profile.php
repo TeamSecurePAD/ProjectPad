@@ -375,7 +375,7 @@
                       $error_title = "Bewerking voltooid";
                     }
 
-                    $error_icon = "thumbsUp";
+                    $error_icon = "success";
                   }
                   else if ($error_number >= 10 && $error_number < 100)
                   {
@@ -716,6 +716,46 @@
                 <form action = "myAskedForServices.php" method = "POST">
                   <div class = "service_button">
                     <button type = "submit" class = "btn btn-primary">Bekijk diensten</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End of block -->
+
+            <!-- Competence category block -->
+            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block_profile_small">
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white">Competentie</b></h3>
+                  <img class = "image" src = "images/thumbsup.png" width = "86" height = "86"><br><br>
+                </div>
+
+                <!-- Submit button -->
+                <form action = "myCompetenceCategory.php" method = "POST">
+                  <div class = "service_button">
+                    <button type = "submit" class = "btn btn-primary">Bekijk categorieën</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End of block -->
+
+            <!-- Help category block -->
+            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block_profile_small">
+
+                <!-- Block text -->
+                <div class = "media-body">
+                  <h3 class = "media-heading"><b class = "white">Hulpvraag</b></h3>
+                  <img class = "image" src = "images/hulpvraag.png" width = "86" height = "86"><br><br>
+                </div>
+
+                <!-- Submit button -->
+                <form action = "myHelpCategory.php" method = "POST">
+                  <div class = "service_button">
+                    <button type = "submit" class = "btn btn-primary">Bekijk categorieën</button>
                   </div>
                 </form>
               </div>

@@ -434,7 +434,7 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 									<div class = "media-body">
 										<h3 class = "media-heading"><b class = "white">Acount aangemaakt!</b></h3><br>
 										<p>Je acount is succesvol aangemaakt. Je kan nu naar het inlogscherm gaan.</p>
-										<img class = "image" src = "<?php echo "images/"."thumbsUp".".png"; ?>" width = "86" height = "86"><br><br>
+										<img class = "image" src = "<?php echo "images/"."success".".png"; ?>" width = "86" height = "86"><br><br>
 									</div>
 
 									<!-- Submit button -->
