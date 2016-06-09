@@ -238,6 +238,20 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 
 					<!-- Back button in list of services - returns the user to the list of categories -->
 					<div class = "block  col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<div class = "block_info">
+
+							<!-- Block text -->
+							<div class = "media-body">
+								<h3 class = "media-heading"><b class = "white">Let op</b></h3><br>
+								<p>De gegevens worden gedeeld met Boot. De gegevens worden niet met andere partijen gedeeld.</p>
+								<img class = "image" src = "images/warning.png" width = "150" height = "150"><br><br>
+							</div>
+						</div>
+					</div>
+					<!-- End of block -->
+
+					<!-- Back button in list of services - returns the user to the list of categories -->
+					<div class = "block  col-xs-12 col-sm-12 col-md-6 col-lg-6">
 						<div class = "block_grey">
 
 							<!-- Block text -->
