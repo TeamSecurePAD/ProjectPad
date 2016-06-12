@@ -90,11 +90,11 @@ if (isset($_SESSION['user_id']))
       <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
       <div class = "title">
         <!-- Green band to indicate content section with actual title elements -->
-        <div class = "tile_dienst">
-          <h1><c class = "white">Dienst matches accepteren</c></h1>
+        <div class = "tile bright_blue">
+          <h1>Dienst matches accepteren</h1>
           <img class = "image" src = "images/approve.png" width = "150" height = "150">
-          <h2><c class = "white">In dit scherm staan alle matches gebaseerd op wat je aanbiedt en vraagt.
-           Je kan kiezen of je wel of niet contactgegevens wilt uitwisselen.</c></h2>
+          <h2>In dit scherm staan alle matches gebaseerd op wat je aanbiedt en vraagt.
+           Je kan kiezen of je wel of niet contactgegevens wilt uitwisselen.</h2>
          </div>
        </div>
 
@@ -208,11 +208,11 @@ if (isset($_SESSION['user_id']))
         ?>
 
         <!-- Start of block -->
-        <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class = "block_dienst_medium">
+        <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class = "block bright_blue medium">
             <!-- Block text -->
             <div class = "media-body">
-              <h3 class = "media-heading"><b class = "white">Match</b></h3>
+              <h3 class = "media-heading"><b>Match</b></h3>
               <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
               <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
               <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
@@ -237,18 +237,18 @@ if (isset($_SESSION['user_id']))
       else if ($block_number == 2) 
       {
         ?>
-        <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class = "block_confirmed_medium">
+        <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class = "block bright_orange medium">
 
             <!-- Block text -->
             <div class = "media-body">
-              <h3 class = "media-heading"><b class = "white">Match</b></h3>
+              <h3 class = "media-heading"><b>Match</b></h3>
               <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
               <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
               <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
 
 
-              <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white">Je gegevens zijn naar <?php echo($naam)?> verstuurd. </b></h3>
+              <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b>Je gegevens zijn naar <?php echo($naam)?> verstuurd. </b></h3>
             </div>
 
           </div>
@@ -259,17 +259,17 @@ if (isset($_SESSION['user_id']))
       else if ($block_number == 3)
       {
         ?>
-        <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class = "block_confirmed_medium">
+        <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class = "block bright_orange medium">
 
             <!-- Block text -->
             <div class = "media-body">
-              <h3 class = "media-heading"><b class = "white">Match</b></h3>
+              <h3 class = "media-heading"><b>Match</b></h3>
               <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
               <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
               <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
 
-              <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white"><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
+              <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
             </div>
 
           </div>
@@ -282,12 +282,12 @@ if (isset($_SESSION['user_id']))
       ?>
 
       <!-- Start no match block-->
-      <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class = "block_dienst_medium">
+      <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class = "block bright_blue medium">
 
           <!-- Block text -->
           <div class = "media-body">
-            <h3 class = "media-heading"><b class = "white">Geen match</b></h3>
+            <h3 class = "media-heading"><b>Geen match</b></h3>
             <img class = "image" src = "images/NoResult.png" width = "150" height = "150"><br><br>
             <p>Er is op dit moment niks voor u om te bevestigen. Kom nog eens terug op een later moment.</p>
           </div>
@@ -302,12 +302,12 @@ if (isset($_SESSION['user_id']))
     ?>
 
     <!-- Back button in list of services - returns the user to the match menu -->
-    <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class = "block_grey_medium">
+    <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class = "block gray medium">
 
         <!-- Block text -->
         <div class = "media-body">
-          <h3 class = "media-heading"><b class = "white">Terug naar dienst match menu</b></h3>
+          <h3 class = "media-heading"><b>Terug naar dienst match menu</b></h3>
           <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
         </div>
 

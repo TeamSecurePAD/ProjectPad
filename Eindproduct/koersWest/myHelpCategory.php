@@ -83,7 +83,7 @@
   }
   else // Return to the welcome page
   {
-    header('location:index.php');
+    header('location:home.php');
   }
 ?>
 
@@ -112,22 +112,22 @@
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Cyan band to indicate content section containing the actual title elements -->
-          <div class = "tile_ask_for_service">
+          <div class = "tile lime">
             <?php
             if (!empty($selectedCategory))
             {
               ?>
-              <h1><c class = "white">Hulpvraag</c></h1>
+              <h1>Hulpvraag</h1>
               <img class = "image" src = "images/hulpvraag.png" width = "86" height = "86">
-              <h2><c class = "white">Bevestig uw keuze.</c></h2>
+              <h2>Bevestig uw keuze.</h2>
               <?php
             }
             else
             {
               ?>
-              <h1><c class = "white">Hulpvraag</c></h1>
+              <h1>Hulpvraag</h1>
               <img class = "image" src = "images/hulpvraag.png" width = "86" height = "86">
-              <h2><c class = "white">De categorie waar u hulp bij nodig hebt.</c></h2>
+              <h2>De categorie waar u hulp bij nodig hebt.</h2>
               <?php
             }
             ?>
@@ -142,14 +142,14 @@
           {
             ?>
             <!-- Service removed notice -->
-            <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class = "block_error_small_green">
+            <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class = "block error green">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white"><?php echo $message_title; ?></b></h3>
+                  <h3 class = "media-heading"><b><?php echo $message_title; ?></b></h3>
                   <img class = "image" src = "images/success.png" width = "86" height = "86"><br>
-                  <b class = "white"><?php echo $message; ?></b>
+                  <b><?php echo $message; ?></b>
                 </div>
 
               </div>
@@ -164,26 +164,26 @@
             ?>
 
             <!-- Alert that informs the user that they're about to delete all their current matches -->
-            <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
-              <div class = "block_warning_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class = "block orange small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Let op!</b></h3>
+                  <h3 class = "media-heading"><b>Let op!</b></h3>
                   <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
-                  <b class = "white">Als u deze nieuwe categorie selecteert worden al uw huidige matches verwijderd!<br>Weet u zeker dat u wilt veranderen?</b>
+                  <b>Als u deze nieuwe categorie selecteert worden al uw huidige matches verwijderd!<br>Weet u zeker dat u wilt veranderen?</b>
                 </div>
 
               </div>
             </div>
 
             <!-- Shows the category that the user is about to switch to in bright orange -->
-            <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
-              <div class = "block_confirmed_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class = "block bright_orange small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white"><?php echo $selectedCategory;?></b></h3>
+                  <h3 class = "media-heading"><b><?php echo $selectedCategory;?></b></h3>
                   <img class = "image" src = "<?php echo "images/".$selectedCategory.".png"; ?>" width = "86" height = "86"><br><br>
                 </div>
 
@@ -230,14 +230,14 @@
               {
                 ?>
                 <!-- Shows the category that the user is currently asking for help with in a different color -->
-                <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_success2_small">
+                <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                  <div class = "block dark_cyan small">
 
                     <!-- Block text -->
                     <div class = "media-body">
-                      <h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
+                      <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
                       <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-                      <h3 class = "media-heading" style = "margin-bottom: 0px;"><b class = "white">Dit is uw huidige hulpvraag.</b></h3>
+                      <h3 class = "media-heading" style = "margin-bottom: 0px;"><b>Dit is uw huidige hulpvraag.</b></h3>
                     </div>
 
                   </div>
@@ -248,12 +248,12 @@
               {
                 ?>
                 <!-- Block that shows a service category -->
-                <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_ask_for_service_small">
+                <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                  <div class = "block cyan small">
 
                     <!-- Block text -->
                     <div class = "media-body">
-                      <h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
+                      <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
                       <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
                     </div>
 
@@ -279,12 +279,12 @@
             ?>
 
             <!-- Back button in category list - returns the user to the profile page -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block gray small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar profiel</b></h3>
+                  <h3 class = "media-heading"><b>Terug naar profiel</b></h3>
                   <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
                 </div>
 

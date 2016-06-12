@@ -295,9 +295,9 @@
       <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
         <?php
-        // ---------------------------------------------------------------------------- //
-        // PROFILE PAGE - DISPLAYS VARIOUS USER DATA DEPENDING ON CURRENTLY ACTIVE TILE
-        // ---------------------------------------------------------------------------- //
+        // ----------------------------------------------------------------------------- //
+        // PROFILE PAGE - DISPLAYS VARIOUS USER DATA DEPENDING ON CURRENTLY ACTIVE BLOCK
+        // ----------------------------------------------------------------------------- //
         // MENU OPTIONS:
         //   * Persoonlijke gegevens
         //     - Personalia
@@ -312,13 +312,13 @@
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Band to indicate content section containing the actual title elements -->
-          <div class = "tile_profile">
+          <div class = "tile lime">
             <?php
             if ($page == "user_data")
             {
                 ?>
 
-                <h1><c class = "white">Persoonlijke gegevens</c></h1>
+                <h1>Persoonlijke gegevens</h1>
 
                 <?php
             }
@@ -326,7 +326,7 @@
             {
               ?>
 
-              <h1><c class = "white">
+              <h1>
                 Profiel van <?php
                               if (!empty($tussenvoegsel))
                               {
@@ -337,7 +337,7 @@
                                 echo $voornaam." ".$achternaam;
                               }
                             ?>
-              </c></h1>
+              </h1>
 
               <?php
             }
@@ -360,12 +360,12 @@
               ?>
 
               <!-- Error message block - informs the user of any errors in the login process -->
-              <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class = 
                   <?php
                   if ($error_number >= 0 && $error_number < 10)
                   {
-                    echo "\"block_error_small_green\"";
+                    echo "\"block error green\"";
                     if ($error_number == 1)
                     {
                       $error_title = "Bewerking geannuleerd";
@@ -379,14 +379,14 @@
                   }
                   else if ($error_number >= 10 && $error_number < 100)
                   {
-                    echo "\"block_error_small_orange\"";
+                    echo "\"block error orange\"";
                     $error_title = "Ontbrekende gegevens";
 
                     $error_icon = "warning";
                   }
                   else if ($error_number >= 100)
                   {
-                    echo "\"block_error_small_red\"";
+                    echo "\"block error red\"";
                     $error_title = "Error";
 
                     $error_icon = "warning";
@@ -396,9 +396,9 @@
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white"><?php echo $error_title; ?></b></h3>
+                    <h3 class = "media-heading"><b><?php echo $error_title; ?></b></h3>
                     <img class = "image" src = "<?php echo "images/".$error_icon.".png"; ?>" width = "86" height = "86"><br>
-                    <b class = "white"><?php echo $message; ?></b>
+                    <b><?php echo $message; ?></b>
                   </div>
 
                 </div>
@@ -416,18 +416,18 @@
               ?>
 
               <!-- Personal information block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class = "block_profile_edit">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class = "block extra_dark_lime medium">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Personalia</b></h3>
+                    <h3 class = "media-heading"><b>Personalia</b></h3>
                   </div>
 
                   <!-- Input elements to edit data + confirmation & cancel buttons -->
                   <form action = "profile.php" method = "POST">
 
-                    <div class = "tile_profile_dark">
+                    <div class = "tile dark_lime edit_fields">
                       <b>Voornaam* </b><br>
                       <input class = "form-control" type = "text" value = "<?php echo $voornaam; ?>" placeholder = "voer uw voornaam in" name = "new_voornaam">
                       <b>Tussenvoegsel </b><br>
@@ -454,16 +454,16 @@
               ?>
 
               <!-- Personal information block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class = "block_profile">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class = "block lime medium">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Personalia</b></h3>
+                    <h3 class = "media-heading"><b>Personalia</b></h3>
                     <img class = "image" src = "images/my_info.png" width = "64" height = "64">
                   </div>
 
-                  <div class = "tile_profile_dark">
+                  <div class = "tile dark_lime edit_fields">
                     <b>Voornaam: </b><br><?php echo $voornaam; ?><br>
                     <b>Tussenvoegsel: </b><br><?php if (!empty($tussenvoegsel)) { echo $tussenvoegsel; } else { echo "(geen)"; } ?><br>
                     <b>Achternaam: </b><br><?php echo $achternaam; ?><br>
@@ -492,18 +492,18 @@
               ?>
 
               <!-- Personal information block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class = "block_profile_edit">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class = "block extra_dark_lime medium">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Contactgegevens</b></h3>
+                    <h3 class = "media-heading"><b>Contactgegevens</b></h3>
                   </div>
 
                   <!-- Input elements to edit data + confirmation & cancel buttons -->
                   <form action = "profile.php" method = "POST">
 
-                    <div class = "tile_profile_dark">
+                    <div class = "tile dark_lime edit_fields">
                       <b>E-mail adres* </b><br>
                       <input class = "form-control" type = "text" value = "<?php echo $email; ?>" placeholder = "voer uw e-mail adres in" name = "new_email">
                       <b>Telefoonnummer* </b><br>
@@ -528,16 +528,16 @@
               ?>
 
               <!-- Contact information block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class = "block_profile">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class = "block lime medium">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Contactgegevens</b></h3>
+                    <h3 class = "media-heading"><b>Contactgegevens</b></h3>
                     <img class = "image" src = "images/contact_information.png" width = "64" height = "64">
                   </div>
 
-                  <div class = "tile_profile_dark">
+                  <div class = "tile dark_lime edit_fields">
                     <b>E-mail adres: </b><br><?php echo $email; ?><br>
                     <b>Telefoonnummer: </b><br><?php echo $telnummer; ?><br>
                   </div>
@@ -565,18 +565,18 @@
               ?>
 
               <!-- Address information block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class = "block_profile_edit">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class = "block extra_dark_lime medium">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Adresgegevens</b></h3>
+                    <h3 class = "media-heading"><b>Adresgegevens</b></h3>
                   </div>
 
                   <!-- Input elements to edit data + confirmation & cancel buttons -->
                   <form action = "profile.php" method = "POST">
 
-                    <div class = "tile_profile_dark">
+                    <div class = "tile dark_lime edit_fields">
                       <b>Straat* </b><br>
                       <input class = "form-control" type = "text" value = "<?php echo $straat; ?>" placeholder = "voer uw straat en huisnummer in" name = "new_straat">
                       <b>Postcode* </b><br>
@@ -603,16 +603,16 @@
               ?>
 
               <!-- Address information block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class = "block_profile">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class = "block lime medium">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Adresgegevens</b></h3>
+                    <h3 class = "media-heading"><b>Adresgegevens</b></h3>
                     <img class = "image" src = "images/address.png" width = "64" height = "64">
                   </div>
 
-                  <div class = "tile_profile_dark">
+                  <div class = "tile dark_lime edit_fields">
                     <b>Straat: </b><br><?php echo $straat; ?><br>
                     <b>Postcode: </b><br><?php echo $postcode; ?><br>
                     <b>Woonplaats: </b><br><?php echo $woonplaats; ?><br>
@@ -635,12 +635,12 @@
             ?>
 
             <!-- Back button block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-              <div class = "block_grey_medium">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+              <div class = "block gray medium">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar profiel</b></h3><br>
+                  <h3 class = "media-heading"><b>Terug naar profiel</b></h3><br>
                   <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
                 </div>
 
@@ -662,12 +662,12 @@
             ?>
 
             <!-- Profile page block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_profile_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block lime small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Persoonlijke gegevens</b></h3>
+                  <h3 class = "media-heading"><b>Persoonlijke gegevens</b></h3>
                   <img class = "image" src = "images/personal_data.png" width = "86" height = "86"><br><br>
                 </div>
 
@@ -683,12 +683,12 @@
             <!-- End of block -->
 
             <!-- Offered-services block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_profile_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block lime small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Aangeboden diensten</b></h3>
+                  <h3 class = "media-heading"><b>Aangeboden diensten</b></h3>
                   <img class = "image" src = "images/offer_service.png" width = "86" height = "86"><br><br>
                 </div>
 
@@ -703,12 +703,12 @@
             <!-- End of block -->
 
             <!-- Asked-for-services block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_profile_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block lime small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Gevraagde diensten</b></h3>
+                  <h3 class = "media-heading"><b>Gevraagde diensten</b></h3>
                   <img class = "image" src = "images/ask_for_service.png" width = "86" height = "86"><br><br>
                 </div>
 
@@ -723,12 +723,12 @@
             <!-- End of block -->
 
             <!-- Competence category block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_profile_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block lime small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Competentie</b></h3>
+                  <h3 class = "media-heading"><b>Competentie</b></h3>
                   <img class = "image" src = "images/thumbsup.png" width = "86" height = "86"><br><br>
                 </div>
 
@@ -743,12 +743,12 @@
             <!-- End of block -->
 
             <!-- Help category block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_profile_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block lime small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Hulpvraag</b></h3>
+                  <h3 class = "media-heading"><b>Hulpvraag</b></h3>
                   <img class = "image" src = "images/hulpvraag.png" width = "86" height = "86"><br><br>
                 </div>
 
@@ -762,33 +762,13 @@
             </div>
             <!-- End of block -->
 
-            <!-- Contacts block -->
-            <!-- <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3"> -->
-              <!-- <div class = "block_profile_small"> -->
-
-                <!-- Block text -->
-                <!-- <div class = "media-body"> -->
-                  <!-- <h3 class = "media-heading"><b class = "white">Contacten</b></h3> -->
-                  <!-- <img class = "image" src = "images/contacts.png" width = "86" height = "86"><br><br> -->
-                <!-- </div> -->
-
-                <!-- Submit button -->
-                <!-- <form action = "myContacts.php" method = "POST"> -->
-                  <!-- <div class = "service_button"> -->
-                    <!-- <button type = "submit" class = "btn btn-primary">Bekijk uw contacten</button> -->
-                  <!-- </div> -->
-                <!-- </form> -->
-              <!-- </div> -->
-            <!-- </div> -->
-            <!-- End of block -->
-
             <!-- Back button block -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block gray small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar menu</b></h3>
+                  <h3 class = "media-heading"><b>Terug naar menu</b></h3>
                   <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
                 </div>
 

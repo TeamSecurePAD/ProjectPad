@@ -8,8 +8,9 @@
 body
 {
     background-color: rgb(235, 235, 235);
-    color: rgb(50, 50, 50);
+    color: rgb(255, 255, 255);
     font-size: 14px;
+    text-align: center;
 }
 
 h1
@@ -34,47 +35,15 @@ h3
 	margin-bottom: 5px;
 }
 
-h1, h2, h3
-{
-	color: rgb(0, 0, 0);
-}
+
 
 /*** DIVS ***/
-
-/** DIV element describing a list that needs a border around it - adjusts to text width in block **/
-div.list
-{
-    border: 3px solid rgb(100, 100, 100);
-    border-radius: 15px;
-
-    background-color: rgb(150, 200, 150);
-
-    padding: 10px;
-    display: inline-block;
-}
-
-/** Cheat list with set height of 300px **/
-div.list_cheat
-{
-    border: 2px solid rgb(100, 100, 100);
-    border-radius: 15px;
-
-    background-color: rgb(150, 200, 150);
-
-    padding: 10px;
-    margin: 10px;
-    display: inline-block;
-    min-height: 300px;
-}
 
 /** div for app header section **/
 div.header
 {
 	background-color: rgb(245, 245, 245);
 
-	text-align: center;
-	/*padding-top: 10px;
-	padding-bottom: 10px;*/
 	padding: 10px;
 
 	display: inline-block;
@@ -88,9 +57,6 @@ div.subheader
 
 	background-color: rgb(255, 255, 255);
 
-	text-align: center;
-	/*padding-top: 5px;
-	padding-bottom: 5px;*/
 	padding: 5px;
 
 	display: inline-block;
@@ -104,9 +70,6 @@ div.subheadertitle
 
 	background-color: rgb(245, 245, 245);
 
-	color: rgb(100, 100, 100);
-
-	text-align: center;
 	padding-top: -10px;
 	padding-bottom: -10px;
 
@@ -121,7 +84,6 @@ div.title
 
 	background-color: rgb(255, 255, 255);
 
-	text-align: center;
 	padding: 5px;
 
 	margin-top: 2px;
@@ -138,7 +100,6 @@ div.body
 
 	background-color: rgb(245, 245, 245);
 
-	text-align: center;
 	padding: 10px;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -163,12 +124,14 @@ div.subbody
 	width: 100%;
 }
 
-/** div for showing blue colored tiles in subsections **/
-div.tile_primary
+
+
+/** TILES **/
+
+/** General tile div **/
+div.tile
 {
 	border-radius: 5px;
-
-	background-color: rgb(61, 153, 255);
 
 	padding-top: 1px;
 	padding-bottom: 1px;
@@ -178,838 +141,165 @@ div.tile_primary
 	margin: 5px;
 }
 
-/** div for showing green colored tiles in subsections **/
-div.tile_success
+/** Danger red **/
+div.red
 {
-	border-radius: 5px;
-
-	background-color: rgb(0, 153, 51);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing light blue colored tiles in subsections **/
-div.tile_info
-{
-	border-radius: 5px;
-
-	background-color: rgb(77, 195, 255);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing yellow colored tiles in subsections **/
-div.tile_warning
-{
-	border-radius: 5px;
-
-	background-color: rgb(255, 181, 77);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing red colored tiles in subsections **/
-div.tile_danger
-{
-	border-radius: 5px;
-
-	background-color: rgb(255, 102, 102);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing light green colored tiles in subsections **/
-div.tile_offer_service
-{
-	border-radius: 5px;
-
-	background-color: rgb(45, 195, 61);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing dark cyan colored tiles in subsections **/
-div.tile_ask_for_service
-{
-	border-radius: 5px;
-
-	background-color: rgb(0, 204, 153);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing lime green tiles in subsections **/
-div.tile_profile
-{
-	border-radius: 5px;
-
-	background-color: rgb(153, 204, 0);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing lime green tiles in subsections **/
-div.tile_profile_services
-{
-	border-radius: 5px;
-
-	background-color: rgb(153, 204, 0);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-
-/** div for showing dark lime tiles in subsections **/
-div.tile_profile_dark
-{
-	border-radius: 5px;
-
-	background-color: rgb(96, 128, 0);
-
-	text-align: left;
-	font-size: 16px;
-
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 7px;
-	padding-right: 7px;
-
-	margin: 5px;
-}
-
-/** div for showing bright orange colored tiles in subsections **/
-div.tile_confirmed
-{
-	border-radius: 5px;
-
-	background-color: rgb(255, 153, 51);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing bright blue colored tiles in subsections **/
-div.tile_dienst
-{
-	border-radius: 5px;
-
-	background-color: rgb(51, 51, 255);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing dark purple colored tiles in subsections **/
-div.tile_categorie
-{
-	border-radius: 5px;
-
-	background-color: rgb(133, 51, 255);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** div for showing grey tiles in subsections **/
-div.tile_grey
-{
-	border-radius: 5px;
-
-	background-color: rgb(150, 150, 150);
-
-	padding-top: 1px;
-	padding-bottom: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	margin: 5px;
-}
-
-/** General block DIV used in navigating the website - blue **/
-div.block_primary
-{
-	/*border: 2px solid rgb(75, 100, 150);*/
-    border-radius: 10px;
-
-    background-color: rgb(61, 153, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-/** General small block DIV used in navigating the website - blue **/
-div.block_primary_small
-{
-	/*border: 2px solid rgb(75, 100, 150);*/
-    border-radius: 10px;
-
-    background-color: rgb(61, 153, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-/** General block DIV used in navigating the website - green **/
-div.block_success
-{
-	/*border: 2px solid rgb(0, 150, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(0, 153, 51);
-
-	text-align: center;
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-/** General small block DIV used in navigating the website - green **/
-div.block_success_small
-{
-	/*border: 2px solid rgb(0, 150, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(0, 153, 51);
-
-	text-align: center;
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-/** General block DIV used in navigating the website - dark cyan **/
-div.block_success2
-{
-	/*border: 2px solid rgb(0, 150, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(0, 153, 115);
-
-	text-align: center;
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-/** General small block DIV used in navigating the website - dark cyan **/
-div.block_success2_small
-{
-	/*border: 2px solid rgb(0, 150, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(0, 153, 115);
-
-	text-align: center;
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-/** General block DIV used in navigating the website - blue **/
-div.block_info
-{
-	/*border: 2px solid rgb(75, 100, 150);*/
-    border-radius: 10px;
-
-    background-color: rgb(77, 195, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-/** General small block DIV used in navigating the website - blue **/
-div.block_info_small
-{
-	/*border: 2px solid rgb(75, 100, 150);*/
-    border-radius: 10px;
-
-    background-color: rgb(77, 195, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-div.block_info_medium
-{
-    /*border: 2px solid rgb(75, 100, 150);*/
-    border-radius: 10px;
-
-    background-color: rgb(77, 195, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 300px;
-}
-
-div.block_info_large
-{
-	/*border: 2px solid rgb(75, 100, 150);*/
-    border-radius: 10px;
-
-    background-color: rgb(77, 195, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 350px;
-}
-
-div.block_info_extra_large
-{
-	/*border: 2px solid rgb(75, 100, 150);*/
-    border-radius: 10px;
-
-    background-color: rgb(77, 195, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 400px;
-}
-
-
-/** General block DIV used in navigating the website - yellow **/
-div.block_warning
-{
-	/*border: 2px solid rgb(150, 100, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 181, 77);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-/** General small block DIV used in navigating the website - yellow **/
-div.block_warning_small
-{
-	/*border: 2px solid rgb(150, 100, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 181, 77);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-/** Error DIV used to inform the user of an error message - blue **/
-div.block_error_small_blue
-{
-	/*border: 2px solid rgb(150, 100, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(61, 153, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    /*min-height: 200px;*/
-    min-width: 25%;
-    max-width: 100%;
-
-    display: inline-block;
-}
-
-/** Error DIV used to inform the user of an error message - green **/
-div.block_error_small_green
-{
-	/*border: 2px solid rgb(150, 100, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(0, 153, 51);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    /*min-height: 200px;*/
-    min-width: 25%;
-    max-width: 100%;
-
-    display: inline-block;
-}
-
-/** Error DIV used to inform the user of an error message - orange **/
-div.block_error_small_orange
-{
-	/*border: 2px solid rgb(150, 100, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 181, 77);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    /*min-height: 200px;*/
-    min-width: 25%;
-    max-width: 100%;
-
-    display: inline-block;
-}
-
-/** Error DIV used to inform the user of an error message - red **/
-div.block_error_small_red
-{
-	/*border: 2px solid rgb(150, 100, 0);*/
-    border-radius: 10px;
-
     background-color: rgb(255, 102, 102);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    /*min-height: 200px;*/
-    min-width: 25%;
-    max-width: 100%;
-
-    display: inline-block;
 }
 
-/** General block DIV used in navigating the website - red **/
-div.block_danger
+/** Warning orange **/
+div.orange
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 102, 102);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
+    background-color: rgb(255, 181, 77);
 }
 
-/** General small block DIV used in navigating the website - red **/
-div.block_danger_small
+/** Confirmed bright orange **/
+div.bright_orange
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 102, 102);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
+    background-color: rgb(255, 153, 51);
 }
 
-/** General block DIV used in navigating the website - light green **/
-div.block_offer_service
-
+/** Profile lime **/
+div.lime
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(45, 195, 61);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-/** General small block DIV used in navigating the website - light green **/
-div.block_offer_service_small
-{
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(45, 195, 61);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-/** General block DIV used in navigating the website - dark cyan **/
-div.block_ask_for_service
-{
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(0, 204, 153);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-/** General small block DIV used in navigating the website - dark cyan **/
-div.block_ask_for_service_small
-{
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(0, 204, 153);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-/** General block DIV used in navigating the website - salmon **/
-div.block_profile
-{
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
     background-color: rgb(153, 204, 0);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 300px;
 }
 
-/** General block DIV used in navigating the website - dark salmon **/
-div.block_profile_edit
+/** Edit data on profile dark lime **/
+div.dark_lime
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
+    background-color: rgb(96, 128, 0);
+}
 
+/** Edit data on profile extra dark lime **/
+div.extra_dark_lime
+{
     background-color: rgb(77, 102, 0);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 300px;
 }
 
-/** General small block DIV used in navigating the website - salmon **/
-div.block_profile_small
+/** Success green (also offer_service dark green) **/
+div.green
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(153, 204, 0);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
+    background-color: rgb(0, 153, 51);
 }
 
-/** General block DIV used in navigating the website - bright orange **/
-div.block_confirmed
+/** Offer_service green **/
+div.light_green
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 153, 51);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
+    background-color: rgb(45, 195, 61);
 }
 
-/** General small block DIV used in navigating the website - bright orange **/
-div.block_confirmed_small
+/** Ask_for_service cyan **/
+div.cyan
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 153, 51);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
+    background-color: rgb(0, 204, 153);
 }
 
-div.block_confirmed_medium
+/** Ask_for_service dark cyan **/
+div.dark_cyan
 {
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 153, 51);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 300px;
+    background-color: rgb(0, 153, 115);
 }
 
-div.block_confirmed_large
+/** Info light blue **/
+div.light_blue
 {
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 153, 51);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 350px;
+    background-color: rgb(77, 195, 255);
 }
 
-div.block_confirmed_extra_large
+/** Primary blue **/
+div.blue
 {
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(255, 153, 51);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 400px;
+    background-color: rgb(61, 153, 255);
 }
 
-/** General block DIV used in navigating the website - grey **/
-div.block_grey
+/** Service match bright blue **/
+div.bright_blue
 {
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(150, 150, 150);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-div.block_grey_medium
-{
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(150, 150, 150);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 300px;
-}
-
-div.block_grey_large
-{
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(150, 150, 150);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 400px;
-}
-
-/** General small block DIV used in navigating the website - grey **/
-div.block_grey_small
-{
-	/*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(150, 150, 150);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 200px;
-}
-
-div.block_categorie
-{
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(133, 51, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
-}
-
-div.block_categorie_medium
-{
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(133, 51, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 300px;
-}
-
-div.block_categorie_extra_large
-{
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(133, 51, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 400px;
-}
-
-div.block_dienst
-{
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
     background-color: rgb(51, 51, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 275px;
 }
 
-div.block_dienst_medium
+/** Category match purple **/
+div.purple
 {
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(51, 51, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 300px;
+    background-color: rgb(133, 51, 255);
 }
 
-div.block_dienst_extra_large
+/** Back button gray **/
+div.gray
 {
-    /*border: 2px solid rgb(150, 0, 0);*/
-    border-radius: 10px;
-
-    background-color: rgb(51, 51, 255);
-
-    color: rgb(255, 255, 255);
-
-    padding: 10px;
-    /*margin: 5px;*/
-    min-height: 400px;
+    background-color: rgb(150, 150, 150);
 }
 
+/** Edit data on profile **/
+div.edit_fields
+{
+    text-align: left;
+    font-size: 16px;
+
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+
+
+/** BLOCKS **/
+
+/** Creates margins between blocks (workaround for bootstrap tile system) **/
+div.block_divider
+{
+    display: inline-block;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/** General block DIV used in navigating the website **/
 div.block
 {
-	display: inline-block;
+    border-radius: 10px;
+    padding: 10px;
+}
 
-	margin-top: 5px;
-	margin-bottom: 5px;
+/** Error DIV used to inform the user of an error message **/
+div.error
+{
+    min-width: 25%;
+    max-width: 100%;
+
+    display: inline-block;
+}
+
+/** Small block **/
+div.small
+{
+    min-height: 200px;
+}
+
+/** Regular block **/
+div.regular
+{
+    min-height: 275px;
+}
+
+/** Medium block **/
+div.medium
+{
+    min-height: 300px;
+}
+
+/** Large block **/
+div.large
+{
+    min-height: 350px;
+}
+
+/** Extra large block **/
+div.extra_large
+{
+    min-height: 400px;
 }
 
 div.service_button
@@ -1061,11 +351,6 @@ b.white
 
 /** COLORS
  ** Special tags that only influence text color **/
-
-c.white
-{
-	color: rgb(255, 255, 255);
-}
 
 c.red
 {

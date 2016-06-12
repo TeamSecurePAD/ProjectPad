@@ -22,10 +22,10 @@
       <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
       <div class = "title">
         <!-- Green band to indicate content section with actual title elements -->
-        <div class = "tile_info">
-          <h1><c class = "white">Soort match kiezen</c></h1>
+        <div class = "tile light_blue">
+          <h1>Soort match kiezen</h1>
           <img class = "image" src = "images/handshake_2.png" width = "150" height = "150">
-          <h2><c class = "white">Selecteer hieronder wat voor soort match je zoekt.</c></h2>
+          <h2>Selecteer hieronder wat voor soort match je zoekt.</h2>
         </div>
       </div>
 
@@ -33,12 +33,12 @@
       <div class = "subbody">
 
         <!-- Start of block -->
-        <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class = "block_dienst">
+        <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <div class = "block bright_blue regular">
 
             <!-- Block text -->
             <div class = "media-body">
-              <h3 class = "media-heading"><b class = "white">Diensten matches</b></h3>
+              <h3 class = "media-heading"><b>Diensten matches</b></h3>
               <img class = "image" src = "images/Handshake_3.png" width = "150" height = "150"><br>
 
             </div>
@@ -54,12 +54,12 @@
         <!-- End of block -->
 
         <!-- Start of block -->
-        <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class = "block_categorie">
+        <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <div class = "block purple regular">
 
             <!-- Block text -->
             <div class = "media-body">
-              <h3 class = "media-heading"><b class = "white">Categorie matches</b></h3>
+              <h3 class = "media-heading"><b>Categorie matches</b></h3>
               <img class = "image" src = "images/label.png" width = "150" height = "150"><br>
             </div>
 
@@ -76,12 +76,12 @@
 
 
         <!-- Back button in match index - returns the user to the home menu -->
-        <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class = "block_grey">
+        <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <div class = "block gray regular">
 
             <!-- Block text -->
             <div class = "media-body">
-              <h3 class = "media-heading"><b class = "white">Terug naar menu</b></h3>
+              <h3 class = "media-heading"><b>Terug naar menu</b></h3>
               <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
             </div>
 

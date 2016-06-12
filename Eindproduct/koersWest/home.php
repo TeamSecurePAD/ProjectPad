@@ -55,8 +55,8 @@
           <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
           <div class = "title">
             <!-- Deep blue band to indicate content section containing the actual title elements -->
-            <div class = "tile_primary">
-              <h1><c class = "white">Menu</c></h1>
+            <div class = "tile blue">
+              <h1>Menu</h1>
             </div>
           </div>
 
@@ -64,12 +64,12 @@
           <div class = "subbody">
 
               <!-- Profile page block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_profile_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class = "block lime small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Mijn profiel</b></h3>
+                    <h3 class = "media-heading"><b>Mijn profiel</b></h3>
                     <img class = "image" src = "images/profile.png" width = "150" height = "150"><br><br>
                   </div>
 
@@ -82,12 +82,12 @@
               <!-- End of block -->
 
               <!-- Offer-service block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_offer_service_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class = "block light_green small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Dienst aanbieden</b></h3>
+                    <h3 class = "media-heading"><b>Dienst aanbieden</b></h3>
                     <img class = "image" src = "images/offer_service.png" width = "150" height = "150"><br><br>
                   </div>
 
@@ -100,12 +100,12 @@
               <!-- End of block -->
 
               <!-- Ask-for-service block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_ask_for_service_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class = "block cyan small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Dienst vragen</b></h3>
+                    <h3 class = "media-heading"><b>Dienst vragen</b></h3>
                     <img class = "image" src = "images/ask_for_service.png" width = "150" height = "150"><br><br>
                   </div>
 
@@ -118,12 +118,12 @@
               <!-- End of block -->
 
               <!-- Matching block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_info_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class = "block light_blue small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Matching</b></h3>
+                    <h3 class = "media-heading"><b>Matching</b></h3>
                     <img class = "image" src = "images/handshake_2.png" width = "150" height = "150"><br><br>
                   </div>
 
@@ -136,12 +136,12 @@
               <!-- End of block -->
 
               <!-- Matching block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_grey_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class = "block gray small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Uitloggen</b></h3>
+                    <h3 class = "media-heading"><b>Uitloggen</b></h3>
                     <img class = "image" src = "images/logout.png" width = "150" height = "150"><br><br>
                   </div>
 
@@ -169,8 +169,8 @@
           <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
           <div class = "title">
             <!-- Deep blue band to indicate content section containing the actual title elements -->
-            <div class = "tile_primary">
-              <h1><c class = "white">Welkom</c></h1>
+            <div class = "tile blue">
+              <h1>Welkom</h1>
             </div>
           </div>
 
@@ -178,12 +178,12 @@
           <div class = "subbody">
 
               <!-- Login block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class = "block_primary_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class = "block blue small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Inloggen</b></h3>
+                    <h3 class = "media-heading"><b>Inloggen</b></h3>
                     <img class = "image" src = "images/login.png" width = "86" height = "86"><br><br>
                     Op deze pagina kunt u uw gegevens invoeren om in te loggen.<br><br>
                   </div>
@@ -197,12 +197,12 @@
               <!-- End of block -->
 
               <!-- Register block -->
-              <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class = "block_primary_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class = "block blue small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Registreren</b></h3>
+                    <h3 class = "media-heading"><b>Registreren</b></h3>
                     <img class = "image" src = "images/register.png" width = "86" height = "86"><br><br>
                     Bent u hier voor de eerste keer, dan kunt u hier een account aanmaken.<br><br>
                   </div>

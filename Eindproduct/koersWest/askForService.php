@@ -98,7 +98,7 @@
   }
   else // Return to the welcome page
   {
-    header('location:index.php');
+    header('location:home.php');
   }
 ?>
 
@@ -127,22 +127,22 @@
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Cyan band to indicate content section containing the actual title elements -->
-          <div class = "tile_ask_for_service">
+          <div class = "tile cyan">
             <?php
             if ($show_categories)
             {
               ?>
-              <h1><c class = "white">Dienst vragen</c></h1>
+              <h1>Dienst vragen</h1>
               <img class = "image" src = "images/ask_for_service.png" width = "86" height = "86">
-              <h2><c class = "white">Selecteer een categorie om diensten te tonen.</c></h2>
+              <h2>Selecteer een categorie om diensten te tonen.</h2>
               <?php
             }
             else if ($show_services)
             {
               ?>
-              <h1><c class = "white">Dienst vragen <?php echo "uit categorie ".$geselecteerde_categorie ?></c></h1>
+              <h1>Dienst vragen <?php echo "uit categorie ".$geselecteerde_categorie ?></h1>
               <img class = "image" src = "images/<?php echo $geselecteerde_categorie; ?>.png" width = "86" height = "86">
-              <h2><c class = "white">Selecteer een dienst om te vragen.</c></h2>
+              <h2>Selecteer een dienst om te vragen.</h2>
               <?php
             }
             ?>
@@ -157,14 +157,14 @@
           {
             ?>
             <!-- Service removed notice -->
-            <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class = "block_error_small_green">
+            <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class = "block error green">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white"><?php echo $message_title; ?></b></h3>
+                  <h3 class = "media-heading"><b><?php echo $message_title; ?></b></h3>
                   <img class = "image" src = "images/bin.png" width = "86" height = "86"><br>
-                  <b class = "white"><?php echo $message; ?></b>
+                  <b><?php echo $message; ?></b>
                 </div>
 
               </div>
@@ -182,12 +182,12 @@
             {
               ?>
               <!-- Block that shows a service category -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_ask_for_service_small">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class = "block cyan small">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
+                    <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
                     <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
                   </div>
 
@@ -204,12 +204,12 @@
             ?>
 
             <!-- Back button in category list - returns the user to the home page -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey_small">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block gray small">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar menu</b></h3>
+                  <h3 class = "media-heading"><b>Terug naar menu</b></h3>
                   <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
                 </div>
 
@@ -255,12 +255,12 @@
                 {
                   ?>
                   <!-- Block that shows a potentially askable service -->
-                  <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class = "block_ask_for_service">
+                  <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class = "block cyan regular">
 
                       <!-- Block text -->
                       <div class = "media-body">
-                        <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
+                        <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
                         <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
                         <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
                       </div>
@@ -282,15 +282,15 @@
                 {
                   ?>
                   <!-- Block that shows a service that is already being asked for -->
-                  <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class = "block_success2">
+                  <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class = "block dark_cyan regular">
 
                       <!-- Block text -->
                       <div class = "media-body">
-                        <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
+                        <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
                         <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
                         <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?> -->
-                        <h3 class = "media-heading"><b class = "white">U vraagt al om deze dienst.</b></h3>
+                        <h3 class = "media-heading"><b>U vraagt al om deze dienst.</b></h3>
 
                         <form action = "askForService.php" method = "POST">
                           <div class = "service_button">
@@ -318,15 +318,15 @@
               {
                 ?>
                 <!-- Shows the service that has just been asked for in a different color -->
-                <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                  <div class = "block_confirmed">
+                <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                  <div class = "block bright_orange regular">
 
                     <!-- Block text -->
                     <div class = "media-body">
-                      <h3 class = "media-heading"><b class = "white"><?php echo $current_service['dienst'];?></b></h3>
+                      <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
                       <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
                       <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?><br> -->
-                      <h3 class = "media-heading"><b class = "white">U vraagt vanaf nu om deze dienst.</b></h3>
+                      <h3 class = "media-heading"><b>U vraagt vanaf nu om deze dienst.</b></h3>
 
                       <form action = "askForService.php" method = "POST">
                         <div class = "service_button">
@@ -358,14 +358,14 @@
             {
               ?>
               <!-- Warning message to inform the user that they have asked for all services in the current category -->
-              <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block_ask_for_service">
+              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class = "block cyan regular">
 
                   <!-- Block text -->
                   <div class = "media-body">
-                    <h3 class = "media-heading"><b class = "white">Alle diensten gevraagd</b></h3>
+                    <h3 class = "media-heading"><b>Alle diensten gevraagd</b></h3>
                     <img class = "image" src = "images/warning.png" width = "110" height = "110"><br><br>
-                    <h3 class = "media-heading"><b class = "white">U vraagt al om hulp voor alle diensten uit deze categorie.</b></h3>
+                    <h3 class = "media-heading"><b>U vraagt al om hulp voor alle diensten uit deze categorie.</b></h3>
                   </div>
 
                 </div>
@@ -376,12 +376,12 @@
             ?>
 
             <!-- Back button in list of services - returns the user to the list of categories -->
-            <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <div class = "block_grey">
+            <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <div class = "block gray regular">
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white">Terug naar categorieën</b></h3>
+                  <h3 class = "media-heading"><b>Terug naar categorieën</b></h3>
                   <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
                 </div>
 

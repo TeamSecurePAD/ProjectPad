@@ -115,9 +115,9 @@
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Deep blue band to indicate content section containing the actual title elements -->
-          <div class = "tile_primary">
-            <h1><c class = "white">Inlogscherm</c></h1>
-            <!-- <h2><c class = "white">Voer uw gegevens in om in te loggen bij KoersWest.</c></h2> -->
+          <div class = "tile blue">
+            <h1>Inlogscherm</h1>
+            <!-- <h2>Voer uw gegevens in om in te loggen bij KoersWest.</h2> -->
           </div>
           <!-- End of colored title band -->
         </div>
@@ -133,22 +133,22 @@
             ?>
 
             <!-- Error message block - informs the user of any errors in the login process -->
-            <div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class = 
                 <?php
                 if ($error_number >= 0 && $error_number < 10)
                 {
-                  echo "\"block_error_small_blue\"";
+                  echo "\"block error blue\"";
                   $error_title = "Ontbrekende gegevens";
                 }
                 else if ($error_number > 10 && $error_number < 20)
                 {
-                  echo "\"block_error_small_orange\"";
+                  echo "\"block error orange\"";
                   $error_title = "Let op";
                 }
                 else if ($error_number > 20 && $error_number < 30)
                 {
-                  echo "\"block_error_small_red\"";
+                  echo "\"block error red\"";
                   $error_title = "Error";
                 }
                 ?>
@@ -156,9 +156,9 @@
 
                 <!-- Block text -->
                 <div class = "media-body">
-                  <h3 class = "media-heading"><b class = "white"><?php echo $error_title; ?></b></h3>
+                  <h3 class = "media-heading"><b><?php echo $error_title; ?></b></h3>
                   <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
-                  <b class = "white"><?php echo $message; ?></b>
+                  <b><?php echo $message; ?></b>
                 </div>
 
               </div>
@@ -170,12 +170,12 @@
           ?>
 
           <!-- Login block -->
-          <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class = "block_primary_small">
+          <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class = "block blue small">
 
               <!-- Block text -->
               <div class = "media-body">
-                <h3 class = "media-heading"><b class = "white">Inloggen</b></h3><br>
+                <h3 class = "media-heading"><b>Inloggen</b></h3><br>
               </div>
 
               <!-- User data input windows and submit button -->
@@ -196,12 +196,12 @@
           <!-- End of block -->
 
           <!-- Back button - returns the user to the home page -->
-          <div class = "block col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class = "block_grey_small">
+          <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class = "block gray small">
 
               <!-- Block text -->
               <div class = "media-body">
-                <h3 class = "media-heading"><b class = "white">Terug naar welkomstpagina</b></h3>
+                <h3 class = "media-heading"><b>Terug naar welkomstpagina</b></h3>
                 <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
               </div>
 

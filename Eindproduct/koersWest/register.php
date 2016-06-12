@@ -4,7 +4,7 @@ session_start();
 	// Return to index page if already logged in
 if (isset($_SESSION['user_id']))
 {
-	header('location:index.php');
+	header('location:home.php');
 }
 require 'databaseConnectionOpening.php';
 
@@ -148,25 +148,25 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 			<!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
 			<div class = "title">
 				<!-- Green band to indicate content section with actual title elements -->
-				<div class = "tile_info">
-					<h1><c class = "white">Registreren</c></h1>
+				<div class = "tile light_blue">
+					<h1>Registreren</h1>
 					<?php
 					if ($stepNumber == 1)
 					{
 					?>	
-					<h2><c class = "white">Vul uw gegevens hieronder in</c></h2>
+					<h2>Vul uw gegevens hieronder in</h2>
 					<?php
 					}
 					else if ($stepNumber == 2)
 					{
 					?>
-					<h2><c class = "white">Kies een categorie waar je goed in bent</c></h2>
+					<h2>Kies een categorie waar je goed in bent</h2>
 					<?php
 					}
 					else if ($stepNumber == 3)
 					{
 					?>
-					<h2><c class = "white">Kies een categorie waar je hulp bij kan gebruiken</c></h2>
+					<h2>Kies een categorie waar je hulp bij kan gebruiken</h2>
 					<?php
 					}
 
@@ -186,14 +186,14 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 						?>
 
 						<!-- Error message block - informs the user of any errors in the login process -->
-						<div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<div class = "block_error_small_orange">
+						<div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class = "block error orange">
 
 								<!-- Block text -->
 								<div class = "media-body">
-									<h3 class = "media-heading"><b class = "white">Let op</b></h3>
+									<h3 class = "media-heading"><b>Let op</b></h3>
 									<img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
-									<b class = "white"> <?php echo ($message); ?></b>
+									<b> <?php echo ($message); ?></b>
 								</div>
 
 							</div>
@@ -205,7 +205,7 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 					?>
 					<!-- Start of register block -->
 					<div class = "block  col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<div class = "block_info">
+						<div class = "block light_blue regular">
 
 							<!-- Block text -->
 							<div class = "media-body">
@@ -238,11 +238,11 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 
 					<!-- Back button in list of services - returns the user to the list of categories -->
 					<div class = "block  col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<div class = "block_info">
+						<div class = "block light_blue regular">
 
 							<!-- Block text -->
 							<div class = "media-body">
-								<h3 class = "media-heading"><b class = "white">Let op</b></h3><br>
+								<h3 class = "media-heading"><b>Let op</b></h3><br>
 								<p>De gegevens worden gedeeld met Boot. De gegevens worden niet met andere partijen gedeeld.</p>
 								<img class = "image" src = "images/warning.png" width = "150" height = "150"><br><br>
 							</div>
@@ -252,11 +252,11 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 
 					<!-- Back button in list of services - returns the user to the list of categories -->
 					<div class = "block  col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<div class = "block_grey">
+						<div class = "block gray regular">
 
 							<!-- Block text -->
 							<div class = "media-body">
-								<h3 class = "media-heading"><b class = "white">Terug naar categorieën</b></h3>
+								<h3 class = "media-heading"><b>Terug naar categorieën</b></h3>
 								<img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
 							</div>
 
@@ -304,12 +304,12 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 							{
 								?>
 								<!-- Block that shows a service category -->
-								<div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-									<div class = "block_offer_service_small">
+								<div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+									<div class = "block light_green small">
 
 										<!-- Block text -->
 										<div class = "media-body">
-											<h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
+											<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
 											<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 										</div>
 
@@ -330,12 +330,12 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 								?>
 
 								<!-- Block that shows a service category -->
-								<div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<div class = "block_confirmed_small">
+								<div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class = "block bright_orange small">
 
 										<!-- Block text -->
 										<div class = "media-body">
-											<h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
+											<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
 											<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 										</div>
 
@@ -388,12 +388,12 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 									?>
 
 									<!-- Block that shows a service category -->
-									<div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-										<div class = "block_ask_for_service_small">
+									<div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+										<div class = "block cyan small">
 
 											<!-- Block text -->
 											<div class = "media-body">
-												<h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
+												<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
 												<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 											</div>
 
@@ -414,12 +414,12 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 								{
 									?>
 									<!-- Block that shows a service category -->
-									<div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
-										<div class = "block_confirmed_small">
+									<div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div class = "block bright_orange small">
 
 											<!-- Block text -->
 											<div class = "media-body">
-												<h3 class = "media-heading"><b class = "white"><?php echo $current_category['categorie'];?></b></h3>
+												<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
 												<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 											</div>
 
@@ -441,12 +441,12 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 						{
 							?>
 							<!-- Block that shows a service category -->
-							<div class = "block col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class = "block_confirmed_small">
+							<div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class = "block bright_orange small">
 
 									<!-- Block text -->
 									<div class = "media-body">
-										<h3 class = "media-heading"><b class = "white">Acount aangemaakt!</b></h3><br>
+										<h3 class = "media-heading"><b>Acount aangemaakt!</b></h3><br>
 										<p>Je acount is succesvol aangemaakt. Je kan nu naar het inlogscherm gaan.</p>
 										<img class = "image" src = "<?php echo "images/"."success".".png"; ?>" width = "86" height = "86"><br><br>
 									</div>

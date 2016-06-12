@@ -36,16 +36,16 @@ if (isset($_SESSION['user_id']))
 
   if (!empty($_POST['Afkeuren']))
   {
-   $match_gebruiker_id = $_POST['Afkeuren'];
+    $match_gebruiker_id = $_POST['Afkeuren'];
 
-   if ($update = $connection->query("UPDATE match_diensten
+    if ($update = $connection->query("UPDATE match_diensten
                                      SET match_afgekeurd = 1
                                      WHERE gebruiker_Id = $match_gebruiker_id
                                      AND match_gebruiker_Id = $id "))
-   {
-    $message = "De match is verwijderd";
+    {
+      $message = "De match is verwijderd";
+    }
   }
-}
 
 }
 
@@ -74,10 +74,10 @@ if (isset($_SESSION['user_id']))
       <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
       <div class = "title">
         <!-- Green band to indicate content section with actual title elements -->
-        <div class = "tile_dienst">
-          <h1><c class = "white">Categorie matches</c></h1>
+        <div class = "tile bright_blue">
+          <h1>Categorie matches</h1>
           <img class = "image" src = "images/contacts.png" width = "150" height = "150">
-          <h2><c class = "white">Hier staan de goedgekeurde matches. Je kan nu zelf contact opnemen met je contacten.</c></h2>
+          <h2>Hier staan de goedgekeurde matches. Je kan nu zelf contact opnemen met je contacten.</h2>
         </div>
       </div>
 
@@ -203,12 +203,12 @@ if (isset($_SESSION['user_id']))
         {
           ?>
           <!-- Start of voorbeeld block -->
-          <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <div class = "block_dienst_extra_large">
+          <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class = "block bright_blue extra_large">
 
               <!-- Block text -->
               <div class = "media-body">
-                <h3 class = "media-heading"><b class = "white">Match</b></h3>
+                <h3 class = "media-heading"><b>Match</b></h3>
                 <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                 <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
                 <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
@@ -234,17 +234,17 @@ if (isset($_SESSION['user_id']))
         else if ($block_number == 2)
         {
           ?>
-          <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <div class = "block_confirmed_extra_large">
+          <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class = "block bright_orange extra_large">
 
               <!-- Block text -->
               <div class = "media-body">
-                <h3 class = "media-heading"><b class = "white">Match</b></h3>
+                <h3 class = "media-heading"><b>Match</b></h3>
                 <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
                 <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
                 <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
 
-                <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b class = "white"><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
+                <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
               </div>
 
             </div>
@@ -257,12 +257,12 @@ if (isset($_SESSION['user_id']))
       ?>
 
       <!-- Start no match block-->
-      <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class = "block_dienst_extra_large">
+      <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class = "block bright_blue extra_large">
 
           <!-- Block text -->
           <div class = "media-body">
-            <h3 class = "media-heading"><b class = "white">Geen match</b></h3>
+            <h3 class = "media-heading"><b>Geen match</b></h3>
             <img class = "image" src = "images/NoResult.png" width = "150" height = "150"><br><br>
             Helaas nog geen match gevonden. Tijdens de spreekuren van Boot kunt u langs komen
             met dringende problemen.
@@ -277,12 +277,12 @@ if (isset($_SESSION['user_id']))
     ?>
 
     <!-- Back button in list of services - returns the user to the list of categories -->
-    <div class = "block col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class = "block_grey_large">
+    <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class = "block gray large">
 
         <!-- Block text -->
         <div class = "media-body">
-          <h3 class = "media-heading"><b class = "white">Terug naar match menu</b></h3><br><br><br>
+          <h3 class = "media-heading"><b>Terug naar match menu</b></h3><br><br><br>
           <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
         </div>
 

@@ -4,7 +4,7 @@
 	// Return to index page if already logged in
 	if (isset($_SESSION['user_id']))
 	{
-		header('location:index.php');
+		header('location:home.php');
 	}
 
 	require 'databaseConnectionOpening.php';
