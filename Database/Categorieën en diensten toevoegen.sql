@@ -82,13 +82,13 @@ VALUES
        ('Film kijken','Samen gezellig een fimpje kijken, dat kan zowel thuis als in de bioscoop.','Sociaal');
 
 /** Gebruikers **/
-INSERT INTO gebruiker (achternaam, email, naam, omschrijving, postcode, straat, telefoonnummer, tussenvoegsel, wachtwoord, woonplaats)
-VALUES ('Sickenga', 'g.sickenga@gmail.com', 'Gijs', 'Ik ben Gijs en ik hou van ijs.', '3741PC', 'Frans Halslaan 3', '0620503160', '', 'fiets', 'Baarn'),
-	   ('Langeveld', 'rik_langeveld@hotmail.com', 'Rik', 'Ik ben Rik het database beest. DATABEEST HAHAHA.', '2251LH', 'Leidseweg 128c', '0644965087', '', 'kikker', 'Voorschoten'),
-       ('Jenkins', 'l.jenkins@rush_in.com', 'Leeroy', 'LET\'S DO THIS', '1337LJ', 'Welp Road 69', '0606060606', '', 'wow', 'Azaroth'),
-       ('Test_Achternaam', 'test', 'Test_Voornaam', 'Test_Beschrijving', '1234TE', 'Test_Straat 1', '0699999999', 'Test_Tussenvoegsel', 'test', 'Test_Stad'),
-       ('Test2_Achternaam', 'test2', 'Test2_Voornaam', 'Test2_Beschrijving', '1234TE', 'Test_Straat 2', '0699999999', 'Test2_Tussenvoegsel', 'test2', 'Test2_Stad'),
-       ('Diensten', 'test3', 'Gebruiker', 'Test3_Beschrijving', '1234TE', 'Test_Straat 3', '0699999999', 'zonder', 'test3', 'Test3_Stad');
+INSERT INTO gebruiker (achternaam, email, naam, postcode, straat, telefoonnummer, tussenvoegsel, wachtwoord, woonplaats)
+VALUES ('Sickenga', 'g.sickenga@gmail.com', 'Gijs', '3741PC', 'Frans Halslaan 3', '0620503160', '', 'fiets', 'Baarn'),
+	   ('Langeveld', 'rik_langeveld@hotmail.com', 'Rik', '2251LH', 'Leidseweg 128c', '0644965087', '', 'kikker', 'Voorschoten'),
+       ('Jenkins', 'l.jenkins@rush_in.com', 'Leeroy', '1337LJ', 'Welp Road 69', '0606060606', '', 'wow', 'Azaroth'),
+       ('Test_Achternaam', 'test', 'Test_Voornaam', '1234TE', 'Test_Straat 1', '0699999999', 'Test_Tussenvoegsel', 'test', 'Test_Stad'),
+       ('Test2_Achternaam', 'test2', 'Test2_Voornaam', '1234TE', 'Test_Straat 2', '0699999999', 'Test2_Tussenvoegsel', 'test2', 'Test2_Stad'),
+       ('Diensten', 'test3', 'Gebruiker', '1234TE', 'Test_Straat 3', '0699999999', 'zonder', 'test3', 'Test3_Stad');
        
 
 

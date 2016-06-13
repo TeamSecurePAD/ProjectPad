@@ -13,7 +13,7 @@ if (isset($_SESSION['user_id']))
 
     //Get the confirmd matches
   $query_match_dient_goedgekeurd = "SELECT gebruiker_Id
-                                    FROM  match_diensten
+                                    FROM  match_dienst
                                     WHERE match_gebruiker_Id = $id 
                                     AND match_goedgekeurd = 1
                                     AND match_afgekeurd = 0";  
@@ -38,7 +38,7 @@ if (isset($_SESSION['user_id']))
   {
     $match_gebruiker_id = $_POST['Afkeuren'];
 
-    if ($update = $connection->query("UPDATE match_diensten
+    if ($update = $connection->query("UPDATE match_dienst
                                      SET match_afgekeurd = 1
                                      WHERE gebruiker_Id = $match_gebruiker_id
                                      AND match_gebruiker_Id = $id "))
@@ -93,7 +93,7 @@ if (isset($_SESSION['user_id']))
          $match_id = $row_match_dienst_gevonden['gebruiker_Id'];
 
          $query_match_goedgekeurd = "SELECT gebruiker_Id
-                                     FROM  match_diensten
+                                     FROM  match_dienst
                                      WHERE gebruiker_Id = $id
                                      AND match_gebruiker_id = $match_id
                                      AND match_goedgekeurd = 1
@@ -154,13 +154,13 @@ if (isset($_SESSION['user_id']))
 
         if (empty($gebruikerVraagt) || empty($gebruikerBiedAan))
         {
-          $query = "DELETE FROM match_diensten
+          $query = "DELETE FROM match_dienst
                     WHERE gebruiker_Id = $id
                     AND match_gebruiker_Id = $match_gebruiker_id";
 
           mysqli_query($connection, $query);
 
-          $query = "DELETE FROM match_diensten
+          $query = "DELETE FROM match_dienst
                     WHERE gebruiker_Id = $match_gebruiker_id
                     AND match_gebruiker_Id = $id";
 
@@ -170,7 +170,7 @@ if (isset($_SESSION['user_id']))
 
         }
 
-        $query_match_dienst_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, omschrijving, email, telefoonnummer
+        $query_match_dienst_goedgekeurd = "SELECT naam, tussenvoegsel, achternaam, email, telefoonnummer
                                            FROM gebruiker
                                            WHERE Id = $match_gebruiker_id";
 
@@ -181,7 +181,6 @@ if (isset($_SESSION['user_id']))
         $naam = $row_match_dienst_gegevens['naam'];
         $tussenvoegsel = $row_match_dienst_gegevens['tussenvoegsel'];
         $achternaam = $row_match_dienst_gegevens['achternaam'];
-        $omschrijving = $row_match_dienst_gegevens['omschrijving'];
         $email = $row_match_dienst_gegevens['email'];
         $telefoonnummer = $row_match_dienst_gegevens['telefoonnummer'];
 

@@ -46,11 +46,11 @@ if (!empty($_POST['stepNumber']))
 			$tussenvoegsel = "";
 		}
 
-		$query = "INSERT INTO gebruiker (email, wachtwoord, omschrijving, 
+		$query = "INSERT INTO gebruiker (email, wachtwoord, 
 								naam, tussenvoegsel, achternaam, telefoonnummer,
 								straat, postcode, woonplaats)
 
-					VALUES ('$email', '$wachtwoord', 'hoi', '$naam',
+					VALUES ('$email', '$wachtwoord', '$naam',
 							'$tussenvoegsel', '$achternaam' ,'$telnummer',
 							'$straat', '$postcode', '$woonplaats')";
 

@@ -16,6 +16,7 @@ $query_bied_aan = "SELECT Dienst_dienst
                    FROM gebruiker_bied_dienst_aan
                    WHERE Gebruiker_Id = $id";
 
+
 $result_bied_aan = mysqli_query($connection, $query_bied_aan);
 
    // In here we gonna add all matches on al service's. 
@@ -58,8 +59,8 @@ while ($row_bied_aan = $result_bied_aan->fetch_assoc()) {
 
        while ($row_vraag = $result_vraag->fetch_assoc()) {
 
-        $query_insert_match = "INSERT INTO  match_diensten
-                               VALUES ($id, $match_id , 0, 0, 0)";
+        $query_insert_match = "INSERT INTO  match_dienst
+                               VALUES ($id, $match_id , 0, 0)";
 
         $result_test = mysqli_query($connection, $query_insert_match);
 

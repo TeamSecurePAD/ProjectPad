@@ -92,7 +92,7 @@ if (isset($_SESSION['user_id']))
         $any_match = true;
 
        $match_gebruiker_id = $row_match_gevonden['match_gebruiker_Id'];
-       $query_match_gegevens = "SELECT id, naam, tussenvoegsel, achternaam, omschrijving
+       $query_match_gegevens = "SELECT id, naam, tussenvoegsel, achternaam
                                 FROM gebruiker
                                 WHERE Id = $match_gebruiker_id";
 
@@ -119,7 +119,6 @@ if (isset($_SESSION['user_id']))
          $naam = $row_match_gegevens['naam'];
          $tussenvoegsel = $row_match_gegevens['tussenvoegsel'];
          $achternaam = $row_match_gegevens['achternaam'];
-         $omschrijving = $row_match_gegevens['omschrijving'];
          $talent = $row_talent['Categorie_Categorie'];
          $hulpNodig = $row_hulp_nodig['Categorie_Categorie'];
 
