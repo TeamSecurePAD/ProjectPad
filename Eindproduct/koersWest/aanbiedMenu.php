@@ -12,6 +12,7 @@
 
     $removeService = '';
 
+    // Error message title
     if (!empty($_POST['message_title']))
     {
       $message_title = $_POST['message_title'];
@@ -21,6 +22,7 @@
       $message_title = '';
     }
 
+    // Error message body
     if (!empty($_POST['message']))
     {
       $message = $_POST['message'];
@@ -30,6 +32,7 @@
       $message = '';
     }
 
+    // If a service was just removed by the user, remove it from their services
     if (!empty($_POST['removeService']))
     {
       $removeService = $_POST['removeService'];
@@ -41,7 +44,7 @@
       mysqli_query($connection, $query_remove_service);
     }
 
-    // If a service has just been offered
+    // If a service has just been offered, add it to their services
     if (!empty($_POST['aan_te_bieden_dienst']))
     {
       $aan_te_bieden_dienst = $_POST['aan_te_bieden_dienst'];
@@ -54,10 +57,12 @@
       $aan_te_bieden_dienst = "NONE";
     }
 
+    // Lists the user's services
     $my_services_query = "SELECT Dienst_dienst
                           FROM gebruiker_bied_dienst_aan
                           WHERE gebruiker_id = $id";
 
+    // Lists all services
     $services_query = "SELECT *
                        FROM dienst";
 
@@ -350,30 +355,6 @@
               // Reset $my_services array so it can be looped through in the next cycle
               $my_services->data_seek(0);
             }//end while
-            ?>
-
-            <?php
-            // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED //
-            // Check if the user offers all services in the current category
-            if ($geselecteerde_categorie != "NONE" && !$any_services)
-            {
-              ?>
-              <!-- Warning message to inform the user that they offer all services in the current category -->
-              <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class = "block light_green regular">
-
-                  <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b>Alle diensten aangeboden</b></h3>
-                    <img class = "image" src = "images/warning.png" width = "110" height = "110"><br><br>
-                    <h3 class = "media-heading"><b>U biedt alle diensten uit deze categorie al aan.</b></h3>
-                  </div>
-
-                </div>
-              </div>
-              <?php
-            }
-            // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED // UNUSED //
             ?>
 
             <!-- Back button in list of services - returns the user to the list of categories -->
