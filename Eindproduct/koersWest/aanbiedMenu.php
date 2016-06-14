@@ -11,6 +11,8 @@
     $id = $_SESSION['user_id'];
 
     $removeService = '';
+    $show_categories = false;
+    $show_services = false;
 
     // Error message title
     if (!empty($_POST['message_title']))
@@ -57,6 +59,18 @@
       $aan_te_bieden_dienst = "NONE";
     }
 
+    // If a category has just been selected
+    if(!empty($_POST['geselecteerde_categorie']))
+    {
+      $geselecteerde_categorie = $_POST['geselecteerde_categorie'];
+      $show_services = true;
+    }
+    else
+    {
+      $geselecteerde_categorie = "NONE";
+      $show_categories = true;
+    }
+
     // Lists the user's services
     $my_services_query = "SELECT Dienst_dienst
                           FROM gebruiker_bied_dienst_aan
@@ -66,40 +80,12 @@
     $services_query = "SELECT *
                        FROM dienst";
 
+    // Lists all categories
+    $query_all_categories = "SELECT categorie FROM categorie";
+
     $my_services = mysqli_query($connection, $my_services_query);
     $services = mysqli_query($connection, $services_query);
-
-    // If a category has just been selected
-    if(!empty($_POST['geselecteerde_categorie']))
-    {
-      $geselecteerde_categorie = $_POST['geselecteerde_categorie'];
-    }
-    else
-    {
-      $geselecteerde_categorie = "NONE";
-    }
-
-    // Check if a service has just been offered
-    if (!empty($_POST['aan_te_bieden_dienst']))
-    {
-      $aan_te_bieden_dienst = $_POST['aan_te_bieden_dienst'];
-    }
-
-    // Provides a list of all categories in the database
-    $query_all_categories = "SELECT categorie FROM categorie";
     $categories = mysqli_query($connection, $query_all_categories);
-
-    $show_categories = false;
-    $show_services = false;
-
-    if ($geselecteerde_categorie == "NONE")
-    {
-      $show_categories = true;
-    }
-    else
-    {
-      $show_services = true;
-    }
   }
   else // Return to the welcome page
   {
@@ -161,6 +147,7 @@
           if (!empty($message))
           {
             ?>
+
             <!-- Service removed notice -->
             <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class = "block error green">
@@ -174,6 +161,8 @@
 
               </div>
             </div>
+            <!-- End of block -->
+
             <?php
           }
           ?>
@@ -186,6 +175,7 @@
             while($current_category = $categories->fetch_assoc())
             {
               ?>
+
               <!-- Block that shows a service category -->
               <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class = "block light_green small">
@@ -204,6 +194,8 @@
 
                 </div>
               </div>
+              <!-- End of block -->
+
               <?php
             }//end while
             ?>
@@ -225,22 +217,22 @@
 
               </div>
             </div>
+            <!-- End of block -->
 
           <?php
           }
           else if ($show_services)
           {
-            ?>
-            <?php
             // Used to check if the user offers all services in the current category
             $any_services = false;
+            ?>
+
+            <?php
             while($current_service = $services->fetch_assoc())
             {
               // Used to check if the user already owns a service
               $already_own_service = false;
-              ?>
 
-              <?php
               // Loops through the user's services to check if the current service is already being offered
               while($my_current_service = $my_services->fetch_assoc())
               {
@@ -256,9 +248,14 @@
               if ($current_service['Categorie_Categorie'] == $geselecteerde_categorie)
               {
                 $any_services = true;
+                ?>
+
+                <?php
+                // If the user doesn't own this service yet
                 if (!$already_own_service)
                 {
                   ?>
+
                   <!-- Block that shows a potentially offerable service -->
                   <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class = "block light_green regular">
@@ -281,11 +278,14 @@
 
                     </div>
                   </div>
+                  <!-- End of block -->
+
                   <?php
                 }
-                else if (!($aan_te_bieden_dienst == $current_service['dienst']))
+                else if (!($aan_te_bieden_dienst == $current_service['dienst'])) // If the user 
                 {
                   ?>
+
                   <!-- Block that shows a service that is already being offered -->
                   <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class = "block green regular">
@@ -294,7 +294,6 @@
                       <div class = "media-body">
                         <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
                         <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
-                        <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving']; ?> -->
                         <h3 class = "media-heading"><b>U biedt deze dienst al aan.</b></h3>
 
                         <form action = "aanbiedMenu.php" method = "POST">
@@ -310,6 +309,7 @@
 
                     </div>
                   </div>
+                  <!-- End of block -->
 
                   <?php
                 }
@@ -323,6 +323,7 @@
               if (!empty($_POST['aan_te_bieden_dienst']) && $aan_te_bieden_dienst == $current_service['dienst'])
               {
                 ?>
+
                 <!-- Shows the service that has just been offered in a different color -->
                 <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
                   <div class = "block bright_orange regular">
@@ -331,7 +332,6 @@
                     <div class = "media-body">
                       <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
                       <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
-                      <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?><br> -->
                       <h3 class = "media-heading"><b>U biedt vanaf nu deze dienst aan.</b></h3>
 
                       <form action = "aanbiedMenu.php" method = "POST">
@@ -339,14 +339,14 @@
                           <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Annuleren</button>
                           <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
                           <input type = "hidden" value = "<?php echo $geselecteerde_categorie; ?>" name = "geselecteerde_categorie"/>
-                          <!-- <input type = "hidden" value = "Bewerking geannuleerd" name = "message_title"/> -->
-                          <!-- <input type = "hidden" value = "Aanbieden <?php echo $current_service['dienst']; ?> geannuleerd." name = "message"/> -->
                         </div>
                       </form>
                     </div>
 
                   </div>
                 </div>
+                <!-- End of block -->
+
                 <?php
               }
               ?>
@@ -376,6 +376,7 @@
 
               </div>
             </div>
+            <!-- End of block -->
 
             <?php
           }

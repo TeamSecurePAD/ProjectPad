@@ -141,6 +141,7 @@
           if (!empty($message))
           {
             ?>
+
             <!-- Service removed notice -->
             <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class = "block error green">
@@ -154,6 +155,8 @@
 
               </div>
             </div>
+            <!-- End of block -->
+
             <?php
           }
           ?>
@@ -163,7 +166,7 @@
           {
             ?>
 
-            <!-- Alert that informs the user that they're about to delete all their current matches -->
+            <!-- Alert that informs the user they're about to delete all their current matches -->
             <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <div class = "block orange small">
 
@@ -176,6 +179,7 @@
 
               </div>
             </div>
+            <!-- End of block -->
 
             <!-- Shows the category that the user is about to switch to in bright orange -->
             <div class = "block_divider col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -196,6 +200,7 @@
 
               </div>
             </div>
+            <!-- End of block -->
 
             <?php
           }
@@ -229,6 +234,7 @@
               if ($currect_category_is_competence)
               {
                 ?>
+
                 <!-- Shows the category that the user currently excels at in a different color -->
                 <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
                   <div class = "block green small">
@@ -242,11 +248,14 @@
 
                   </div>
                 </div>
+                <!-- End of block -->
+
                 <?php
               }
               else
               {
                 ?>
+
                 <!-- Block that shows a service category -->
                 <div class = "block_divider col-xs-12 col-sm-6 col-md-4 col-lg-3">
                   <div class = "block light_green small">
@@ -265,6 +274,8 @@
 
                   </div>
                 </div>
+                <!-- End of block -->
+
                 <?php
               }
               ?>
@@ -295,6 +306,7 @@
 
               </div>
             </div>
+            <!-- End of block -->
 
             <?php
           }//end if

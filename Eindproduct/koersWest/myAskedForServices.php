@@ -84,6 +84,7 @@
           if (!empty($message))
           {
             ?>
+
             <!-- Service removed notice -->
             <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class = "block error green">
@@ -97,6 +98,8 @@
 
               </div>
             </div>
+            <!-- End of block -->
+
             <?php
           }
           ?>
@@ -158,6 +161,7 @@
 
                     </div>
                   </div>
+                  <!-- End of block -->
 
                   <?php
                 }
@@ -196,6 +200,7 @@
 
             </div>
           </div>
+          <!-- End of block -->
 
         </div>
       </div>

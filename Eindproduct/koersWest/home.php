@@ -54,7 +54,7 @@
           ?>
           <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
           <div class = "title">
-            <!-- Deep blue band to indicate content section containing the actual title elements -->
+            <!-- Colored band to indicate content section containing the actual title elements -->
             <div class = "tile blue">
               <h1>Menu</h1>
             </div>

@@ -363,7 +363,7 @@
               <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class = 
                   <?php
-                  if ($error_number >= 0 && $error_number < 10)
+                  if ($error_number >= 0 && $error_number < 10) // Positive feedback
                   {
                     echo "\"block error green\"";
                     if ($error_number == 1)
@@ -377,14 +377,14 @@
 
                     $error_icon = "success";
                   }
-                  else if ($error_number >= 10 && $error_number < 100)
+                  else if ($error_number >= 10 && $error_number < 100) // Warning
                   {
                     echo "\"block error orange\"";
                     $error_title = "Ontbrekende gegevens";
 
                     $error_icon = "warning";
                   }
-                  else if ($error_number >= 100)
+                  else if ($error_number >= 100) // Fatal error
                   {
                     echo "\"block error red\"";
                     $error_title = "Error";
