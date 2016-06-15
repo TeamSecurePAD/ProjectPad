@@ -10,38 +10,23 @@
     // User's session id, used to reference currently logged in user in database queries
     $id = $_SESSION['user_id'];
 
-    $page = "profile";
+    // Determines the current content to display (either 'profile' or 'user_data')
+    $page = 'profile';
 
-    if (!empty($_POST['show_data']))
+    // If the user is in the personal information section of the profile page
+    if (!empty($_POST['show_personal_information']))
     {
-      $page = "user_data";
+      $page = 'user_data';
     }
 
-    if (!empty($_POST['edit_personal_information']))
+    // If the user is editing personal information
+    if (!empty($_POST['edit_data']))
     {
-      $edit_personal_information = $_POST['edit_personal_information'];
+      $edit_data = $_POST['edit_data'];
     }
     else
     {
-      $edit_personal_information = false;
-    }
-
-    if (!empty($_POST['edit_contact_information']))
-    {
-      $edit_contact_information = $_POST['edit_contact_information'];
-    }
-    else
-    {
-      $edit_contact_information = false;
-    }
-
-    if (!empty($_POST['edit_address_information']))
-    {
-      $edit_address_information = $_POST['edit_address_information'];
-    }
-    else
-    {
-      $edit_address_information = false;
+      $edit_data = '';
     }
 
     $message = '';
@@ -59,7 +44,7 @@
     {
       if ($_POST['submit'] == "confirm") // User clicked the confirm button to apply changes
       {
-        if ($edit_personal_information) // Edit personal information
+        if ($edit_data == "personal_information") // Personal information was changed
         {
           if (!empty($_POST['new_voornaam']) || !empty($_POST['new_tussenvoegsel']) || !empty($_POST['new_achternaam'])) // Any fields entered
           {
@@ -68,20 +53,20 @@
             $new_tussenvoegsel = strip_tags($_POST['new_tussenvoegsel']);
             $new_achternaam = strip_tags($_POST['new_achternaam']);
 
-            // Setup database query
-            $update_user_data = "UPDATE gebruiker
-                                 SET naam = '$new_voornaam', tussenvoegsel = '$new_tussenvoegsel', achternaam = '$new_achternaam'
-                                 WHERE id = '$id'";
-
-            if(!empty($_POST['new_voornaam']) && !empty($_POST['new_achternaam'])) // A first and last name were entered
+            if(!empty($_POST['new_voornaam']) && !empty($_POST['new_achternaam'])) // All required fields entered
             {
+              // Setup database query
+              $update_user_data = "UPDATE gebruiker
+                                   SET naam = '$new_voornaam', tussenvoegsel = '$new_tussenvoegsel', achternaam = '$new_achternaam'
+                                   WHERE id = '$id'";
+
               $update_user_data_query = mysqli_query($connection, $update_user_data);
 
               if ($update_user_data_query) // Database update successful - data updated
               {
                 $message = 'Uw personalia zijn aangepast.';
                 $error_number = 2;
-                $edit_personal_information = false;
+                $edit_data = '';
               }
               else // Unknown error in database update
               {
@@ -112,7 +97,7 @@
           }
         }
         
-        if ($edit_contact_information) // Edit contact information
+        if ($edit_data == "contact_information") // Contact information was changed
         {
           if (!empty($_POST['new_email']) || !empty($_POST['new_telnummer'])) // Any fields entered
           {
@@ -120,20 +105,20 @@
             $new_email = strip_tags($_POST['new_email']);
             $new_telnummer = strip_tags($_POST['new_telnummer']);
 
-            // Setup database query
-            $update_contact_information = "UPDATE gebruiker
-                                           SET email = '$new_email', telefoonnummer = '$new_telnummer'
-                                           WHERE id = '$id'";
-
-            if (!empty($_POST['new_email']) && !empty($_POST['new_telnummer'])) // E-mail address and phone number were entered
+            if (!empty($_POST['new_email']) && !empty($_POST['new_telnummer'])) // All required fields entered
             {
+              // Setup database query
+              $update_contact_information = "UPDATE gebruiker
+                                             SET email = '$new_email', telefoonnummer = '$new_telnummer'
+                                             WHERE id = '$id'";
+
               $update_contact_information_query = mysqli_query($connection, $update_contact_information);
 
               if ($update_contact_information_query) // Database update successful - data updated
               {
                 $message = 'Uw contactgegevens zijn aangepast.';
                 $error_number = 3;
-                $edit_contact_information = false;
+                $edit_data = '';
               }
               else // Unknown error in database update
               {
@@ -159,7 +144,7 @@
           }
         }
 
-        if ($edit_address_information) // Edit address information
+        if ($edit_data == "address_information") // Address information was changed
         {
           if (!empty($_POST['new_straat']) || !empty($_POST['new_postcode']) || !empty($_POST['new_woonplaats'])) // Any fields entered
           {
@@ -168,20 +153,20 @@
             $new_postcode = strip_tags($_POST['new_postcode']);
             $new_woonplaats = strip_tags($_POST['new_woonplaats']);
 
-            // Setup database query
-            $update_user_data = "UPDATE gebruiker
-                                 SET straat = '$new_straat', postcode = '$new_postcode', woonplaats = '$new_woonplaats'
-                                 WHERE id = '$id'";
-
-            if(!empty($_POST['new_straat']) && !empty($_POST['new_postcode']) && !empty($_POST['new_woonplaats'])) // All fields entered
+            if(!empty($_POST['new_straat']) && !empty($_POST['new_postcode']) && !empty($_POST['new_woonplaats'])) // All required fields entered
             {
+              // Setup database query
+              $update_user_data = "UPDATE gebruiker
+                                   SET straat = '$new_straat', postcode = '$new_postcode', woonplaats = '$new_woonplaats'
+                                   WHERE id = '$id'";
+
               $update_user_data_query = mysqli_query($connection, $update_user_data);
 
               if ($update_user_data_query) // Database update successful - data updated
               {
                 $message = 'Uw adresgegevens zijn aangepast.';
                 $error_number = 4;
-                $edit_address_information = false;
+                $edit_data = '';
               }
               else // Unknown error in database update
               {
@@ -229,12 +214,7 @@
       }
       else if ($_POST['submit'] == "cancel") // User clicked the cancel button to revert changes
       {
-        // $message = 'De bewerking is ongedaan gemaakt.';
-        // $error_number = 1;
-
-        $edit_personal_information = false;
-        $edit_contact_information = false;
-        $edit_address_information = false;
+        $edit_data = '';
       }
     }
 
@@ -242,7 +222,7 @@
                           FROM gebruiker
                           WHERE id = $id";
 
-    $current_user_data_result = mysqli_query($connection, $current_user_data);
+    $current_user_data_query = mysqli_query($connection, $current_user_data);
 
     $email = '';
     $straat = '';
@@ -253,9 +233,9 @@
     $tussenvoegsel = '';
     $achternaam = '';
 
-    if ($current_user_data_result)
+    if ($current_user_data_query)
     {
-      $row = mysqli_fetch_assoc($current_user_data_result);
+      $row = mysqli_fetch_assoc($current_user_data_query);
       $email = $row['email'];
       $straat = $row['straat'];
       $telnummer = $row['telefoonnummer'];
@@ -359,40 +339,34 @@
             {
               ?>
 
+              <?php
+                // Determines the error message title, icon and class, depending on error number
+                if ($error_number >= 0 && $error_number < 10) // Positive feedback
+                {
+                  $error_class = "block error green";
+
+                  $error_title = "Bewerking voltooid";
+                  $error_icon = "success";
+                }
+                else if ($error_number >= 10 && $error_number < 100) // Warning
+                {
+                  $error_class = "block error orange";
+
+                  $error_title = "Ontbrekende gegevens";
+                  $error_icon = "warning";
+                }
+                else if ($error_number >= 100) // Fatal error
+                {
+                  $error_class = "block error red";
+
+                  $error_title = "Error";
+                  $error_icon = "warning";
+                }
+              ?>
+
               <!-- Error message block - informs the user of any errors in the login process -->
               <div class = "block_divider col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class = 
-                  <?php
-                  if ($error_number >= 0 && $error_number < 10) // Positive feedback
-                  {
-                    echo "\"block error green\"";
-                    if ($error_number == 1)
-                    {
-                      $error_title = "Bewerking geannuleerd";
-                    }
-                    else
-                    {
-                      $error_title = "Bewerking voltooid";
-                    }
-
-                    $error_icon = "success";
-                  }
-                  else if ($error_number >= 10 && $error_number < 100) // Warning
-                  {
-                    echo "\"block error orange\"";
-                    $error_title = "Ontbrekende gegevens";
-
-                    $error_icon = "warning";
-                  }
-                  else if ($error_number >= 100) // Fatal error
-                  {
-                    echo "\"block error red\"";
-                    $error_title = "Error";
-
-                    $error_icon = "warning";
-                  }
-                  ?>
-                >
+                <div class = "<?php echo $error_class; ?>" >
 
                   <!-- Block text -->
                   <div class = "media-body">
@@ -411,7 +385,7 @@
 
             <?php
             // If the user wants to edit their personal information
-            if ($edit_personal_information)
+            if ($edit_data == "personal_information")
             {
               ?>
 
@@ -437,8 +411,8 @@
                     <div class = "service_button">
                       <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Opslaan</button>
                       <button type = "submit" class = "btn btn-danger" value = "cancel" name = "submit">Annuleren</button>
-                      <input type = "hidden" value = "true" name = "edit_personal_information"/>
-                      <input type = "hidden" value = "true" name = "show_data"/>
+                      <input type = "hidden" value = "personal_information" name = "edit_data"/>
+                      <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
                 </div>
@@ -469,8 +443,8 @@
                   <form action = "profile.php" method = "POST">
                     <div class = "service_button">
                       <button type = "submit" class = "btn btn-primary">Gegevens aanpassen</button>
-                      <input type = "hidden" value = "true" name = "edit_personal_information"/>
-                      <input type = "hidden" value = "true" name = "show_data"/>
+                      <input type = "hidden" value = "personal_information" name = "edit_data"/>
+                      <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
                 </div>
@@ -483,7 +457,7 @@
 
             <?php
             // If the user wants to edit their contact information
-            if ($edit_contact_information)
+            if ($edit_data == "contact_information")
             {
               ?>
 
@@ -507,8 +481,8 @@
                     <div class = "service_button">
                       <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Opslaan</button>
                       <button type = "submit" class = "btn btn-danger" value = "cancel" name = "submit">Annuleren</button>
-                      <input type = "hidden" value = "true" name = "edit_contact_information"/>
-                      <input type = "hidden" value = "true" name = "show_data"/>
+                      <input type = "hidden" value = "contact_information" name = "edit_data"/>
+                      <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
                 </div>
@@ -538,8 +512,8 @@
                   <form action = "profile.php" method = "POST">
                     <div class = "service_button">
                       <button type = "submit" class = "btn btn-primary">Gegevens aanpassen</button>
-                      <input type = "hidden" value = "true" name = "edit_contact_information"/>
-                      <input type = "hidden" value = "true" name = "show_data"/>
+                      <input type = "hidden" value = "contact_information" name = "edit_data"/>
+                      <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
                 </div>
@@ -552,7 +526,7 @@
 
             <?php
             // If the user wants to edit their address information
-            if ($edit_address_information)
+            if ($edit_data == "address_information")
             {
               ?>
 
@@ -578,8 +552,8 @@
                     <div class = "service_button">
                       <button type = "submit" class = "btn btn-success" value = "confirm" name = "submit">Opslaan</button>
                       <button type = "submit" class = "btn btn-danger" value = "cancel" name = "submit">Annuleren</button>
-                      <input type = "hidden" value = "true" name = "edit_address_information"/>
-                      <input type = "hidden" value = "true" name = "show_data"/>
+                      <input type = "hidden" value = "address_information" name = "edit_data"/>
+                      <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
                 </div>
@@ -610,8 +584,8 @@
                   <form action = "profile.php" method = "POST">
                     <div class = "service_button">
                       <button type = "submit" class = "btn btn-primary">Gegevens aanpassen</button>
-                      <input type = "hidden" value = "true" name = "edit_address_information"/>
-                      <input type = "hidden" value = "true" name = "show_data"/>
+                      <input type = "hidden" value = "address_information" name = "edit_data"/>
+                      <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
                 </div>
@@ -659,7 +633,7 @@
                 <form action = "profile.php" method = "POST">
                   <div class = "service_button">
                     <button type = "submit" class = "btn btn-primary">Bekijk uw gegevens</button>
-                    <input type = "hidden" value = "true" name = "show_data"/>
+                    <input type = "hidden" value = "true" name = "show_personal_information"/>
                   </div>
                 </form>
               </div>
