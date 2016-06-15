@@ -18,7 +18,7 @@
   <!-- Container that houses all the elements on the page -->
   <div class = "container">
     <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on interactible environment -->
-    <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class = "body">
       <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
       <div class = "title">
         <!-- Green band to indicate content section with actual title elements -->
@@ -37,11 +37,8 @@
           <div class = "block bright_blue regular">
 
             <!-- Block text -->
-            <div class = "media-body">
-              <h3 class = "media-heading"><b>Diensten matches</b></h3>
-              <img class = "image" src = "images/Handshake_3.png" width = "150" height = "150"><br>
-
-            </div>
+            <h3 class = "media-heading"><b>Diensten matches</b></h3>
+            <img class = "image" src = "images/Handshake_3.png" width = "150" height = "150"><br>
 
             <!-- Submit button -->
             <div class = "service_button">
@@ -58,10 +55,8 @@
           <div class = "block purple regular">
 
             <!-- Block text -->
-            <div class = "media-body">
-              <h3 class = "media-heading"><b>Categorie matches</b></h3>
-              <img class = "image" src = "images/label.png" width = "150" height = "150"><br>
-            </div>
+            <h3 class = "media-heading"><b>Categorie matches</b></h3>
+            <img class = "image" src = "images/label.png" width = "150" height = "150"><br>
 
             <!-- Submit button -->
             <div class = "service_button">
@@ -80,10 +75,8 @@
           <div class = "block gray regular">
 
             <!-- Block text -->
-            <div class = "media-body">
-              <h3 class = "media-heading"><b>Terug naar menu</b></h3>
-              <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
-            </div>
+            <h3 class = "media-heading"><b>Terug naar menu</b></h3>
+            <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
 
             <!-- Submit button -->
             <div class = "service_button">

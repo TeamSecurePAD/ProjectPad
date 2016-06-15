@@ -292,7 +292,7 @@
     <!-- Container that houses all the elements on the page -->
     <div class = "container">
       <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on section -->
-      <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class = "body">
 
         <?php
         // ----------------------------------------------------------------------------- //
@@ -420,9 +420,7 @@
                 <div class = "block extra_dark_lime medium">
 
                   <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b>Personalia</b></h3>
-                  </div>
+                  <h3 class = "media-heading"><b>Personalia</b></h3>
 
                   <!-- Input elements to edit data + confirmation & cancel buttons -->
                   <form action = "profile.php" method = "POST">
@@ -458,10 +456,8 @@
                 <div class = "block lime medium">
 
                   <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b>Personalia</b></h3>
-                    <img class = "image" src = "images/my_info.png" width = "64" height = "64">
-                  </div>
+                  <h3 class = "media-heading"><b>Personalia</b></h3>
+                  <img class = "image" src = "images/my_info.png" width = "64" height = "64">
 
                   <div class = "tile dark_lime edit_fields">
                     <b>Voornaam: </b><br><?php echo $voornaam; ?><br>
@@ -496,9 +492,7 @@
                 <div class = "block extra_dark_lime medium">
 
                   <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b>Contactgegevens</b></h3>
-                  </div>
+                  <h3 class = "media-heading"><b>Contactgegevens</b></h3>
 
                   <!-- Input elements to edit data + confirmation & cancel buttons -->
                   <form action = "profile.php" method = "POST">
@@ -532,10 +526,8 @@
                 <div class = "block lime medium">
 
                   <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b>Contactgegevens</b></h3>
-                    <img class = "image" src = "images/contact_information.png" width = "64" height = "64">
-                  </div>
+                  <h3 class = "media-heading"><b>Contactgegevens</b></h3>
+                  <img class = "image" src = "images/contact_information.png" width = "64" height = "64">
 
                   <div class = "tile dark_lime edit_fields">
                     <b>E-mail adres: </b><br><?php echo $email; ?><br>
@@ -569,9 +561,7 @@
                 <div class = "block extra_dark_lime medium">
 
                   <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b>Adresgegevens</b></h3>
-                  </div>
+                  <h3 class = "media-heading"><b>Adresgegevens</b></h3>
 
                   <!-- Input elements to edit data + confirmation & cancel buttons -->
                   <form action = "profile.php" method = "POST">
@@ -607,10 +597,8 @@
                 <div class = "block lime medium">
 
                   <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b>Adresgegevens</b></h3>
-                    <img class = "image" src = "images/address.png" width = "64" height = "64">
-                  </div>
+                  <h3 class = "media-heading"><b>Adresgegevens</b></h3>
+                  <img class = "image" src = "images/address.png" width = "64" height = "64">
 
                   <div class = "tile dark_lime edit_fields">
                     <b>Straat: </b><br><?php echo $straat; ?><br>
@@ -639,10 +627,8 @@
               <div class = "block gray medium">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Terug naar profiel</b></h3><br>
-                  <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Terug naar profiel</b></h3><br>
+                <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
 
                 <!-- Submit button -->
                 <form action = "profile.php">
@@ -666,10 +652,8 @@
               <div class = "block lime small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Persoonlijke gegevens</b></h3>
-                  <img class = "image" src = "images/personal_data.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Persoonlijke gegevens</b></h3>
+                <img class = "image" src = "images/personal_data.png" width = "86" height = "86"><br><br>
 
                 <!-- Submit button -->
                 <form action = "profile.php" method = "POST">
@@ -687,10 +671,8 @@
               <div class = "block lime small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Aangeboden diensten</b></h3>
-                  <img class = "image" src = "images/offer_service.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Aangeboden diensten</b></h3>
+                <img class = "image" src = "images/offer_service.png" width = "86" height = "86"><br><br>\
 
                 <!-- Submit button -->
                 <form action = "myOfferedServices.php" method = "POST">
@@ -707,10 +689,8 @@
               <div class = "block lime small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Gevraagde diensten</b></h3>
-                  <img class = "image" src = "images/ask_for_service.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Gevraagde diensten</b></h3>
+                <img class = "image" src = "images/ask_for_service.png" width = "86" height = "86"><br><br>
 
                 <!-- Submit button -->
                 <form action = "myAskedForServices.php" method = "POST">
@@ -727,10 +707,8 @@
               <div class = "block lime small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Competentie</b></h3>
-                  <img class = "image" src = "images/thumbsup.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Competentie</b></h3>
+                <img class = "image" src = "images/thumbsup.png" width = "86" height = "86"><br><br>
 
                 <!-- Submit button -->
                 <form action = "myCompetenceCategory.php" method = "POST">
@@ -747,10 +725,8 @@
               <div class = "block lime small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Hulpvraag</b></h3>
-                  <img class = "image" src = "images/hulpvraag.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Hulpvraag</b></h3>
+                <img class = "image" src = "images/hulpvraag.png" width = "86" height = "86"><br><br>
 
                 <!-- Submit button -->
                 <form action = "myHelpCategory.php" method = "POST">
@@ -767,10 +743,8 @@
               <div class = "block gray small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Terug naar menu</b></h3>
-                  <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Terug naar menu</b></h3>
+                <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
 
                 <!-- Submit button -->
                 <form action = "home.php">

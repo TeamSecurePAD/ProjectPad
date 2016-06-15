@@ -108,7 +108,7 @@
     <div class = "container">
 
       <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on section -->
-      <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class = "body">
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Cyan band to indicate content section containing the actual title elements -->
@@ -171,11 +171,9 @@
               <div class = "block orange small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Let op!</b></h3>
-                  <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
-                  <b>Als u deze nieuwe categorie selecteert worden al uw huidige matches verwijderd!<br>Weet u zeker dat u wilt veranderen?</b>
-                </div>
+                <h3 class = "media-heading"><b>Let op!</b></h3>
+                <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
+                <b>Als u deze nieuwe categorie selecteert worden al uw huidige matches verwijderd!<br>Weet u zeker dat u wilt veranderen?</b>
 
               </div>
             </div>
@@ -186,10 +184,8 @@
               <div class = "block bright_orange small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b><?php echo $selectedCategory;?></b></h3>
-                  <img class = "image" src = "<?php echo "images/".$selectedCategory.".png"; ?>" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b><?php echo $selectedCategory;?></b></h3>
+                <img class = "image" src = "<?php echo "images/".$selectedCategory.".png"; ?>" width = "86" height = "86"><br><br>
 
                 <!-- Submit buttons -->
                 <form action = "myHelpCategory.php" method = "POST">
@@ -240,11 +236,9 @@
                   <div class = "block dark_cyan small">
 
                     <!-- Block text -->
-                    <div class = "media-body">
-                      <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
-                      <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-                      <h3 class = "media-heading" style = "margin-bottom: 0px;"><b>Dit is uw huidige hulpvraag.</b></h3>
-                    </div>
+                    <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
+                    <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
+                    <h3 class = "media-heading" style = "margin-bottom: 0px;"><b>Dit is uw huidige hulpvraag.</b></h3>
 
                   </div>
                 </div>
@@ -261,10 +255,8 @@
                   <div class = "block cyan small">
 
                     <!-- Block text -->
-                    <div class = "media-body">
-                      <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
-                      <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-                    </div>
+                    <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
+                    <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 
                     <!-- Submit button -->
                     <form action = "myHelpCategory.php" method = "POST">
@@ -294,10 +286,8 @@
               <div class = "block gray small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Terug naar profiel</b></h3>
-                  <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Terug naar profiel</b></h3>
+                <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
 
                 <!-- Submit button -->
                 <form action = "profile.php">

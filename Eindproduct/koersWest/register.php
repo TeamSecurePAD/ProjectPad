@@ -6,9 +6,10 @@ if (isset($_SESSION['user_id']))
 {
 	header('location:home.php');
 }
+
 require 'databaseConnectionOpening.php';
 
-/*Code to determene at with step of the register procces the user is*/
+/* Code to determine at with step of the register procces the user is */
 
 $message = "";
 $stepNumber = 1;
@@ -54,15 +55,15 @@ if (!empty($_POST['stepNumber']))
 							'$tussenvoegsel', '$achternaam' ,'$telnummer',
 							'$straat', '$postcode', '$woonplaats')";
 
-$result = mysqli_query($connection, $query);
+	$result = mysqli_query($connection, $query);
 
-$query_get_user_id = "SELECT Id FROM gebruiker WHERE email = '$email'";
+	$query_get_user_id = "SELECT Id FROM gebruiker WHERE email = '$email'";
 
-$result_get_user_id = mysqli_query($connection, $query_get_user_id);
-$get_user_id = mysqli_fetch_assoc($result_get_user_id);
+	$result_get_user_id = mysqli_query($connection, $query_get_user_id);
+	$get_user_id = mysqli_fetch_assoc($result_get_user_id);
 
-$id = $get_user_id['Id'];
-$stepNumber = 2;
+	$id = $get_user_id['Id'];
+	$stepNumber = 2;
 
 } 
 else
@@ -144,10 +145,10 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 	<!-- Container that houses all the elements on the page -->
 	<div class = "container">
 		<!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on interactible environment -->
-		<div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class = "body">
 			<!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
 			<div class = "title">
-				<!-- Green band to indicate content section with actual title elements -->
+				<!-- Colored band to indicate content section with actual title elements -->
 				<div class = "tile light_blue">
 					<h1>Registreren</h1>
 					<?php
@@ -190,8 +191,8 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 							<div class = "block error orange">
 
 								<!-- Block text -->
-								<div class = "media-body">
-									<h3 class = "media-heading"><b>Let op</b></h3>
+                				<div class = "media-body">
+									<h3 class = "media-heading"><b>Let op!</b></h3>
 									<img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
 									<b> <?php echo ($message); ?></b>
 								</div>
@@ -207,30 +208,27 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 					<div class = "block  col-xs-12 col-sm-12 col-md-6 col-lg-6">
 						<div class = "block light_blue regular">
 
-							<!-- Block text -->
-							<div class = "media-body">
-								<!-- Registration form --> 
-								<form action="register.php" method="POST"> 
+							<!-- Registration form --> 
+							<form action="register.php" method="POST"> 
 
-									<h4>Inloggegevens</h4>
-									<input class="form-control" type="text" placeholder="email" name="email">
-									<input class="form-control" type="password" placeholder="wachtwoord" name="wachtwoord">
-									<input class="form-control" type="password" placeholder="wachtwoord" name="herhaal_wachtwoord">
+								<h4>Inloggegevens</h4>
+								<input class="form-control" type="text" placeholder="email" name="email">
+								<input class="form-control" type="password" placeholder="wachtwoord" name="wachtwoord">
+								<input class="form-control" type="password" placeholder="wachtwoord" name="herhaal_wachtwoord">
 
-									<br>
-									<h4>Persoonsgegevens</h4>
-									<input class="form-control" type="text" placeholder="Naam" name="naam">
-									<input class="form-control" type="text" placeholder="Tussenvoegsel   (Optioneel)" name="tussenvoegsel">
-									<input class="form-control" type="text" placeholder="Achternaam" name="achternaam">
-									<br>
-									<input class="form-control" type="text" placeholder="tel. nummer" name="telnummer">
-									<input class="form-control" type="text" placeholder="straat" name="straat">
-									<input class="form-control" type="text" placeholder="postcode" name="postcode">
-									<input class="form-control" type="text" placeholder="woonplaats" name="woonplaats"><br>
+								<br>
+								<h4>Persoonsgegevens</h4>
+								<input class="form-control" type="text" placeholder="Naam" name="naam">
+								<input class="form-control" type="text" placeholder="Tussenvoegsel   (Optioneel)" name="tussenvoegsel">
+								<input class="form-control" type="text" placeholder="Achternaam" name="achternaam">
+								<br>
+								<input class="form-control" type="text" placeholder="tel. nummer" name="telnummer">
+								<input class="form-control" type="text" placeholder="straat" name="straat">
+								<input class="form-control" type="text" placeholder="postcode" name="postcode">
+								<input class="form-control" type="text" placeholder="woonplaats" name="woonplaats"><br>
 
-									<button type = "submit" class = "btn btn-primary" value= "StepOne" name="stepNumber">Verzenden</button>
-								</form>
-							</div>
+								<button type = "submit" class = "btn btn-primary" value= "StepOne" name="stepNumber">Verzenden</button>
+							</form>
 
 						</div>
 					</div>
@@ -241,11 +239,10 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 						<div class = "block light_blue regular">
 
 							<!-- Block text -->
-							<div class = "media-body">
-								<h3 class = "media-heading"><b>Let op</b></h3><br>
-								<p>De gegevens worden gedeeld met Boot. De gegevens worden niet met andere partijen gedeeld.</p>
-								<img class = "image" src = "images/warning.png" width = "150" height = "150"><br><br>
-							</div>
+							<h3 class = "media-heading"><b>Let op</b></h3>
+							<p>De gegevens worden gedeeld met Boot. De gegevens worden niet met andere partijen gedeeld.</p>
+							<img class = "image" src = "images/warning.png" width = "150" height = "150">
+
 						</div>
 					</div>
 					<!-- End of block -->
@@ -255,10 +252,8 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 						<div class = "block gray regular">
 
 							<!-- Block text -->
-							<div class = "media-body">
-								<h3 class = "media-heading"><b>Terug naar categorieën</b></h3>
-								<img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
-							</div>
+							<h3 class = "media-heading"><b>Terug naar categorieën</b></h3>
+							<img class = "image" src = "images/backarrow.png" width = "150" height = "150">
 
 							<!-- Submit button -->
 							<div class = "service_button">
@@ -266,6 +261,7 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 									<button type = "submit" class = "btn btn-secondary" style = "color: black;">Klik om terug te gaan</button>
 								</form>
 							</div>
+
 						</div>
 					</div>
 					<!-- End of block -->
@@ -308,10 +304,8 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 									<div class = "block light_green small">
 
 										<!-- Block text -->
-										<div class = "media-body">
-											<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
-											<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-										</div>
+										<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
+										<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 
 										<!-- Submit button -->
 										<form action = "register.php" method = "POST">
@@ -334,10 +328,8 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 									<div class = "block bright_orange small">
 
 										<!-- Block text -->
-										<div class = "media-body">
-											<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
-											<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-										</div>
+										<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
+										<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 
 										<!-- Submit button -->
 										<form action = "register.php" method = "POST">
@@ -392,10 +384,8 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 										<div class = "block cyan small">
 
 											<!-- Block text -->
-											<div class = "media-body">
-												<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
-												<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-											</div>
+											<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
+											<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 
 											<!-- Submit button -->
 											<form action = "register.php" method = "POST">
@@ -418,10 +408,8 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 										<div class = "block bright_orange small">
 
 											<!-- Block text -->
-											<div class = "media-body">
-												<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
-												<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-											</div>
+											<h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
+											<img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 
 											<!-- Submit button -->
 											<form action = "register.php" method = "POST">
@@ -445,11 +433,9 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 								<div class = "block bright_orange small">
 
 									<!-- Block text -->
-									<div class = "media-body">
-										<h3 class = "media-heading"><b>Acount aangemaakt!</b></h3><br>
-										<p>Je acount is succesvol aangemaakt. Je kan nu naar het inlogscherm gaan.</p>
-										<img class = "image" src = "<?php echo "images/"."success".".png"; ?>" width = "86" height = "86"><br><br>
-									</div>
+									<h3 class = "media-heading"><b>Acount aangemaakt!</b></h3><br>
+									<p>Je acount is succesvol aangemaakt. Je kan nu naar het inlogscherm gaan.</p>
+									<img class = "image" src = "<?php echo "images/"."success".".png"; ?>" width = "86" height = "86"><br><br>
 
 									<!-- Submit button -->
 									<form action = "login.php" method = "POST">
@@ -463,11 +449,11 @@ if (!empty($_POST['bevestig_slecht_in_categorie']))
 						?>
 
 					</div>
+					<!-- End of subbody div -->
 				</div>
+				<!-- End of body div -->
 			</div>
-		</div>
-	</div>
-	<br>
+			<!-- End of page container -->
 
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script> 

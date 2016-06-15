@@ -105,7 +105,7 @@
     <!-- Container that houses all the elements on the page -->
     <div class = "container">
       <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on section -->
-      <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class = "body">
 
         <?php
         // ------------------------------------------------------------------------- //
@@ -155,11 +155,9 @@
               >
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b><?php echo $error_title; ?></b></h3>
-                  <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
-                  <b><?php echo $message; ?></b>
-                </div>
+                <h3 class = "media-heading"><b><?php echo $error_title; ?></b></h3>
+                <img class = "image" src = "images/warning.png" width = "86" height = "86"><br>
+                <b><?php echo $message; ?></b>
 
               </div>
             </div>
@@ -174,9 +172,7 @@
             <div class = "block blue small">
 
               <!-- Block text -->
-              <div class = "media-body">
-                <h3 class = "media-heading"><b>Inloggen</b></h3><br>
-              </div>
+              <h3 class = "media-heading"><b>Inloggen</b></h3><br>
 
               <!-- User data input windows and submit button -->
               <form action = "login.php" method = "POST">
@@ -200,10 +196,8 @@
             <div class = "block gray small">
 
               <!-- Block text -->
-              <div class = "media-body">
-                <h3 class = "media-heading"><b>Terug naar welkomstpagina</b></h3>
-                <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
-              </div>
+              <h3 class = "media-heading"><b>Terug naar welkomstpagina</b></h3>
+              <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
 
               <!-- Submit button -->
               <form action = "home.php">
@@ -220,12 +214,10 @@
 
         </div>
         <!-- End of subbody div -->
-        
       </div>
       <!-- End of body div -->
     </div>
     <!-- End of page container -->
-    <br>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

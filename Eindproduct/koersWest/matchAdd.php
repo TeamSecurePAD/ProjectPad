@@ -11,7 +11,7 @@ get all the service's you asks and the other user offers, and insert it in the d
 
 */
 
-  //gets all the service's you offer
+// Gets all the services the current user offers
 $query_bied_aan = "SELECT Dienst_dienst
                    FROM gebruiker_bied_dienst_aan
                    WHERE Gebruiker_Id = $id";
@@ -19,12 +19,13 @@ $query_bied_aan = "SELECT Dienst_dienst
 
 $result_bied_aan = mysqli_query($connection, $query_bied_aan);
 
-   // In here we gonna add all matches on al service's. 
-while ($row_bied_aan = $result_bied_aan->fetch_assoc()) {
-
+// Matches two users if their offered and asked for services overlap
+// Loops through all services the current user offers
+while ($row_bied_aan = $result_bied_aan->fetch_assoc())
+{
   $dienst = $row_bied_aan['Dienst_dienst'];
 
-  // Gets Id's of people who ask the service you offer.
+  // Gets id's of people who ask the service the current user offers
   $query_vraagt_aanbod = "SELECT Gebruiker_Id
                           FROM gebruiker_vraagt_dienst
                           WHERE Dienst_dienst = '$dienst'
@@ -39,7 +40,7 @@ while ($row_bied_aan = $result_bied_aan->fetch_assoc()) {
     { 
       $match_id = $row_vraagt_aanbod['Gebruiker_Id'];
 
-      //Select service's provide'd by other user. 
+      // Select services provided by other user
       $query_match_bied_aan = "SELECT Dienst_dienst
                                FROM gebruiker_bied_dienst_aan
                                WHERE Gebruiker_Id = $match_id";
@@ -50,6 +51,7 @@ while ($row_bied_aan = $result_bied_aan->fetch_assoc()) {
       {
        $match_dienst = $row_match_bied_aan['Dienst_dienst'];
 
+       // Select current user's asked for service where they overlap with matched user's offered service
        $query_vraag = "SELECT Dienst_dienst
                        FROM gebruiker_vraagt_dienst
                        WHERE Dienst_dienst = '$match_dienst'
@@ -64,15 +66,15 @@ while ($row_bied_aan = $result_bied_aan->fetch_assoc()) {
 
         $result_test = mysqli_query($connection, $query_insert_match);
 
+        }
       }
     }
-  }
-}//end if
+  }//end if
 }
 
 /*Adding the matche's based on categorie*/
 
-// puting the categorie you are good and bad at in a variable. 
+// Putting the categorie you are good and bad at in a variable
 $query_is_goed_in_categorie  = "SELECT Categorie_Categorie
                                 FROM gebruiker_is_goed_in_categorie
                                 WHERE Gebruiker_Id = $id";
@@ -120,6 +122,6 @@ while ($row_goed_in_slecht = $result_is_goed_in_slecht->fetch_assoc())
 
       mysqli_query($connection, $query_insert_match);
 
-    }
   }
+}
 ?>

@@ -70,7 +70,7 @@ if (isset($_SESSION['user_id']))
   <!-- Container that houses all the elements on the page -->
   <div class = "container">
     <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on interactible environment -->
-    <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class = "body">
       <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
       <div class = "title">
         <!-- Green band to indicate content section with actual title elements -->
@@ -206,15 +206,13 @@ if (isset($_SESSION['user_id']))
             <div class = "block bright_blue extra_large">
 
               <!-- Block text -->
-              <div class = "media-body">
-                <h3 class = "media-heading"><b>Match</b></h3>
-                <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
-                <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
-                <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
-                <br>
-                <p><b>Email: </b><?php echo ($email); ?></p>
-                <p><b>telefoonnummer: </b><?php echo ($telefoonnummer); ?></p>                
-              </div>
+              <h3 class = "media-heading"><b>Match</b></h3>
+              <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
+              <p>Je bent gematcht op de diensten: <b><?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></b></p>
+              <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
+              <br>
+              <p><b>Email: </b><?php echo ($email); ?></p>
+              <p><b>telefoonnummer: </b><?php echo ($telefoonnummer); ?></p>
 
               <!-- Submit button -->
               <div class = "service_button">
@@ -237,14 +235,11 @@ if (isset($_SESSION['user_id']))
             <div class = "block bright_orange extra_large">
 
               <!-- Block text -->
-              <div class = "media-body">
-                <h3 class = "media-heading"><b>Match</b></h3>
-                <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
-                <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
-                <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
-
-                <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
-              </div>
+              <h3 class = "media-heading"><b>Match</b></h3>
+              <p><b>Naam:</b> <?php echo ($naam);?>  <?php echo ($tussenvoegsel);?> <?php echo ($achternaam); ?> </p>
+              <p>Je bent gematcht op de diensten: <?php echo ($gebruikerBiedAan); ?> - <?php echo ($gebruikerVraagt)?></p>
+              <img class = "image" src = "<?php echo "images/".$gebruikerVraagt.".png"; ?>" width = "86" height = "86">
+              <h3 class = "media-heading" style = "position: absolute; bottom: 15px; left: 20%; right: 20%;"><b><?php echo($naam)?> is uit de lijst verwijderd</b></h3>
 
             </div>
           </div>        
@@ -260,7 +255,7 @@ if (isset($_SESSION['user_id']))
         <div class = "block bright_blue extra_large">
 
           <!-- Block text -->
-          <div class = "media-body">
+          
             <h3 class = "media-heading"><b>Geen match</b></h3>
             <img class = "image" src = "images/NoResult.png" width = "150" height = "150"><br><br>
             Helaas nog geen match gevonden. Tijdens de spreekuren van Boot kunt u langs komen
@@ -280,10 +275,8 @@ if (isset($_SESSION['user_id']))
       <div class = "block gray large">
 
         <!-- Block text -->
-        <div class = "media-body">
-          <h3 class = "media-heading"><b>Terug naar match menu</b></h3><br><br><br>
-          <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
-        </div>
+        <h3 class = "media-heading"><b>Terug naar match menu</b></h3><br><br><br>
+        <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
 
         <!-- Submit button -->
         <div class = "service_button">
@@ -294,6 +287,7 @@ if (isset($_SESSION['user_id']))
       </div>
     </div>
     <!-- End of block -->
+    
   </div>
 </div>
 </div>

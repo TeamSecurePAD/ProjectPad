@@ -128,7 +128,7 @@
     <div class = "container">
 
       <!-- Body div that contains all elements of the page - lighter gray backdrop than page background for emphasis on section -->
-      <div class = "body col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class = "body">
         <!-- Title div that surrounds colored title band - white backdrop to further emphasize subsection -->
         <div class = "title">
           <!-- Cyan band to indicate content section containing the actual title elements -->
@@ -166,11 +166,9 @@
               <div class = "block error green">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b><?php echo $message_title; ?></b></h3>
-                  <img class = "image" src = "images/bin.png" width = "86" height = "86"><br>
-                  <b><?php echo $message; ?></b>
-                </div>
+                <h3 class = "media-heading"><b><?php echo $message_title; ?></b></h3>
+                <img class = "image" src = "images/bin.png" width = "86" height = "86"><br>
+                <b><?php echo $message; ?></b>
 
               </div>
             </div>
@@ -191,10 +189,8 @@
                 <div class = "block cyan small">
 
                   <!-- Block text -->
-                  <div class = "media-body">
-                    <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
-                    <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
-                  </div>
+                  <h3 class = "media-heading"><b><?php echo $current_category['categorie'];?></b></h3>
+                  <img class = "image" src = "<?php echo "images/".$current_category['categorie'].".png"; ?>" width = "86" height = "86"><br><br>
 
                   <!-- Submit button -->
                   <form action = "askForService.php" method = "POST">
@@ -213,10 +209,8 @@
               <div class = "block gray small">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Terug naar menu</b></h3>
-                  <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Terug naar menu</b></h3>
+                <img class = "image" src = "images/backarrow.png" width = "86" height = "86"><br><br>
 
                 <!-- Submit button -->
                 <form action = "home.php">
@@ -264,11 +258,9 @@
                     <div class = "block cyan regular">
 
                       <!-- Block text -->
-                      <div class = "media-body">
-                        <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
-                        <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
-                        <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
-                      </div>
+                      <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
+                      <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br>
+                      <b>Omschrijving: </b><?php echo $current_service['omschijving'];?>
 
                       <!-- Submit button -->
                       <div class = "service_button">
@@ -291,22 +283,20 @@
                     <div class = "block dark_cyan regular">
 
                       <!-- Block text -->
-                      <div class = "media-body">
-                        <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
-                        <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
-                        <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?> -->
-                        <h3 class = "media-heading"><b>U vraagt al om deze dienst.</b></h3>
+                      <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
+                      <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
+                      <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?> -->
+                      <h3 class = "media-heading"><b>U vraagt al om deze dienst.</b></h3>
 
-                        <form action = "askForService.php" method = "POST">
-                          <div class = "service_button">
-                            <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Verwijderen</button>
-                            <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
-                            <input type = "hidden" value = "<?php echo $geselecteerde_categorie; ?>" name = "geselecteerde_categorie"/>
-                            <input type = "hidden" value = "Dienst verwijderd" name = "message_title"/>
-                            <input type = "hidden" value = "U vraagt niet langer om de dienst &quot;<?php echo $current_service['dienst']; ?>&quot;." name = "message"/>
-                          </div>
-                        </form>
-                      </div>
+                      <form action = "askForService.php" method = "POST">
+                        <div class = "service_button">
+                          <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Verwijderen</button>
+                          <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
+                          <input type = "hidden" value = "<?php echo $geselecteerde_categorie; ?>" name = "geselecteerde_categorie"/>
+                          <input type = "hidden" value = "Dienst verwijderd" name = "message_title"/>
+                          <input type = "hidden" value = "U vraagt niet langer om de dienst &quot;<?php echo $current_service['dienst']; ?>&quot;." name = "message"/>
+                        </div>
+                      </form>
 
                     </div>
                   </div>
@@ -327,22 +317,20 @@
                   <div class = "block bright_orange regular">
 
                     <!-- Block text -->
-                    <div class = "media-body">
-                      <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
-                      <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
-                      <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?><br> -->
-                      <h3 class = "media-heading"><b>U vraagt vanaf nu om deze dienst.</b></h3>
+                    <h3 class = "media-heading"><b><?php echo $current_service['dienst'];?></b></h3>
+                    <img class = "image" src = "<?php echo "images/".$current_service["dienst"].".png"; ?>" width = "86" height = "86"><br><br>
+                    <!-- <b>Omschrijving: </b><?php echo $current_service['omschijving'];?><br> -->
+                    <h3 class = "media-heading"><b>U vraagt vanaf nu om deze dienst.</b></h3>
 
-                      <form action = "askForService.php" method = "POST">
-                        <div class = "service_button">
-                          <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Annuleren</button>
-                          <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
-                          <input type = "hidden" value = "<?php echo $geselecteerde_categorie; ?>" name = "geselecteerde_categorie"/>
-                          <!-- <input type = "hidden" value = "Bewerking geannuleerd" name = "message_title"/> -->
-                          <!-- <input type = "hidden" value = "Aanbieden <?php echo $current_service['dienst']; ?> geannuleerd." name = "message"/> -->
-                        </div>
-                      </form>
-                    </div>
+                    <form action = "askForService.php" method = "POST">
+                      <div class = "service_button">
+                        <button type = "submit" class = "btn btn-danger" value = "cancel" name = "delete">Annuleren</button>
+                        <input type = "hidden" value = "<?php echo $current_service['dienst']; ?>" name = "removeService"/>
+                        <input type = "hidden" value = "<?php echo $geselecteerde_categorie; ?>" name = "geselecteerde_categorie"/>
+                        <!-- <input type = "hidden" value = "Bewerking geannuleerd" name = "message_title"/> -->
+                        <!-- <input type = "hidden" value = "Aanbieden <?php echo $current_service['dienst']; ?> geannuleerd." name = "message"/> -->
+                      </div>
+                    </form>
 
                   </div>
                 </div>
@@ -361,10 +349,8 @@
               <div class = "block gray regular">
 
                 <!-- Block text -->
-                <div class = "media-body">
-                  <h3 class = "media-heading"><b>Terug naar categorieën</b></h3>
-                  <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
-                </div>
+                <h3 class = "media-heading"><b>Terug naar categorieën</b></h3>
+                <img class = "image" src = "images/backarrow.png" width = "150" height = "150"><br><br>
 
                 <!-- Submit button -->
                 <div class = "service_button">
