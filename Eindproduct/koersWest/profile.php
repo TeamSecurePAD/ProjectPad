@@ -415,6 +415,7 @@
                       <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
+
                 </div>
               </div>
               <!-- End of block -->
@@ -447,6 +448,7 @@
                       <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
+
                 </div>
               </div>
               <!-- End of block -->
@@ -485,6 +487,7 @@
                       <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
+
                 </div>
               </div>
               <!-- End of block -->
@@ -516,6 +519,7 @@
                       <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
+
                 </div>
               </div>
               <!-- End of block -->
@@ -556,6 +560,7 @@
                       <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
+
                 </div>
               </div>
               <!-- End of block -->
@@ -588,6 +593,7 @@
                       <input type = "hidden" value = "true" name = "show_personal_information"/>
                     </div>
                   </form>
+
                 </div>
               </div>
               <!-- End of block -->
@@ -636,6 +642,7 @@
                     <input type = "hidden" value = "true" name = "show_personal_information"/>
                   </div>
                 </form>
+
               </div>
             </div>
             <!-- End of block -->
@@ -654,6 +661,7 @@
                     <button type = "submit" class = "btn btn-primary">Bekijk diensten</button>
                   </div>
                 </form>
+
               </div>
             </div>
             <!-- End of block -->
@@ -672,6 +680,7 @@
                     <button type = "submit" class = "btn btn-primary">Bekijk diensten</button>
                   </div>
                 </form>
+
               </div>
             </div>
             <!-- End of block -->
@@ -690,6 +699,7 @@
                     <button type = "submit" class = "btn btn-primary">Bekijk categorieën</button>
                   </div>
                 </form>
+
               </div>
             </div>
             <!-- End of block -->
@@ -708,6 +718,7 @@
                     <button type = "submit" class = "btn btn-primary">Bekijk categorieën</button>
                   </div>
                 </form>
+                
               </div>
             </div>
             <!-- End of block -->
