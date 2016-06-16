@@ -296,27 +296,30 @@
             <?php
             if ($page == "user_data")
             {
-                ?>
+              ?>
 
-                <h1>Persoonlijke gegevens</h1>
+              <h1>Persoonlijke gegevens</h1>
 
-                <?php
+              <?php
             }
             else
             {
               ?>
 
+              <?php
+                // Determine user's full name
+                if (!empty($tussenvoegsel))
+                {
+                  $user_name = $voornaam." ".$tussenvoegsel." ".$achternaam;
+                }
+                else
+                {
+                  $user_name = $voornaam." ".$achternaam;
+                }
+              ?>
+
               <h1>
-                Profiel van <?php
-                              if (!empty($tussenvoegsel))
-                              {
-                                echo $voornaam." ".$tussenvoegsel." ".$achternaam;
-                              }
-                              else
-                              {
-                                echo $voornaam." ".$achternaam;
-                              }
-                            ?>
+                Profiel van <?php echo $user_name; ?>
               </h1>
 
               <?php
@@ -718,7 +721,7 @@
                     <button type = "submit" class = "btn btn-primary">Bekijk categorieën</button>
                   </div>
                 </form>
-                
+
               </div>
             </div>
             <!-- End of block -->
